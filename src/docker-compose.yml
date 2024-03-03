@@ -11,19 +11,20 @@ services:
     depends_on:
       - db
   db:
-    build:
-      context: .
-      dockerfile: Dockerfile.mariadb
-    container_name: db
-    ports:
-      - "3306:3306"
+    image: mariadb:latest
     environment:
-      MYSQL_ROOT_PASSWORD: /run/secrets/password.txt
       MYSQL_DATABASE: mmgadb
       MYSQL_USER: admin
-      MYSQL_PASSWORD: /run/secrets/password.txt
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MARIADB_PASSWORD_FILE: /run/secrets/db_password
+    ports:
+      - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - "./scripts:/docker-entrypoint-initdb.d"
+    secrets:
+      - db_password
+      - db_root_password
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
@@ -31,6 +32,8 @@ services:
     environment:
       - PMA_HOST=db
       - PMA_PORT=3306
+    depends_on:
+      - db
 
 secrets:
   db_password:
@@ -39,4 +42,4 @@ secrets:
     file: password.txt
 
 volumes:
-  db_data: {}
+  mysql_data: {}
