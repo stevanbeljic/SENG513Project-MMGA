@@ -1,0 +1,6 @@
+FROM mariadb:11.3
+
+#uncomment to initialize database once we have stuff to initialize
+# COPY init.sql /docker-initdb.d/
+
+EXPOSE 3306

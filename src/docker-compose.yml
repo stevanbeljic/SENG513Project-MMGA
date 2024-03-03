@@ -1,0 +1,42 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: web
+    ports:
+      - "8001:3000"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.mariadb
+    container_name: db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: /run/secrets/password.txt
+      MYSQL_DATABASE: mmgadb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: /run/secrets/password.txt
+    volumes:
+      - db_data:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+
+secrets:
+  db_password:
+    file: password.txt
+  db_root_password:
+    file: password.txt
+
+volumes:
+  db_data: {}
