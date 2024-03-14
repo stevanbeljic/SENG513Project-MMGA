@@ -9,6 +9,13 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(20) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS friends (
+    user1_id INT,
+    user2_id INT,
+    FOREIGN KEY (user1_id) REFERENCES users(id),
+    FOREIGN KEY (user2_id) REFERENCES users(id)
+);
+
 CREATE TABLE IF NOT EXISTS developer (
     developer_id INT PRIMARY KEY,
     FOREIGN KEY (developer_id) REFERENCES users(id)
@@ -20,8 +27,8 @@ CREATE TABLE IF NOT EXISTS game (
     description VARCHAR(400) NOT NULL,
     genre VARCHAR(50) NOT NULL,
     thumbnail VARCHAR(100) NOT NULL, -- relative path to image
-    appstoreprice DECIMAL(3, 2),
-    playstoreprice DECIMAL(3, 2),
+    appstoreprice DECIMAL(4, 2),
+    playstoreprice DECIMAL(4, 2),
     publisher VARCHAR(20),
     author_id INT,
     FOREIGN KEY (author_id) REFERENCES developer(developer_id)
@@ -33,7 +40,7 @@ CREATE TABLE IF NOT EXISTS discussion (
     description VARCHAR(2500),
     poster_id INT,
     game_id INT,
-    post_date DATE,
+    post_date DATE NOT NULL,
     FOREIGN KEY (poster_id) REFERENCES users(id),
     FOREIGN KEY (game_id) REFERENCES game(id)
 );
