@@ -15,7 +15,7 @@ INSERT INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'develo
 INSERT INTO `developer` (`developer_id`) VALUES ('3');
 INSERT INTO `developer` (`developer_id`) VALUES ('4');
 INSERT INTO `developer` (`developer_id`) VALUES ('7');
-INSERT INTO `developer` (`developer_id`) VALUES ('11');
+INSERT INTO `developer` (`developer_id`) VALUES ('9');
 
 --Friends Seeding
 INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('1', '2');
@@ -28,8 +28,8 @@ INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('5', '6');
 INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('6', '5');
 INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('3', '4');
 INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('4', '3');
-INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('10', '11');
-INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('11', '10');
+INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('10', '9');
+INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('9', '10');
 
 --Game Seeding
 INSERT INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
@@ -38,7 +38,7 @@ VALUES (NULL, 'Evil Mario', 'Can you be the first to beat this once heroic Itali
 
 INSERT INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Jumpy Frogs', 'Ribbit. Hop across the pond without falling in. Be sure to watch out for the birds looking for a tastey snack.', 
-'Adventure', './frog-hopping-on-lilypad.jpeg', '12.99', '12.99', NULL, '4')
+'Adventure', './frog-hopping-on-lilypad.jpeg', '12.99', '12.99', NULL, '4');
 
 INSERT INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Hot Dog Mania', 'Race to be the first to find and eat the most hot dogs befor the timer runs out.', 
@@ -46,7 +46,7 @@ VALUES (NULL, 'Hot Dog Mania', 'Race to be the first to find and eat the most ho
 
 INSERT INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Escape The Jungle', 'Be the first out of the jungle, but be sure to watch out for the wild animals trying to stop you', 
-'Action', './Jungle-animals.jpeg', '2.99', '3.99', NULL, '11');
+'Action', './Jungle-animals.jpeg', '2.99', '3.99', NULL, '9');
 
 INSERT INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Heisty Heist', 'Attempt to make as much money as possible before being caught by the cops.', 
@@ -54,7 +54,7 @@ VALUES (NULL, 'Heisty Heist', 'Attempt to make as much money as possible before 
 
 INSERT INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Rancher Pros 2', 'Run a popular ranch in this relaxing look into another way of life.', 
-'Farming', './tractor.png', '0.99', '0.99', NULL, '11');
+'Farming', './tractor.png', '0.99', '0.99', NULL, '9');
 
 --Discussion Seeding
 INSERT INTO `discussion` (`discussion_id`, `title`, `description`, `poster_id`, `game_id`, `post_date`) 
@@ -71,7 +71,7 @@ Never playing this game again', '5', '4', '2024-03-14');
 
 INSERT INTO `discussion` (`discussion_id`, `title`, `description`, `poster_id`, `game_id`, `post_date`) 
 VALUES (NULL, 'What an Excellent Idea for a Game', 'I absolutely love the way you brought this idea to life, 
-I hope some day I can make something as wonderful as this!', '11', '1', '2024-03-14');
+I hope some day I can make something as wonderful as this!', '9', '1', '2024-03-14');
 
 INSERT INTO `discussion` (`discussion_id`, `title`, `description`, `poster_id`, `game_id`, `post_date`) 
 VALUES (NULL, 'What am I Supposed to do?', 'This game lacks a tutorial that explains the controls or how I win. 
@@ -82,7 +82,7 @@ INSERT INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `pos
 VALUES ('It really is not that hard kid. You must just be really bad at the game lol', '1', '1', '2');
 
 INSERT INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
-VALUES ('Hey thats not nice :( I am trying really hard but I am just stuck', '2', '1', '1')
+VALUES ('Hey thats not nice :( I am trying really hard but I am just stuck', '2', '1', '1');
 
 INSERT INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
 VALUES ('Ok ok I am sorry, how you win is run away every time he winds up for a power attack,
