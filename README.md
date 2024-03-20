@@ -32,5 +32,5 @@ ________________________________________________________________________________
   &nbsp;&nbsp;&nbsp;`cd client`
 2. Install all dependencies\
    &nbsp;&nbsp;&nbsp;`npm install`
-3. Run the server\
-   `npm run dev`
+3. Run the client\
+   &nbsp;&nbsp;&nbsp; `npm run dev`
