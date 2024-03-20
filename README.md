@@ -29,7 +29,7 @@ ________________________________________________________________________________
 ## Client Setup
 
 1. Go into the client directory\
-  &nbsp;&nbsp;&nbsp;`cd client
+  &nbsp;&nbsp;&nbsp;cd client
 2. Install all dependencies\
    &nbsp;&nbsp;&nbsp;`npm install`
 3. Run the server\
