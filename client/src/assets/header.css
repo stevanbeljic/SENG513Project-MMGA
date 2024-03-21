@@ -3,8 +3,8 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #C985FF;
     width: 100%;
+    font-size: 2vw;
   }
 
 body{
@@ -16,7 +16,6 @@ li {
 }
   
 li a {
-    display: block;
     color: black;
     text-align: center;
     padding: 14px 16px;
@@ -33,16 +32,18 @@ li a:hover {
     }
 }*/
 
+.header-section {
+    position: fixed;
+    width: 100%;
+    top:0;
+
+}
+
 #mmga {
     width:12vw;
     height:18vh;
-    padding:25px;
+    padding:2vh;
   }
-
-.flex-navbar{
-    display: flex;
-    width: 100%;
-}
 
 .right-container{
     display: flex;
@@ -55,5 +56,11 @@ li a:hover {
 #user {
     width: 8vw;
     height: 12vh;
-    padding: 16px;
+    padding: 2vh;
+}
+
+.flex-navbar{
+    display:flex;
+    background-color:#C985FF;
+    width:100%;
 }

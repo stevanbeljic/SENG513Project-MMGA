@@ -38,7 +38,7 @@
                 <input type="text" v-model="username" placeholder="Username" required>
             </div>
             <div class="form-input">
-                <input type="password" v-model="password" placeholder="password" required>
+                <input type="password" v-model="password" placeholder="Password" required>
                 <a class="login-link" href="https://www.google.com/"><p>Forgot Password</p></a>
             </div>
             <div id="login-button">

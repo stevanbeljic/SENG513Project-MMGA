@@ -1,0 +1,20 @@
+#home-icon, #catalogue-icon, #user-icon, #friends-icon, #chat-icon {
+    width:10vw;
+    height: 10vh;
+    padding: 1vh;
+
+}
+
+.flex-navbar-foot{
+    display:flex;
+    background-color:#C985FF;
+    width:100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footer-section {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
