@@ -1,0 +1,59 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #C985FF;
+    width: 100%;
+  }
+
+body{
+    font-family: 'Kanit';
+}
+  
+li {
+    float: left;
+}
+  
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+li a:hover {
+    color: #fff;
+}
+
+/*@media only screen and (max-width: 1000px) {
+    #header {
+        display: none;
+    }
+}*/
+
+#mmga {
+    width:12vw;
+    height:18vh;
+    padding:25px;
+  }
+
+.flex-navbar{
+    display: flex;
+    width: 100%;
+}
+
+.right-container{
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+}
+
+#user {
+    width: 8vw;
+    height: 12vh;
+    padding: 16px;
+}
