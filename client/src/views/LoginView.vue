@@ -1,6 +1,7 @@
 <script>
-    import "../assets/login.css"
-
+import "../assets/login.css";
+import "../router/index.js";
+import router from "../router/index.js";
     export default {
         methods: {
             async handleLogin() {
@@ -22,6 +23,9 @@
                 body: JSON.stringify(),
                 });
                 console.log(response);
+                if(response.status==201){
+                    router.push("/");
+                }
             },
         },
     };

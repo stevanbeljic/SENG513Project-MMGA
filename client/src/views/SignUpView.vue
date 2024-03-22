@@ -1,5 +1,5 @@
 <script>
-    import "../assets/login.css"
+    import "../assets/login.css";
 </script>
 
 <template>
@@ -17,6 +17,13 @@
             </div>
             <div class="form-input">
                 <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-input" id="user-class-selector">
+                <label for="user-developer">Which user are you?</label>
+                <select name="user-dev" id="user-dev">
+                    <option value="user">Gamer</option> 
+                    <option value="developer">Developer</option>
+                </select>
             </div>
             <div id="login-button">
                 <button>Sign Up</button>

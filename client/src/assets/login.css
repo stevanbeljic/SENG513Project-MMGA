@@ -73,3 +73,18 @@ body{
     justify-content: center;
     flex-direction: column;
 }
+
+.form-input > select{
+    background-color: #F2E1FF;;
+    border-radius: 16px;
+    width: 33%;
+    height: 30px;
+    text-align: center;
+    margin: 0% 2%;
+}
+
+#user-class-selector{
+    display: flex;
+    justify-content: center;
+    color: #F2E1FF;
+}

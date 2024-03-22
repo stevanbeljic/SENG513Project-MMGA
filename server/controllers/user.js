@@ -3,6 +3,7 @@ const router = express.Router();
 const databaseConnection = require('../model/model');
 const mariadb = require('mariadb');
 
+
 // GET /user/getAccount?username=myusername&password=mypassword
 router.get('/getAccount', (req, res) => {
     const { username, password } = req.query;
@@ -16,9 +17,10 @@ router.get('/getAccount', (req, res) => {
       
       // Check if user with provided username and password exists
       if (results.length === 0) {
-        return res.status(401).send('Unauthorized');
+        //return res.status(401).send('Unauthorized');
       }
       // If user exists and credentials are correct, you can send some data back
+      res.status(201).send("User with provided username and password")
       //res.json({ message: 'User authenticated successfully', user: results[0] });
     });
       console.log('made it to the function');
