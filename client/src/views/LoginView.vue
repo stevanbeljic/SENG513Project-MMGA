@@ -24,7 +24,7 @@ import router from "../router/index.js";
                 });
                 console.log(response);
                 if(response.status==201){
-                    //router.push("/");
+                    router.push("/");
                 }
             },
         },

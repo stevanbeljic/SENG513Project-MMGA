@@ -3,6 +3,14 @@
 import "../router/index.js";
 //import router from "../router/index.js";
     export default {
+        data: function(){
+            return{
+                username: "",
+                email: "",
+                password: "",
+                userDev: ""
+            }
+        },
         methods: {
             async handleSignUp() {
                 if(this.username === "" || this.email === "" || this.password === ""){
