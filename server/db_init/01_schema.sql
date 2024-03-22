@@ -1,6 +1,6 @@
 -- schema script
 
-USE mmgadb;
+-- USE mmgadb;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS friends (
     user1_id INT,
     user2_id INT,
+    PRIMARY KEY (user1_id, user2_id),
     FOREIGN KEY (user1_id) REFERENCES users(id),
     FOREIGN KEY (user2_id) REFERENCES users(id)
 );
