@@ -2,6 +2,7 @@
 const mariadb = require('mariadb');
 const fs = require('fs');
 const mysql = require('mysql2');
+const { promisify } = require('util');
 
 // envrionmentVariables
 require('dotenv').config();
@@ -17,6 +18,7 @@ console.log(dbPassword)
 
 //database setup
 let databaseConnection;
+
   try {
       // Create a new connection
       databaseConnection = mysql.createConnection({
@@ -31,15 +33,27 @@ let databaseConnection;
       // Print error
       console.log(err);
   }
+
+  //creates the database if it does not exist already
+  databaseConnection.query("CREATE DATABASE IF NOT EXISTS MMGADB", (err, results) => {
+    if (err) {
+        console.error('Error creating database:', err);
+        return;
+    }
+    console.log('Database "mmgadb" created');
+  });
+
   databaseConnection.query("USE MMGADB", (err, results) => {
     if (err) {
       console.error('Error executing query:', err);
       return;
     }
-    console.log('Query executed successfully');
+    console.log('"Use mmgadb" executed successfully');
   });
+
+
     // Read SQL file
-/*    fs.readFile(sqlFilePath, 'utf8', (err, data) => {
+    fs.readFile("./db_init/01_schema.sql", 'utf8', (err, data) => {
       if (err) {
         console.error('Error reading SQL file:', err);
         return;
@@ -58,6 +72,6 @@ let databaseConnection;
           console.log('Query executed successfully');
         });
       });
-    });*/
+    });
 
     module.exports = databaseConnection;
