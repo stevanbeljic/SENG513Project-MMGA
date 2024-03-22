@@ -25,5 +25,38 @@ router.get('/getAccount', (req, res) => {
     });
       console.log('made it to the function');
   });
-//console.log(response);
+
+
+router.post('/createAccount', (req, res) => {
+  const { username, email, password, role} = req.body;
+  if (!username || !email || !password || !role) {
+
+    return res.status(400).send('All fields are required');
+  }
+  console.log(username, email, password, role);
+  console.log(req.body);
+  // Check if the username already exists
+  databaseConnection.query('SELECT * FROM users WHERE username = ?', [username], (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      return res.status(500).send('Internal server error');
+    }
+
+    // If username already exists, return error
+    if (results.length > 0) {
+      return res.status(400).send('Username already exists');
+    }
+
+    // Insert the new user into the database
+    databaseConnection.query('INSERT INTO users (role, username, password) VALUES (?, ?, ?)', [role, username, password], (err, result) => {
+      if (err) {
+        console.error('Error executing query:', err);
+        return res.status(500).send('Internal server error');
+      }
+
+      // User account created successfully
+      res.status(201).send('User account created successfully');
+    });
+  });
+});
 module.exports = router;
