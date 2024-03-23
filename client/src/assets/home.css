@@ -2,24 +2,168 @@ a.router-link-active.router-link-exact-active {
     color: white;
 }
 
-#dashboard {
-    margin-top: 20vh;
-    margin-bottom: 20vh;
+.kanit-thin {
+    font-family: "Kanit", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
 
-    display: flex;
-    justify-content: center;
+h2 {
+    font-weight: 100;
+    font-size: 40px;
+    font-family: "Kanit", thin;
+    margin: 0;
+    
 }
 
-#welcomeDiv {
-    border: solid black 2px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 19px 5px #BABABA;
-    background-color: #bababa29;
+#dashboardDiv {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+}
 
-    .welcomemessage {
-        font-size: 20px;
-        margin: 0;
-        padding: 10px;
+#topHalfDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    #trendingDiv {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        margin-left: 50px;
+        margin-right: 50px;
+
+        .subTitleDiv {
+            width: 100%;
+        }
+
+        #trendingContentDiv {
+            background-color: #D9D9D9;
+            display: flex;
+            flex-direction: row;
+
+            img {
+                padding: 15px;
+                width: 40%;
+            }
+
+            #gameDescDiv{
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                h3 {
+                    font-size: 40px;
+                }
+
+                p {
+                    padding: 10px;
+                    font-family: "Kanit";
+                    font-weight: normal;
+                    color: black;
+                }
+
+                #publisher {
+                    font-weight: 50;
+                }
+
+                #genreDiv {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: start;
+                    align-self: self-start;
+                    margin-left: 10px;
+                    
+                    
+                    p {
+                        width: 50px;
+                        background-color: #C985FF;
+                        border-radius: 10px;
+                        padding: 5px;
+                        padding-top: 1px;
+                        padding-bottom: 1px;
+                        font-weight: 400;
+                    }
+                }
+
+                #info {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    .tags {
+                        margin: 0;
+                    }
+                }
+
+            }
+        }
+    }
+
+    #recentDiscussionsDiv  {
+        width: 25%;
+        
+        li {
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            height: 10%;
+            font-size: 20px;
+            font-weight: 300;
+            background-color: #EBD1FF;
+            align-items: center;
+            justify-content: space-between;
+
+            p {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: 80%;
+            }
+
+            a {
+                color: white;
+            }
+            a:hover {
+                color: red;
+            }
+        }
+
+        li:nth-child(odd) {
+            background-color: #F2E1FF;
+        }
+
+    }
+
+}
+
+#bottomHalfDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+
+    #newsContent{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .newsItem {
+            width: 250px;
+            height: 250px;
+            background-color: #F2E1FF;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px;
+
+            img {
+                max-height: 75%;
+                width: 100%;
+            }
+        }
     }
 }
 

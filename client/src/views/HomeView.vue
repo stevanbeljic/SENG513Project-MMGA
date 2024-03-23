@@ -31,22 +31,84 @@ defineExpose({loggedIn, username});
 <template>
   <head>
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap" rel="stylesheet">
   </head>
   <header class="header-section">
     <navbar></navbar>
   </header>
 
   <body>
-    <div id="dashboard">
-      <div id="welcomeDiv" v-if="loggedIn">
-        <p class="welcomemessage" >{{ `Hey ${username}, let's make Mobile Great again!` }}</p>
+    <div id="dashboardDiv">
+      <div id="topHalfDiv">
+        <div id="trendingDiv">
+          <div class="subTitleDiv">
+            <h2>Trending Release🔥</h2>
+          </div>
+          <div id="trendingContentDiv">
+            <img src = "../components/icons/mario.jpg"/>
+            <div id="gameDescDiv">
+              <h3>Evil Mario</h3>
+              <p id="publisher">Evil Nintendo Studios</p>
+              <p>Luigi must embark on a harrowing adventure to save his brother, Mario, from an evil force corrupting his mind and soul.</p>
+              <div id="genreDiv">
+                <p class="genre">Family</p>
+                <p class="genre">Horror</p>
+              </div>
+              <div id="info">
+                <p class="tags">▶ 1.8M</p>
+                <p class="tags">★ 81k</p>
+                <p class="tags" id="price">$0.99</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="recentDiscussionsDiv">
+          <div class="subTitleDiv">
+            <h2>Recent Discussions</h2>
+            <ul>
+              <li>
+                <p>Keep losing to Luigi :(</p>
+                <a>❤︎</a>
+              </li>
+              <li>
+                <p>Luigi Boss Batte</p>
+                <a>❤︎</a>
+              </li>
+              <li>
+                <p>Looking for team</p>
+                <a>❤︎</a>
+              </li>
+              <li>
+                <p>I calculated how much coins you need to win</p>
+                <a>❤︎</a>
+              </li>
+              <li>
+                <p>Questions about Luigi's strength</p>
+                <a>❤︎</a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div id="feed">
-        <!--The user's feed will eventually go here-->
+      <div id="bottomHalfDiv">
+        <div id="newsDiv"><!--Will use an API call to some gaming news site to auto-genrrate live news-->
+          <h2>Recent News in Gaming 📰</h2>
+          <div id="newsContent">
+            <div class="newsItem">
+              <img src = "../components/icons/mario.jpg"/>
+              <p>Evil Mario wins GOTY</p>
+            </div>
+            <div class="newsItem">
+              <img src = "../components/icons/mario.jpg"/>
+              <p>Gamers in rage over recent adaptation of beloved Mario franchise</p>
+            </div>
+          </div>
+        </div> 
       </div>
     </div>
   </body>
 
+  
   <footer class="footer-section">
     <div class="flex-navbar-foot">
       <!-- Link to appropriate pages once created-->
@@ -57,4 +119,5 @@ defineExpose({loggedIn, username});
       <img src="../components/icons/chat.svg" id="chat-icon">
     </div>
   </footer>
+  
 </template>
