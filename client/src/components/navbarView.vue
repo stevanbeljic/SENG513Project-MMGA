@@ -3,7 +3,7 @@ Vue.component('navBar', {
         <div class = "flex-navbar">
           <ul>
             <div class ="img-container">
-              <li><img src ="../components/icons/mmga.svg" id = "mmga"/></li>
+              <li><RouterLink to="/"><img src ="../components/icons/mmga.svg" id = "mmga"/></RouterLink></li>
             </div>
             <div class = "right-container">
               <li id = "home"><RouterLink to="/">Home</RouterLink></li>
