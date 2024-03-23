@@ -1,11 +1,12 @@
 <script setup>
 import bottomNavbar from '@/components/bottomNavbarView.vue';
-import { onMounted, ref } from 'vue';
 import VueMq from 'vue-mq';
 import { RouterLink } from 'vue-router';
 import "../assets/footer.css";
 import "../assets/header.css";
 import "../assets/home.css";
+import "../router/index.js";
+import {onMounted, ref, reactive } from 'vue';
 import navbar from "../components/navbarView.vue";
 
 let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
@@ -18,14 +19,27 @@ const updateSessionData = () => {
   console.log(username.value);
 };
 
-onMounted(updateSessionData);
+let newsItems = reactive({ articles: [] });
+
+const getArticles = async () => {
+  const response = await fetch('http://localhost:7003/');
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  const data = await response.json();
+  newsItems.articles = data; // get the first 4 news items
+};
+
+onMounted(async () => {
+  updateSessionData();
+  await getArticles();
+});
+
+
 
 window.addEventListener('storage', updateSessionData);
 
 defineExpose({loggedIn, username});
-
-</script>
-<script>
 
 </script>
 <template>
@@ -94,13 +108,11 @@ defineExpose({loggedIn, username});
         <div id="newsDiv"><!--Will use an API call to some gaming news site to auto-genrrate live news-->
           <h2>Recent News in Gaming 📰</h2>
           <div id="newsContent">
-            <div class="newsItem">
-              <img src = "../components/icons/mario.jpg"/>
-              <p>Evil Mario wins GOTY</p>
-            </div>
-            <div class="newsItem">
-              <img src = "../components/icons/mario.jpg"/>
-              <p>Gamers in rage over recent adaptation of beloved Mario franchise</p>
+            <div class="newsItem" v-for="item in newsItems.articles" :key="item.id">
+              <a href="item.site_detail_url" target="_blank">
+                <img :src="item.image.original_url" />
+                <p>{{ item.title}}</p>
+              </a>
             </div>
           </div>
         </div> 

@@ -158,10 +158,16 @@ h2 {
             border-radius: 20px;
             overflow: hidden;
             margin: 20px;
+            text-align: center;
 
             img {
-                max-height: 75%;
+                max-height: 70%;
+                min-height: 70%;
                 width: 100%;
+            }
+
+            p{
+                text-overflow: clip;
             }
         }
     }

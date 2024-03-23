@@ -66,7 +66,7 @@ let databaseConnection;
       queries.forEach(query => {
         connection.query(query, (err, results) => {
           if (err) {
-            console.error(`Error executing query from ${filePath}:`, err);
+            //console.error(`Error executing query from ${filePath}:`, err);
             return;
           }
           console.log(`Query from ${filePath} executed successfully`);
