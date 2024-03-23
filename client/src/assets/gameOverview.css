@@ -67,6 +67,10 @@
     grid-area: app;
 }
 
+#appStore-info > img {
+    border-radius: 15px;
+}
+
 #playStore-info{
     grid-area: play;
 }

@@ -1,4 +1,5 @@
 import catalogView from '@/views/catalogView.vue'
+import GameOverview from '@/views/gameOverview.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import loginView from '../views/LoginView.vue'
@@ -28,6 +29,11 @@ const router = createRouter({
       path: '/catalog',
       name: 'catalog',
       component: catalogView
+    },
+    {
+      path: '/game',
+      name: 'game',
+      component: GameOverview
     },
     {
       path: '/friends',
