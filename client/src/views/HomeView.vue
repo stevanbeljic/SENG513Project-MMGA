@@ -49,7 +49,7 @@ defineExpose({loggedIn, username});
             <div id="gameDescDiv">
               <h3>Evil Mario</h3>
               <p id="publisher">Evil Nintendo Studios</p>
-              <p>Luigi must embark on a harrowing adventure to save his brother, Mario, from an evil force corrupting his mind and soul.</p>
+              <p id="gameDescription">Luigi must embark on a harrowing adventure to save his brother, Mario, from an evil force corrupting his mind and soul.</p>
               <div id="genreDiv">
                 <p class="genre">Family</p>
                 <p class="genre">Horror</p>

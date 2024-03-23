@@ -14,6 +14,9 @@ h2 {
     font-family: "Kanit", thin;
     margin: 0;
     
+    @media (max-width: 700px){
+        text-align: center;
+    }
 }
 
 #dashboardDiv {
@@ -27,12 +30,20 @@ h2 {
     display: flex;
     flex-direction: row;
 
+    @media (max-width: 700px){
+        flex-wrap: wrap;
+    }
+
     #trendingDiv {
         display: flex;
         flex-direction: column;
         width: 70%;
         margin-left: 50px;
         margin-right: 50px;
+        @media (max-width: 700px){
+            margin: 0;
+            width: 100%;
+        }
 
         .subTitleDiv {
             width: 100%;
@@ -45,7 +56,7 @@ h2 {
 
             img {
                 padding: 15px;
-                width: 40%;
+                max-width: 40%;                
             }
 
             #gameDescDiv{
@@ -53,9 +64,12 @@ h2 {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                
 
                 h3 {
                     font-size: 40px;
+                    margin-top: 20px;
+                    margin-bottom: 0px;
                 }
 
                 p {
@@ -64,9 +78,17 @@ h2 {
                     font-weight: normal;
                     color: black;
                 }
+                @media (max-width: 700px){
+                    #gameDescription{
+                        visibility: none;
+                    }
+                }
+                
 
                 #publisher {
                     font-weight: 50;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
                 }
 
                 #genreDiv {
@@ -76,8 +98,7 @@ h2 {
                     align-self: self-start;
                     margin-left: 10px;
                     
-                    
-                    p {
+                    .genre {
                         width: 50px;
                         background-color: #C985FF;
                         border-radius: 10px;
@@ -85,6 +106,7 @@ h2 {
                         padding-top: 1px;
                         padding-bottom: 1px;
                         font-weight: 400;
+                        margin-right: 10px;
                     }
                 }
 
@@ -104,9 +126,14 @@ h2 {
 
     #recentDiscussionsDiv  {
         width: 25%;
-        
+        @media (max-width: 700px){
+            width: 100%;
+        }
         li {
             width: 90%;
+            @media (max-width: 700px){
+                width: 100%;
+            }
             display: flex;
             flex-direction: row;
             height: 10%;
@@ -145,11 +172,18 @@ h2 {
     flex-direction: column;
     margin-left: 50px;
     margin-right: 50px;
+    @media (max-width: 700px){
+        margin: 0;
+    }
 
     #newsContent{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        @media (max-width: 700px){
+            justify-content: center;
+            margin-bottom: 100px;
+        }
 
         .newsItem {
             width: 250px;
@@ -158,6 +192,8 @@ h2 {
             border-radius: 20px;
             overflow: hidden;
             margin: 20px;
+            text-align: center;
+            
 
             img {
                 max-height: 75%;
