@@ -18,3 +18,9 @@
     width: 100%;
     bottom: 0;
 }
+
+@media only screen and (width >= 700px) {
+    footer {
+        display: none;
+    }
+}
