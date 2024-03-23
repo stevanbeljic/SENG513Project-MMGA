@@ -7,13 +7,10 @@ body{
     margin: 0px;
 }
 
-#page-container{
+#login-container{
     background-size: cover;
     background-image: url("../components/icons/purple.webp");
     background-position: center top;
-}
-
-#login-container{
     display: flex;
     align-items: center;
     justify-content: center;

@@ -13,7 +13,9 @@ import navbar from "../components/navbarView.vue";
   <header class = "header-section">
     <navbar></navbar>
   </header>
- 
+  <div class = "page-container">
+
+  </div>
   <footer class = "footer-section">
     <div class = "flex-navbar-foot">
       <!-- Link to appropriate pages once created-->
