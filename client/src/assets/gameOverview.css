@@ -90,11 +90,11 @@
     }
 }
 
-h1, h2, h3{
+#game-overview > h1, #game-overview > h2, #game-overview > h3{
     margin: 0 0 0 5% ;
 }
 
-p{
+#game-overview > p{
     margin: 0 0 0 2.5%
 }
 

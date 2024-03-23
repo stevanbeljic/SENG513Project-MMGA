@@ -31,7 +31,6 @@ import navbar from "../components/navbarView.vue";
             </div>
         </div>
         <div class="discussions-container">
-            <h2></h2>
             <div class="discussion-div odd"><h2>Keep Losing to Luigi! >:(</h2></div>
             <div class="discussion-div even"><h2>When is the next update coming out? It’s been forever and the games getting stale</h2></div>
             <div class="discussion-div odd"><h2>Secret level!</h2></div>

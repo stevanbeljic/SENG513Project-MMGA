@@ -1,6 +1,14 @@
 
 .page-container{
-    transform: translateY(70px);
     width: 100%;
-    height: calc(100vh - 70px);
+    @media (width >= 700px){
+        transform: translateY(70px);
+        height: calc(100vh - 70px);
+        position: absolute;
+        overflow-y: scroll;
+    }
+    @media (width < 700px){
+        height: 100vh;
+    }
+
 }
