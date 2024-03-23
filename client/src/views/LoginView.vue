@@ -14,17 +14,19 @@ import router from "../router/index.js";
                 console.log(this.username);
                 console.log(this.password);
                 const response = await fetch(route, {
-                method: "GET",
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "GET",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(),
+                    method: "GET",
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Methods": "GET",
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(),
                 });
                 console.log(response);
                 if(response.status==201){
                     router.push("/");
+                    sessionStorage.setItem("loggedIn", "true");
+                    sessionStorage.setItem("loggedInAs", this.username);
                 }
             },
         },

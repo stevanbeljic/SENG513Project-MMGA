@@ -23,9 +23,7 @@ router.get('/getAccount', (req, res) => {
       res.status(201).send("User with provided username and password")
       //res.json({ message: 'User authenticated successfully', user: results[0] });
     });
-      console.log('made it to the function');
   });
-
 
 router.post('/createAccount', (req, res) => {
   const { username, email, password, role} = req.body;
