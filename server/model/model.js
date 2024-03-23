@@ -52,6 +52,33 @@ let databaseConnection;
   });
 
 
+  const executeSqlFile = (filePath, connection) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        console.error(`Error reading SQL file ${filePath}:`, err);
+        return;
+      }
+  
+      // Split SQL file into individual queries
+      const queries = data.split(';').filter(query => query.trim() !== '');
+  
+      // Execute each query
+      queries.forEach(query => {
+        connection.query(query, (err, results) => {
+          if (err) {
+            console.error(`Error executing query from ${filePath}:`, err);
+            return;
+          }
+          console.log(`Query from ${filePath} executed successfully`);
+        });
+      });
+    });
+  };
+
+  executeSqlFile("./db_init/01_schema.sql", databaseConnection);
+  executeSqlFile("./db_init/02_init.sql", databaseConnection);
+
+  /*
     // Read SQL file
     fs.readFile("./db_init/01_schema.sql", 'utf8', (err, data) => {
       if (err) {
@@ -73,5 +100,5 @@ let databaseConnection;
         });
       });
     });
-
+*/
     module.exports = databaseConnection;

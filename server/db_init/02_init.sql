@@ -17,7 +17,7 @@ INSERT INTO `developer` (`developer_id`) VALUES ('4');
 INSERT INTO `developer` (`developer_id`) VALUES ('7');
 INSERT INTO `developer` (`developer_id`) VALUES ('9');
 
---Friends Seeding
+-- Friends Seeding
 INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('1', '2');
 INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('2', '1');
 INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('5', '1');
@@ -31,7 +31,7 @@ INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('4', '3');
 INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('10', '9');
 INSERT INTO `friends` (`user1_id`, `user2_id`) VALUES ('9', '10');
 
---Game Seeding
+-- Game Seeding
 INSERT INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Evil Mario', 'Can you be the first to beat this once heroic Italian plumber turned bad? Step up to the plate and find out for yourself', 
 'Horror', './evil-mario.png', '3.99', '3.49', 'BadGuyGames', '3');
@@ -56,7 +56,7 @@ INSERT INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstore
 VALUES (NULL, 'Rancher Pros 2', 'Run a popular ranch in this relaxing look into another way of life.', 
 'Farming', './tractor.png', '0.99', '0.99', NULL, '9');
 
---Discussion Seeding
+-- Discussion Seeding
 INSERT INTO `discussion` (`discussion_id`, `title`, `description`, `poster_id`, `game_id`, `post_date`) 
 VALUES (NULL, 'Evil Mario is very Difficult', "I don\'t know how the developer of this game ever expects anyone 
 to succeed at this game with this absurd difficulty. Not worth purchasing in my opinion.", '1', '1', '2024-03-13');
@@ -77,7 +77,7 @@ INSERT INTO `discussion` (`discussion_id`, `title`, `description`, `poster_id`, 
 VALUES (NULL, 'What am I Supposed to do?', 'This game lacks a tutorial that explains the controls or how I win. 
 Might be a good thing for the developer to add as currently I no longer want to play the game', '10', '3', '2024-03-05');
 
---Comment Seeding
+-- Comment Seeding
 INSERT INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
 VALUES ('It really is not that hard kid. You must just be really bad at the game lol', '1', '1', '2');
 
@@ -92,7 +92,7 @@ INSERT INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `pos
 VALUES ('Thank you for the feedback. Maybe in the future we can collaborate on another hit game!', '1', '4', '3');
 
 INSERT INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
-VALUES ('Thank you for your feedback. I will look into adding something like what you suggested so that the game is easier to play.', '1', '5', '7');
+VALUES ('Thank you for your feedback. I will look into adding something like what you suggested so that the game is easier to play.', '1', '1', '7');
 
 INSERT INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
 VALUES ('This is a hilarious review for this game. Yes there are some jump scares but it is really not that bad.', '1', '3', '10');

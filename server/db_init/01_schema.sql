@@ -53,5 +53,5 @@ CREATE TABLE IF NOT EXISTS comments (
     poster_id INT,
     FOREIGN KEY (discussion_id) REFERENCES discussion(discussion_id),
     FOREIGN KEY (poster_id) REFERENCES users(id),
-    PRIMARY KEY (discussion_id, poster_id,comment_ordinal)
+    PRIMARY KEY (discussion_id, poster_id, comment_ordinal)
 );
