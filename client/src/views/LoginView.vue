@@ -34,7 +34,6 @@ import router from "../router/index.js";
 </script>
 
 <template>
-    <div id="page-container">
     <div id="login-container">
         <form id="login-form" @submit.prevent="getFormValues">
             <div id="login-Header">
@@ -52,7 +51,6 @@ import router from "../router/index.js";
                 <a class="login-link" href="./signup"><p>Not a member? Sign up here</p></a>
             </div>
         </form>
-    </div>
     </div>
 </template>
 
