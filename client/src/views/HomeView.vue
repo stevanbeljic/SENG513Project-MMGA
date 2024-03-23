@@ -1,6 +1,8 @@
 <script setup>
+import bottomNavbar from '@/components/bottomNavbarView.vue';
+import { onMounted, ref } from 'vue';
+import VueMq from 'vue-mq';
 import { RouterLink } from 'vue-router';
-import { ref, onMounted } from 'vue';
 import "../assets/footer.css";
 import "../assets/header.css";
 import "../assets/home.css";
@@ -23,7 +25,9 @@ window.addEventListener('storage', updateSessionData);
 defineExpose({loggedIn, username});
 
 </script>
+<script>
 
+</script>
 <template>
   <head>
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>

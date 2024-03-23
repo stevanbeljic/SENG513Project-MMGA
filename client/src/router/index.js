@@ -3,9 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import loginView from '../views/LoginView.vue'
 import signUpView from '../views/SignUpView.vue'
-import profileView from '../views/profileView.vue'
-import friendsView from '../views/friendsView.vue'
 import discussionView from '../views/discussionView.vue'
+import friendsView from '../views/friendsView.vue'
+import profileView from '../views/profileView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -40,8 +40,8 @@ const router = createRouter({
       component: discussionView
     },
     {
-      path: '/user',
-      name: 'user',
+      path: '/profile',
+      name: 'profile',
       component: profileView
     }
   ]

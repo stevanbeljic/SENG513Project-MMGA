@@ -1,8 +1,8 @@
 <script setup>
-    import navbar from "../components/navbarView.vue";
     import "../assets/footer.css";
-    import "../assets/header.css";
-    import "../assets/home.css";
+import "../assets/header.css";
+import "../assets/home.css";
+import navbar from "../components/navbarView.vue";
 </script>
 <template>
     <head>

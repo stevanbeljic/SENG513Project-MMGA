@@ -11,7 +11,7 @@ Vue.component('navBar', {
               <li><RouterLink to="/catalog">Catalog</RouterLink></li>
               <li><RouterLink to="/friends">Friends</RouterLink></li>
               <li><RouterLink to="/discussions">Discussions</RouterLink></li>
-              <li ><RouterLink to="/user"><img src = "../components/icons/user.svg" id = "user"/></RouterLink></li>
+              <li ><RouterLink to="/profile"><img src = "../components/icons/user.svg" id = "user"/></RouterLink></li>
             </div>
           </ul>
         </div>
