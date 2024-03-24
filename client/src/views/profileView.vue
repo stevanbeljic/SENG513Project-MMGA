@@ -4,6 +4,8 @@ import "../assets/header.css";
 import "../assets/home.css";
 import navbar from "../components/navbarView.vue";
 import "../assets/profileView.css";
+import bottomNavbar from '@/components/bottomNavbarView.vue';
+
 </script>
 <template>
     <head>
@@ -12,6 +14,7 @@ import "../assets/profileView.css";
     <header class = "header-section">
         <navbar></navbar>
     </header>
+    <body>
     <div class="page-container">
         <div class = "grid-container">
             <!-- Not sure if we want to customize user profile images... placeholder image for now-->
@@ -39,4 +42,8 @@ import "../assets/profileView.css";
         </div>
 
     </div>
+    </body>
+    <footer class="footer-section">
+             <bottomNavbar></bottomNavbar>
+        </footer>
 </template>
