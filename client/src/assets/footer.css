@@ -1,3 +1,7 @@
+footer{
+    z-index: 999; /*Make the footer overlay other elements on scroll down */
+}
+
 #home-icon, #catalogue-icon, #user-icon, #friends-icon, #chat-icon {
     width:10vw;
     height: 10vh;

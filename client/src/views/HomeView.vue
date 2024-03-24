@@ -49,7 +49,7 @@ defineExpose({loggedIn, username});
             <div id="gameDescDiv">
               <h3>Evil Mario</h3>
               <p id="publisher">Evil Nintendo Studios</p>
-              <p>Luigi must embark on a harrowing adventure to save his brother, Mario, from an evil force corrupting his mind and soul.</p>
+              <p id="gameDescription">Luigi must embark on a harrowing adventure to save his brother, Mario, from an evil force corrupting his mind and soul.</p>
               <div id="genreDiv">
                 <p class="genre">Family</p>
                 <p class="genre">Horror</p>
@@ -110,14 +110,7 @@ defineExpose({loggedIn, username});
 
   
   <footer class="footer-section">
-    <div class="flex-navbar-foot">
-      <!-- Link to appropriate pages once created-->
-      <RouterLink to="/"><img src="../components/icons/home.svg" id="home-icon"></RouterLink>
-      <img src="../components/icons/catalogue.svg" id="catalogue-icon">
-      <img src="../components/icons/user.svg" id="user-icon">
-      <img src="../components/icons/friends.svg" id="friends-icon">
-      <img src="../components/icons/chat.svg" id="chat-icon">
-    </div>
+    <bottomNavbar></bottomNavbar>
   </footer>
   
 </template>

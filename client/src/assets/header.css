@@ -1,3 +1,7 @@
+header{
+    z-index: 999; /*Make the header overlay other elements on scroll down */
+}
+
 ul {
     list-style-type: none;
     margin: 0;
