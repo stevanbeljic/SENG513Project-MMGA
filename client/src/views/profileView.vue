@@ -44,6 +44,6 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
     </div>
     </body>
     <footer class="footer-section">
-             <bottomNavbar></bottomNavbar>
-        </footer>
+        <bottomNavbar></bottomNavbar>
+    </footer>
 </template>
