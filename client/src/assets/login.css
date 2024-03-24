@@ -103,4 +103,14 @@ body{
     display: flex;
     justify-content: center;
     color: #F2E1FF;
+
+    @media (max-width: 700px){
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+        label{
+            margin-bottom: 10px;
+        }
+    }
 }
