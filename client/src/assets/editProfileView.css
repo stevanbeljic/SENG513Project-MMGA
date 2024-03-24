@@ -1,0 +1,57 @@
+.back-arrow{
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+#arrow-img{
+    width: 50px;
+    height: 50px;
+    padding-top: 20px;
+}
+
+.back-text {
+    left: 45px;
+    top: 15px;
+    position: absolute;
+    color: black;
+}
+
+#update-btn{
+    border: none;
+    color: black;
+    cursor: pointer;
+    background-color: #c985ff;
+    border-radius: 8px;
+    font-family: "kanit";
+    font-size: 20px;
+    padding: 14px;
+    margin-top: 20px;
+    box-shadow: 5px 5px 5px lightblue;
+
+}
+
+#update-btn:hover{
+    color:white;
+}
+
+.form-inputs > input{
+    padding: 20px 0px 20px 0px;
+    border: none;
+    background-color: #f2e1ff;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px lightblue;
+
+}
+
+@media only screen and (width < 700px) {
+    #update{
+     margin-bottom: 175px;
+    }
+ }
+ 
+ #editProfile-text{
+    border-bottom-style: solid;
+    border-bottom-color: #111;
+ }

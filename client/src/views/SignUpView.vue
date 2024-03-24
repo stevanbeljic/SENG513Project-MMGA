@@ -1,6 +1,6 @@
 <script>
     import "../assets/login.css";
-import "../router/index.js";
+    import "../router/index.js";
 //import router from "../router/index.js";
     export default {
         data: function(){

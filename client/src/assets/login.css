@@ -28,11 +28,19 @@ body{
     flex-direction: column;
     border-radius: 25px;
     background-color: rgba(201, 133, 255, 0.6);
+
+    @media (max-width: 700px){
+        width: 75%;
+    }
 }
 
 .form-input, #login-button{
     width: 70%;
     max-width: 25vw;
+
+    @media (max-width: 700px){
+        max-width: none;
+    }
 }
 
 .form-input input{
@@ -51,6 +59,11 @@ body{
 
 .login-link:active, .login-link, .login-link:active{
     color:#F2E1FF;
+
+    @media (max-width: 700px){
+        text-align: center;
+        width: 150px;
+    }
 }
 
 .login-link:hover{
@@ -69,6 +82,12 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    @media (max-width: 700px){
+        button {
+            width: 100px;
+        }
+    }
 }
 
 .form-input > select{
@@ -84,4 +103,14 @@ body{
     display: flex;
     justify-content: center;
     color: #F2E1FF;
+
+    @media (max-width: 700px){
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+        label{
+            margin-bottom: 10px;
+        }
+    }
 }

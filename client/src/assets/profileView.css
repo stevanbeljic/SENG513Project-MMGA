@@ -16,7 +16,7 @@
 .item3 {grid-area: edit-profile;
     background-color: #e5c4ff;
     border-radius: 8px;
-
+    box-shadow: 5px 5px 5px lightblue;
 
 }
 
@@ -45,7 +45,7 @@
     padding: 20px;
 }
 
-#user-icon {
+#users-icon {
     width:20vw;
     height:20vh;
 }

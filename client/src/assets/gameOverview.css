@@ -98,11 +98,15 @@
     margin: 0 0 0 2.5%
 }
 
-.discussion-container{
+.discussions-container{
     margin: 2%;
     padding: 2% 0;
     width: 96%;
     display: block;
+}
+
+.discussion-div{
+    width: 100%;
 }
 
 .odd{
@@ -117,4 +121,5 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 2rem;
 }

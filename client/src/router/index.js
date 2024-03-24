@@ -9,6 +9,7 @@ import friendsView from '../views/friendsView.vue'
 import profileView from '../views/profileView.vue'
 import editProfileView from '../views/editProfileView.vue'
 import AddGameView from '../views/AddGameView.vue'
+import postView from '../views/postView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -61,6 +62,11 @@ const router = createRouter({
       path: '/addGame',
       name: 'addGame',
       component: AddGameView
+    },
+    {
+      path: '/discussionpost',
+      name: 'discussionpost',
+      component: postView
     }
   ]
 })

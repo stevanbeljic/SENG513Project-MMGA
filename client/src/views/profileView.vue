@@ -18,7 +18,7 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
     <div class="page-container">
         <div class = "grid-container">
             <!-- Not sure if we want to customize user profile images... placeholder image for now-->
-            <div class = "item1"><img src = "../components/icons/user.svg" id ="user-icon"></div>
+            <div class = "item1"><img src = "../components/icons/user.svg" id ="users-icon"></div>
             <!-- This should instead say the corresponding username for whoever is logged in-->
             <div class = "item2">Timmy123</div>
             <div class = "item3"> <RouterLink to="/editProfile"><button class ="edit-btn">Edit Profile</button></RouterLink></div>
@@ -44,6 +44,6 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
     </div>
     </body>
     <footer class="footer-section">
-             <bottomNavbar></bottomNavbar>
-        </footer>
+        <bottomNavbar></bottomNavbar>
+    </footer>
 </template>
