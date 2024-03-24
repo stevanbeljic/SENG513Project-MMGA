@@ -8,6 +8,7 @@ import discussionView from '../views/discussionView.vue'
 import friendsView from '../views/friendsView.vue'
 import profileView from '../views/profileView.vue'
 import editProfileView from '../views/editProfileView.vue'
+import postView from '../views/postView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -55,6 +56,11 @@ const router = createRouter({
       path: '/editProfile',
       name: 'editProfile',
       component: editProfileView
+    },
+    {
+      path: '/discussionpost',
+      name: 'discussionpost',
+      component: postView
     }
   ]
 })
