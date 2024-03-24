@@ -1,0 +1,61 @@
+#addGameBody {
+    height: 100%;
+    margin: 0;
+}
+
+#addGameContent {
+    margin-top: 13vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+#addGameContent > h1 {
+    font-size: 40px;
+    font-weight: lighter;
+    align-self: center;
+    margin-top: 0;
+}
+
+#gameDetails {
+    margin-left: 100px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+#gameDetails input {
+    background-color: #D9D9D9;
+    border: none;
+    color: grey;
+    width: 85%;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+
+#gameDetails input:focus {
+    color: black;
+}
+
+#gameDetails #gameDescription {
+    background-color: #D9D9D9;
+    border: none;
+    color: grey;
+    width: 85%;
+    resize: none;
+    padding: 5px;
+}
+
+#gameDetails #gameDescription:focus {
+    color: black;
+}
+
+#gameDetails #previewImage {
+    margin: none;
+    width: 150px;
+    height: 150px;
+    border: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
