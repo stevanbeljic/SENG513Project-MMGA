@@ -22,12 +22,13 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
 
             <form id="editProfile-form" @submit.prevent="getFormValues">
             <div id="editProfile-header">
-                <h2>Edit Profile</h2>
+                <h2 id = "editProfile-text">Edit Profile</h2>
             </div>
             <div class = "profile-break"></div>
 
             <div class="form-inputs">
                 <p>Username </p>
+                <!-- Placeholder could instead say the user's actual username -->
                 <input type="text" v-model="username" placeholder="Username">
             </div>
             <div class = "profile-break"></div>
@@ -37,6 +38,7 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
                 <input type="password" v-model="password" placeholder="Password">
             </div>
             <div id="update">
+                <!-- Call to update sql tables -->
                 <button type="submit" id = "update-btn">Update</button>
             </div>
         </form>

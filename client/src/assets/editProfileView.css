@@ -24,9 +24,11 @@
     background-color: #c985ff;
     border-radius: 8px;
     font-family: "kanit";
-    font-size: 24px;
-    padding: 10px;
+    font-size: 20px;
+    padding: 14px;
     margin-top: 20px;
+    box-shadow: 5px 5px 5px lightblue;
+
 }
 
 #update-btn:hover{
@@ -39,6 +41,8 @@
     background-color: #f2e1ff;
     text-align: center;
     border-radius: 8px;
+    box-shadow: 5px 5px 5px lightblue;
+
 }
 
 @media only screen and (width < 700px) {
@@ -47,3 +51,7 @@
     }
  }
  
+ #editProfile-text{
+    border-bottom-style: solid;
+    border-bottom-color: #111;
+ }
