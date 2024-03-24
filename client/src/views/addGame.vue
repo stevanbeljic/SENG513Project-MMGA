@@ -58,6 +58,19 @@
                 <textarea id="gameDescription" name="gameDescription" rows="8" cols="50" placeholder="Enter a description of your game"></textarea>
             </div>
             <div id="gameTagDetails">
+                
+                <label for="gameLink">Add a link</label>
+                <div class="gameTagItem">
+                    <p>🔗</p><input type="url" id="gameLink" name="gameLink" placeholder="Enter a URL">
+                </div>
+                <label for="appStorePrice">Enter AppStore price</label>
+                <div class="gameTagItem">
+                    <p>💰</p><input type="url" id="appStorePrice" name="appStorePrice" placeholder="x.xx">
+                </div>
+                <label for="playStorePrice">Enter PlayStore price</label>
+                <div class="gameTagItem">
+                    <p>💰</p><input type="url" id="playStorePrice" name="playStorePrice" placeholder="x.xx">
+                </div>
             </div>
         </form>
     </div>
