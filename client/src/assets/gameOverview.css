@@ -65,6 +65,9 @@
 
 #appStore-info{
     grid-area: app;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #appStore-info > img {

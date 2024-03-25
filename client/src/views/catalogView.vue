@@ -3,6 +3,7 @@ import "../assets/footer.css";
 import "../assets/header.css";
 import "../assets/catalog.css";
 import navbar from "../components/navbarView.vue";
+import bottomNavbar from '@/components/bottomNavbarView.vue';
 import App from "@/App.vue";
 </script>
 <template>
@@ -109,6 +110,9 @@ import App from "@/App.vue";
         </div>
         </div>
     </div>
+    <footer class="footer-section">
+    <bottomNavbar></bottomNavbar>
+  </footer>
 </template>
 
 <script>
