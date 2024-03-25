@@ -1,0 +1,78 @@
+.discussion-body-container {
+    display: flex;
+    margin-top: 10vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+.discussion-body-container > div {
+    min-width: 450px;
+    width: 80%;
+}
+
+.discussion-card {
+    background-color: blue;
+    margin-bottom: 5vh;
+}
+
+.discussion-game-section {
+    background-color: #EBD1FF;
+    text-align: left;
+    align-items: center;
+}
+
+.discussion-game-section > img, .discussion-game-section > h1 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px;
+}
+
+.discussion-game-section > img {
+    width: 20%;
+}
+
+.discussion-game-section > h1 {
+    font-size: 3.5vw;
+    overflow-wrap: break-word;
+}
+
+.discussion-list-section {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.discussion-list-box {
+    background-color: #F5E8FF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+    margin: 2px 0px;
+}
+
+.discussion-view-all-section {
+    text-align: right;
+    background-color: #EBD1FF;
+}
+
+/* Need to make it so that button toggles between white and red (javascript) */
+.discussion-like-button {
+    border: none;
+    background-color: #F5E8FF;
+    font-size: 20px;
+    margin-left: 50px;
+}
+
+.discussion-like-button:hover {
+    color: white;
+}
+
+#discussion-view-all-button {
+    border: none;
+    background-color: #EBD1FF;
+    padding: 10px;
+    font-family: 'Kanit', sans-serif;
+}
+
