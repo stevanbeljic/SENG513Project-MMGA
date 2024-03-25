@@ -20,13 +20,13 @@ h2 {
 }
 
 #dashboardDiv {
-    margin-top: 10vh;
+    margin-top: 11vh;
     display: flex;
     flex-direction: column;
 
     @media (max-width: 700px){
         margin-top: 0;
-        padding-bottom: 100px;
+        padding-bottom: 50px;
     }
 }
 
@@ -34,7 +34,7 @@ h2 {
     width: 100%;
     display: flex;
     flex-direction: row;
-
+    
     @media (max-width: 700px){
         flex-wrap: wrap;
     }
@@ -207,12 +207,22 @@ h2 {
             overflow: hidden;
             margin: 20px;
             text-align: center;
+            box-shadow: 0px 0px 23px -5px #C985FF;
             
+            a{
+                text-decoration: none;
+                color: black;
+                font-size: 20px;
+            }
 
             img {
                 max-height: 75%;
                 width: 100%;
             }
+        }
+
+        .newsItem:hover {
+            transform: translateY(-10px);
         }
     }
 }

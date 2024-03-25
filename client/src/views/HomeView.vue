@@ -1,33 +1,49 @@
 <script setup>
-import bottomNavbar from '@/components/bottomNavbarView.vue';
-import { onMounted, ref } from 'vue';
-import VueMq from 'vue-mq';
-import { RouterLink } from 'vue-router';
-import "../assets/footer.css";
-import "../assets/header.css";
-import "../assets/home.css";
-import navbar from "../components/navbarView.vue";
+  import bottomNavbar from '@/components/bottomNavbarView.vue';
+  import { onMounted, ref } from 'vue';
+  import VueMq from 'vue-mq';
+  import { RouterLink } from 'vue-router';
+  import "../assets/footer.css";
+  import "../assets/header.css";
+  import "../assets/home.css";
+  import navbar from "../components/navbarView.vue";
 
-let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
-let username = ref(sessionStorage.getItem('loggedInAs'));
+  let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
+  let username = ref(sessionStorage.getItem('loggedInAs'));
 
-const updateSessionData = () => {
-  loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
-  username.value = sessionStorage.getItem('loggedInAs');
-  console.log(loggedIn.value);
-  console.log(username.value);
-};
+  const updateSessionData = () => {
+    loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
+    username.value = sessionStorage.getItem('loggedInAs');
+    console.log(loggedIn.value);
+    console.log(username.value);
+  };
 
-onMounted(updateSessionData);
+  const newsData = ref([]);
 
-window.addEventListener('storage', updateSessionData);
+  const fetchNewsData = async () => {
+    const response = await fetch('http://localhost:7003/homeDashboard');
+    const data = await response.json();
+    newsData.value = data;
+    console.log(data);
+  };
 
-defineExpose({loggedIn, username});
+  onMounted(async () => {
+    updateSessionData();
+    try {
+      await fetchNewsData();
+    } catch (error){
+      console.log("-------------------");
+      console.log(error);
+      console.log("-------------------");
+    }
+  });
+
+  window.addEventListener('storage', updateSessionData);
+
+  defineExpose({loggedIn, username});
 
 </script>
-<script>
 
-</script>
 <template>
   <head>
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
@@ -91,16 +107,14 @@ defineExpose({loggedIn, username});
         </div>
       </div>
       <div id="bottomHalfDiv">
-        <div id="newsDiv"><!--Will use an API call to some gaming news site to auto-genrrate live news-->
+        <div id="newsDiv">
           <h2>Recent News in Gaming 📰</h2>
           <div id="newsContent">
-            <div class="newsItem">
-              <img src = "../components/icons/mario.jpg"/>
-              <p>Evil Mario wins GOTY</p>
-            </div>
-            <div class="newsItem">
-              <img src = "../components/icons/mario.jpg"/>
-              <p>Gamers in rage over recent adaptation of beloved Mario franchise</p>
+            <div class="newsItem" v-for="item in newsData" :key="item.title">
+              <a :href="item.articleLink" target="_blank">
+                <img :src="item.imageLink">
+                <p>{{ item.title }}</p>
+              </a>
             </div>
           </div>
         </div> 
