@@ -4,6 +4,7 @@ import "../assets/gameOverview.css";
 import "../assets/header.css";
 import "../assets/home.css";
 import navbar from "../components/navbarView.vue";
+import bottomNavbar from '@/components/bottomNavbarView.vue';
 </script>
 <template>
     <head>
@@ -37,4 +38,7 @@ import navbar from "../components/navbarView.vue";
             <div class="discussion-div even"><h2>Message from Devs!</h2></div>
         </div>
     </div>
+    <footer class="footer-section">
+    <bottomNavbar></bottomNavbar>
+  </footer>
 </template>

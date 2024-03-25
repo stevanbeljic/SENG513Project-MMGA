@@ -23,8 +23,8 @@
         "img img"
         "title app"
         "dev app"
-        ". play"
         "genre play"
+        ". play"
         "desc desc"
         "desc desc";
     }
@@ -49,18 +49,22 @@
 
 #game-name{
     grid-area: title;
+    margin: 0 0 0 5%;
 }
 
 #publisher-name{
     grid-area: dev;
+    margin: 0 0 0 5%;
 }
 
 #game-categories{
     grid-area: genre;
+    margin: 0 0 0 5%;
 }
 
 #game-description{
     grid-area: desc;
+    margin: 0 0 0 5%;
 }
 
 #appStore-info{
@@ -103,7 +107,7 @@
 
 .discussions-container{
     margin: 2%;
-    padding: 2% 0;
+    padding: 2% 0 120px 0;
     width: 96%;
     display: block;
 }
