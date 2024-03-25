@@ -3,6 +3,7 @@
     import "../assets/header.css";
     import "../assets/comment.css";
     import navbar from "../components/navbarView.vue";
+    import bottomNavbar from "../components/bottomNavbarView.vue";
 </script>
 <template>
     <head>
