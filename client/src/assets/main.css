@@ -8,7 +8,7 @@
         overflow-y: scroll;
     }
     @media (width < 700px){
-        height: 100vh;
+        height: calc(100vh - 100px);
     }
 
 }

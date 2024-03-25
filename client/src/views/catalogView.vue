@@ -15,11 +15,11 @@ import App from "@/App.vue";
     </header>
     <div class="page-container">
         <div id="search-bar">
-            <ul>
+            <!-- <ul>
                 <li>Recommended</li>
                 <li>Top Sellers</li>
                 <li>Latest</li>
-            </ul>
+            </ul> -->
             <form>
                 <div id="search-img">
                     <img src="../components/icons/magnifying-glass.svg"/>

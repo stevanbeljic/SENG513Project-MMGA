@@ -1,10 +1,10 @@
 #search-bar{
-    margin: 2.5% 5% 0 5%;
+    margin: 2.5% 5%;
     width: 90%;
     height: 7%;
     display: flex;
     background-color: #F2E1FF;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
 }
 
@@ -19,26 +19,31 @@
 
 #search-bar > form{
     display: flex;
-    width: 50%;
+    width: 97%;
     height: 85%;
 }
 
 #search-bar > form > input{
-    width: 90%;
+    width: 95%;
     border: none;
-    padding: 0 2%;
+    padding: 0 0 0 2%;
 }
 
 #search-img{
     background-color: #C985FF;
     width: auto;
-    height: 100%;
+    height: 95%;
     border-radius:10px;
+    margin: 0 5px;
+    padding:3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #search-img > img{
     width: auto;
-    height: 90%;
+    height: 80%;
 }
 
 #search-input{
@@ -54,17 +59,21 @@
 }
 
 #games-container{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+    @media (width <= 700px) {
+        padding-bottom: 120px;
+    }
 }
 
 #games-container::after{
     content: "";
-    width: 560px;
-    margin: 2.5% 5%
+    width: 280px;
+    margin: 2.5%;
 }
 
 .game-card{
