@@ -78,13 +78,38 @@
 
 .game-card{
     width: 250px;
+    height: auto;
     padding: 15px;
     background-color: #F2E1FF;
     margin: 2.5%;
     border-radius: 5%;
 }
 
+
+
 #game-img-container > img{
     width: 100%;
     height: auto;
+}
+
+.game-card > a:hover{
+    cursor: pointer;
+}
+
+.game-card > a{
+    color: black;
+    text-decoration: none;
+    margin: 2.5%;
+}
+
+.game-title{
+    font-size: 35px;
+    font-weight: 250;
+    width: 100%;
+    height: 35px;
+}
+
+.developer-name, .game-genre{
+    font-size: 15px;
+    font-weight: 100;
 }
