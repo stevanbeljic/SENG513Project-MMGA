@@ -3,6 +3,7 @@
     import "../assets/header.css";
     import "../assets/addGame.css";
     import navbar from "../components/navbarView.vue";
+    import bottomNavbar from "../components/bottomNavbarView.vue";
 </script>
 <template>
     <head>
@@ -47,4 +48,7 @@
             </div>
         </div>
     </body>
+    <footer class="footer-section">
+        <bottomNavbar></bottomNavbar>
+    </footer>
 </template>

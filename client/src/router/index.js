@@ -10,6 +10,7 @@ import profileView from '../views/profileView.vue'
 import editProfileView from '../views/editProfileView.vue'
 import AddGameView from '../views/AddGameView.vue'
 import postView from '../views/postView.vue'
+import CommentView from "../views/CommentView.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -67,6 +68,11 @@ const router = createRouter({
       path: '/discussionpost',
       name: 'discussionpost',
       component: postView
+    },
+    {
+      path: '/comment',
+      name: 'comment',
+      component: CommentView
     }
   ]
 })
