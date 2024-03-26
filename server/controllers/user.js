@@ -61,6 +61,29 @@ router.get('/getIncomingFriendRequests', (req, res) => {
 
 router.get('/getOutgoingFriendRequests', (req, res) => {
   const {username} = req.query;
+  databaseConnection.query('SELECT id FROM users WHERE username = ?', [username], (err, results) => {
+    if(err){
+      console.error("Error executing user query: ", err);
+      return res.status(500).send('Internal server error');
+    }
+
+    if(results.length != 1){
+      return res.status(400).send('Could not uniquely identify user');
+    }
+
+    let userId = results[0].id;
+
+    databaseConnection.query('SELECT username FROM users WHERE id IN (SELECT requestTo FROM friendrequests WHERE requestFrom = ?)', 
+        [userId], (error, outgoingResult) => {
+          if(error){
+            console.error("Error executing incoming friend request query: ", error);
+            return res.status(500).send('Internal server error');
+          }
+
+          console.log(outgoingResult);
+          return res.status(200).json(outgoingResult);
+        });
+  });
 });
 
 // GET /user/getAccount?username=myusername&password=mypassword

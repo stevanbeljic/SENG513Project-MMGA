@@ -65,7 +65,7 @@
         } else {
             try {
                 await fetchIncomingFriendRequests();
-                //await fetchOutgoingFriendRequests();
+                await fetchOutgoingFriendRequests();
             } catch (error){
                 console.log(error);
             }
@@ -88,8 +88,7 @@
     <div class="page-container">
         <div class = "top-section">
             <img src = "../components/icons/user.svg" id = "friends-loggedin-user-icon">
-            <!--This should instead say the logged in user's username-->
-            <h1>Timmy1234</h1>
+            <h1 v-text="username+'\'s Requests'"></h1>
         </div>
         <div class = "section-break">
             <button class ="friends-btn"><RouterLink to = "/friends">Friends</RouterLink> </button>
@@ -106,17 +105,26 @@
                 <li v-for="friend in incomingFriendsRequestList" :key="friend.username">
                     <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
                     <p class = "friendReq1">{{ friend.username }}</p>
-                    <button class = "confirm">Confirm</button>
-                    <button class = "deny">Deny</button>
+                    <div>
+                        <button class = "confirm">Confirm</button>
+                        <button class = "deny">Reject</button>
+                    </div>
                 </li>
             </ul>
         </div>
 
         <h2 class = "friend-req-title">Outgoing Friend Requests</h2>
         <div class = "request-section">
-            <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
-            <p class = "friendReq1">TheLegend27</p>
-            <button class = "deny">Cancel</button>
+            <ul id="outgoingList">
+                <li v-if="outgoingFriendsRequestList.length == 0">
+                    <p class="friendReq1">No Outgoing Request</p>
+                </li>
+                <li class="outgoingFriendReq" v-for="friend in outgoingFriendsRequestList" :key="friend.username">
+                    <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
+                    <p class = "friendReq1">{{ friend.username }}</p>
+                    <button class = "deny">Cancel</button>
+                </li>
+            </ul>
         </div>
     </div>
     <footer class="footer-section">

@@ -3,7 +3,7 @@
 }
 
 .friendReq1{
-    grid-area: friendReq1
+    font-size: 24px;
 }
 
 .confirm{
@@ -58,6 +58,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
         
         button {
             width: 80px;
@@ -90,3 +91,28 @@
     margin-top: 30px;
     border-bottom: solid 3px black;
 }
+
+#outgoingList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .outgoingFriendReq {
+        background-color: #f2e1ff;
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        margin: 10px;
+
+        p {
+            margin: 0;
+            margin-bottom: 20px;
+            padding: 5px;
+            text-align: center;
+        }
+    }
+}
+
