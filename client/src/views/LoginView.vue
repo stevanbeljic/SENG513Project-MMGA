@@ -37,7 +37,7 @@ import router from "../router/index.js";
     <div id="login-container">
         <form id="login-form" @submit.prevent="getFormValues">
             <div id="login-Header">
-                <h2>Login</h2>
+                <h2 class="text-headers">Login</h2>
             </div>
             <div class="form-input">
                 <input type="text" v-model="username" placeholder="Username" required>
@@ -48,7 +48,12 @@ import router from "../router/index.js";
             </div>
             <div id="login-button">
                 <button @click="handleLogin" type="submit">Login</button>
-                <a class="login-link" href="./signup"><p>Not a member? Sign up here</p></a>
+            </div>
+
+            <div id ="no-account">
+                <h3 class = "text-headers">Don't have an account?</h3>
+                <div id = "guestBtn"><button><RouterLink to = "/" id ="routerGuestBtn">Continue as Guest</RouterLink></button></div>
+                <a class="login-link" href="./signup"><p>Sign up here</p></a>
             </div>
         </form>
     </div>
