@@ -36,3 +36,9 @@
  #addFriend-form{
     padding: 50px;
  }
+
+ @media only screen and (width < 700px){
+    .addFriend-section{
+        padding-bottom: 100px;
+    }
+}

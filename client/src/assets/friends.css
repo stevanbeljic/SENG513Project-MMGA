@@ -45,7 +45,7 @@
     width: 100%;
     justify-content: space-evenly;
     border-bottom: 1px solid black;
-
+    align-items: center;
 
 }
 
@@ -81,3 +81,8 @@
     padding-top: 4vh;
 }
 
+@media only screen and (width < 700px){
+    .friends-section{
+        padding-bottom: 100px;
+    }
+}
