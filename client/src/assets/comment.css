@@ -47,7 +47,7 @@
     border: 1px solid #D9D9D9;
 }
 
-input[type=submit] {
+#reply-button {
     height: 50%;
     width: 20%;
     font-size: 22px;

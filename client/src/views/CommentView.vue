@@ -35,7 +35,7 @@
                 <h3>Your Comment</h3>
                 <form>
                     <textarea id="reply-message" placeholder="Enter comment"></textarea> <br>
-                    <input type="submit" value="Reply">
+                    <input type="submit" id="reply-button" value="Reply">
                 </form>
             </div>
         </div>
