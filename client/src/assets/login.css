@@ -53,15 +53,15 @@ body{
     border-radius: 5px;
 }
 
-.form-input input:focus, .form-input input:hover, #login-button button:hover{
+.form-input input:focus, .form-input input:hover, #login-button button:hover, #guestBtn button:hover{
     box-shadow: 0 2px 12px 0 rgba(0,0,0,0.16),0 0 0 2px rgba(0,0,0,0.08);
 }
 
 .login-link:active, .login-link, .login-link:active{
     color:#F2E1FF;
+    text-align: center;
 
     @media (max-width: 700px){
-        text-align: center;
         width: 150px;
     }
 }
@@ -113,4 +113,31 @@ body{
             margin-bottom: 10px;
         }
     }
+}
+
+.text-headers {
+    border-bottom: 3px solid black;
+}
+
+#guestBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+
+}
+
+#guestBtn button {
+    width: 70%;
+    max-width: 25vw;
+    height: 7vh;
+    background-color: #F2E1FF;;
+    border-radius: 16px;
+}
+
+#routerGuestBtn{
+    text-decoration: none;
+    color: black;
+
 }

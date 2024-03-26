@@ -1,7 +1,6 @@
 Vue.component('bottomNavbar', {
     <template>
         <div class = "flex-navbar-foot">
-            <!-- Link to appropriate pages once created-->
             <RouterLink to="/"><img src = "../components/icons/home.svg" id ="home-icon"></RouterLink>
             <RouterLink to = "/catalog"><img src = "../components/icons/catalogue.svg" id = "catalogue-icon"></RouterLink>
             <RouterLink to ="/profile"><img src = "../components/icons/user.svg" id = "user-icon"></RouterLink>

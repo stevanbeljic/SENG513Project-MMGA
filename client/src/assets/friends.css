@@ -22,30 +22,54 @@
 
 .friends-btn {
     border: none;
-    color: black;
     cursor: pointer;
     background-color: #f2e1ff;
     border-radius: 8px;
     font-family: "kanit";
-    font-size: 24px;
-    text-decoration: none;
-}
 
-.friends-btn:hover{
-    color: white;
+    a {
+        color: black;
+        text-decoration: none;
+        font-size: 24px;
+    }
+    
+    a:hover {
+        color: white;
+    }
 }
-
 .friends-section{
-    display: grid;/* if style.display === flex... */
-    grid-template-areas: 
-    'friends-user-icon friend1'
-    'friends-user-icon friend2'
-    'friends-user-icon friend3';
+    display: flex;
+    flex-direction: column;
     padding: 25px;
     width: 100%;
     justify-content: space-evenly;
     border-bottom: 1px solid black;
+    align-items: center;
 
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    li {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        background-color: #f2e1ff;
+        border-radius: 50px;
+        border: 1px solid #C985FF;
+        text-align: left;
+        font-size: 24px;
+        align-items: center;        
+
+        p {
+            width: 200px;
+            padding: none;
+            margin: none;
+            text-align: center;
+        }
+    }
 
 }
 
@@ -56,28 +80,14 @@
     grid-area: friends-user-icon;
 }
 
-.friend1{
-    grid-area: friend1;
-    font-weight: bold;
-
-}
-
-.friend2{
-    grid-area: friend2;
-    font-weight: bold;
-
-}
-
-.friend3{
-    grid-area: friend3;
-    font-weight: bold;
-
-    
-}
-
 #friends-title{
     border-bottom-style: solid;
     border-bottom-color: black;
     padding-top: 4vh;
 }
 
+@media only screen and (width < 700px){
+    .friends-section{
+        padding-bottom: 100px;
+    }
+}

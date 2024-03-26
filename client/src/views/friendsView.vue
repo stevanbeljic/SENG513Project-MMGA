@@ -1,10 +1,59 @@
 <script setup>
     import "../assets/footer.css";
-import "../assets/header.css";
-import "../assets/home.css";
-import "../assets/friends.css";
-import navbar from "../components/navbarView.vue";
-import bottomNavbar from '@/components/bottomNavbarView.vue';
+    import "../assets/header.css";
+    import "../assets/home.css";
+    import "../assets/friends.css";
+    import { onMounted, ref } from 'vue';
+    import navbar from "../components/navbarView.vue";
+    import bottomNavbar from '@/components/bottomNavbarView.vue';
+    import router from "@/router";
+
+    let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
+    let username = ref(sessionStorage.getItem('loggedInAs'));
+
+    const updateSessionData = () => {
+        loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
+        username.value = sessionStorage.getItem('loggedInAs');
+        console.log(loggedIn.value);
+        console.log(username.value);
+    };
+
+    const friendsList = ref([]);
+    const fetchFriendInfo = async () => {
+            const route = "http://localhost:7003/user/getFriends?username=" + username.value;
+            console.log(route);
+            console.log(username.value);
+            const response = await fetch(route, {
+                method: "GET",
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(),
+            });
+
+            friendsList.value = await response.json();
+            console.log(friendsList.value);
+  };
+
+  onMounted(async () => {
+        updateSessionData();
+        if(loggedIn.value != true){
+            router.push("/");
+            alert("Please login to view your Friends List");
+        } else {
+            try {
+                await fetchFriendInfo();
+            } catch (error){
+                console.log(error);
+            }
+        }
+    });
+
+  window.addEventListener('storage', updateSessionData);
+
+  defineExpose({loggedIn, username});
 
 </script>
 <template>
@@ -17,8 +66,7 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
     <div class="page-container">
         <div class = "top-section">
             <img src = "../components/icons/user.svg" id = "friends-loggedin-user-icon">
-            <!--This should instead say the logged in user's username-->
-            <h1>Timmy1234</h1>
+            <h1 v-text="username+'\'s Friends'"></h1>
         </div>
         <div class = "section-break">
             <button class ="friends-btn"><RouterLink to = "/friends">Friends</RouterLink> </button>
@@ -27,15 +75,15 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
         </div>
         <h2 id = "friends-title">Friends</h2>
         <div class = "friends-section">
-            <div ><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
-            <!--Instead display the user's actual friends-->
-            <p class = "friend1">Matt_dov99</p>
-
-            <div><img src = "../components/icons/user.svg"class = "friends-user-icon"></div>
-            <p class = "friend2">IcEdrAgoN</p>
-
-            <div><img src = "../components/icons/user.svg"class = "friends-user-icon"></div>
-            <p class = "friend3">fly4lyfe</p>
+            <ul>
+                <li v-if="friendsList.length == 0">
+                    <p class="friend">0 friends :(</p>
+                </li>
+                <li v-for="friend in friendsList" :key="friend.username">
+                    <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
+                    <p class = "friend">{{ friend.username }}</p>
+                </li>
+            </ul>            
         </div>
     </div>
     <footer class="footer-section">

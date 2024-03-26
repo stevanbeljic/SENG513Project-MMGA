@@ -56,3 +56,11 @@ CREATE TABLE IF NOT EXISTS comments (
     FOREIGN KEY (poster_id) REFERENCES users(id),
     PRIMARY KEY (discussion_id, poster_id, comment_ordinal)
 );
+
+CREATE TABLE IF NOT EXISTS friendrequests (
+    requestTo INT,
+    requestFrom INT, 
+    FOREIGN KEY (requestTo) REFERENCES users(id),
+    FOREIGN KEY (requestFrom) REFERENCES users(id),
+    PRIMARY KEY (requestTo, requestFrom)
+);

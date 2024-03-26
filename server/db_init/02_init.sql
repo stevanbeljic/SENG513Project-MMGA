@@ -96,3 +96,8 @@ VALUES ('Thank you for your feedback. I will look into adding something like wha
 
 INSERT IGNORE INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
 VALUES ('This is a hilarious review for this game. Yes there are some jump scares but it is really not that bad.', '1', '3', '10');
+
+-- Friend request seesing
+INSERT IGNORE INTO `friendrequests` (`requestTo`, `requestFrom`) VALUES ('1', '3');
+INSERT IGNORE INTO `friendrequests` (`requestTo`, `requestFrom`) VALUES ('1', '4');
+INSERT IGNORE INTO `friendrequests` (`requestTo`, `requestFrom`) VALUES ('7', '1');
