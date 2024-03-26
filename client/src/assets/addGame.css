@@ -5,6 +5,7 @@
 .ag-form {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .ag-basic-grid {
@@ -22,7 +23,7 @@
 .ag-advanced-flex {
     flex: 2;
     display: grid;
-    grid-template-rows: 5fr 1fr;
+    grid-template-rows: 3fr 1fr;
     text-align: center;
     margin: 1.5vw;
     border: 1px solid black;

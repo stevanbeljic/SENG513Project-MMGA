@@ -51,7 +51,7 @@
                         <input id="ag-title" type="text" placeholder="enter title here...">
                     </div>
                     <div class="ag-preview-section">
-                        <img id="ag-preview-image" src="../components/icons/mario.jpg"><br>
+                        <img id="ag-preview-image" src="../components/icons/placeholder-img.png"><br>
                         <input type="file" id="ag-image-upload" name="ag-image-upload" accept="image/png, image/jpeg, image/svg">
                     </div>
                     <div class="ag-description-section">
