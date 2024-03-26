@@ -15,21 +15,21 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
             return{
                 search: '',
                 games : [
-        {id: 1 , title: 'Game1', developer: 'Developer1', Genre: 'Genre1', 
-            AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
-        {id: 2 ,title: 'Game2', developer: 'Developer2', Genre: 'Genre1', 
-            AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
-        {id: 3 ,title: 'Game3', developer: 'Developer3', Genre: 'Genre1', 
-            AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
-        {id: 4 ,title: 'Game4', developer: 'Developer4', Genre: 'Genre1', 
-            AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
-        {id: 5 ,title: 'Game5', developer: 'Developer2', Genre: 'Genre3', 
-            AppPrice: '$1.99', Playprice: '$2.99', img: '../components/icons/mario.jpg'},
-        {id: 6 ,title: 'Game6', developer: 'Developer3', Genre: 'Genre3', 
-            AppPrice: '$1.99', Playprice: '$2.99', img: '../components/icons/mario.jpg'},
-        {id: 7 ,title: 'Mario', developer: 'Nintendo', Genre: 'Adventure', 
-            AppPrice: '$1.99', Playprice: '$2.99', img: '../components/icons/mario.jpg'}
-    ]
+                    {id: 1 , title: 'Game1', developer: 'Developer1', Genre: 'Genre1', 
+                        AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
+                    {id: 2 ,title: 'Game2', developer: 'Developer2', Genre: 'Genre1', 
+                        AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
+                    {id: 3 ,title: 'Game3', developer: 'Developer3', Genre: 'Genre1', 
+                        AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
+                    {id: 4 ,title: 'Game4', developer: 'Developer4', Genre: 'Genre1', 
+                        AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
+                    {id: 5 ,title: 'Game5', developer: 'Developer2', Genre: 'Genre3', 
+                        AppPrice: '$1.99', Playprice: '$2.99', img: '../components/icons/mario.jpg'},
+                    {id: 6 ,title: 'Game6', developer: 'Developer3', Genre: 'Genre3', 
+                        AppPrice: '$1.99', Playprice: '$2.99', img: '../components/icons/mario.jpg'},
+                    {id: 7 ,title: 'Mario', developer: 'Nintendo', Genre: 'Adventure', 
+                        AppPrice: '$1.99', Playprice: '$2.99', img: '../components/icons/mario.jpg'}
+                ],
             }
         },
         computed: {
@@ -37,6 +37,20 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
                 return this.games.filter(item => 
                     item.title.toLowerCase().includes(this.search.toLowerCase()))
             }
+        },
+        methods: {
+            async getGames(){
+                let route = "http://localhost:7003/game/getAllGames";
+                const response = await fetch(route, {method: "GET"});
+                console.log(response);
+                const jsonResp = await response.json();
+                console.log(jsonResp);
+                this.games = jsonResp;
+                console.log(this.games);
+            }
+        },
+        beforeMount(){
+            this.getGames();
         }
     };
 </script>
