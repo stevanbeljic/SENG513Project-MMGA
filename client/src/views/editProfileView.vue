@@ -14,8 +14,9 @@
     let userbio = ref('');
     const submitForm = async () => {
         const dataToSend = {
+            username: username.value,
             password: password.value,
-            userbio: userbio.value
+            bio: userbio.value
         };
 
         console.log("Data to send:", dataToSend);

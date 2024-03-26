@@ -1,15 +1,15 @@
 -- seeding script
 -- Users Seeding
-INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'registered', 'bobby1234', 'BobbysTheBest');
-INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'registered', 'jill_the_thrill', 'skippybippy');
-INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'developer', 'JimboGames', '12341234');
-INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'developer', 'PammySpammy', 'games4Life');
-INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'registered', 'Timmy', 'TimmyPassword');
-INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'registered', 'Gerard Terinval', 'gladiator1');
-INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'developer', 'Dabella', 'rabbitsRfluffy');
-INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'registered', 'BobMarleyEnthusiast', 'randompassowrd2');
-INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'registered', 'FonkHonkBonk', 'thisIsASuperSecretPassword');
-INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`) VALUES (NULL, 'developer', 'Wukonga', 'ahhPassword');
+INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`, `bio`) VALUES (NULL, 'registered', 'bobby1234', 'BobbysTheBest', 'I like games!');
+INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`, `bio`) VALUES (NULL, 'registered', 'jill_the_thrill', 'skippybippy', 'I really like games!');
+INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`, `bio`) VALUES (NULL, 'developer', 'JimboGames', '12341234', 'If youre reading this get a life');
+INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`, `bio`) VALUES (NULL, 'developer', 'PammySpammy', 'games4Life', 'this is my bio');
+INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`, `bio`) VALUES (NULL, 'registered', 'Timmy', 'TimmyPassword', 'this is also my bio');
+INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`, `bio`) VALUES (NULL, 'registered', 'Gerard Terinval', 'gladiator1', 'hows this look');
+INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`, `bio`) VALUES (NULL, 'developer', 'Dabella', 'rabbitsRfluffy', 'MAKE MOBILE GREAT AGAIN');
+INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`, `bio`) VALUES (NULL, 'registered', 'BobMarleyEnthusiast', 'randompassowrd2', 'nice');
+INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`, `bio`) VALUES (NULL, 'registered', 'FonkHonkBonk', 'thisIsASuperSecretPassword', 'so nice');
+INSERT IGNORE INTO `users` (`id`, `role`, `username`, `password`, `bio`) VALUES (NULL, 'developer', 'Wukonga', 'ahhPassword', 'my password is password');
 
 -- Developer Seeding
 INSERT IGNORE INTO `developer` (`developer_id`) VALUES ('3');
