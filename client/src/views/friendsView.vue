@@ -27,15 +27,21 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
         </div>
         <h2 id = "friends-title">Friends</h2>
         <div class = "friends-section">
-            <div ><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
-            <!--Instead display the user's actual friends-->
-            <p class = "friend1">Matt_dov99</p>
-
-            <div><img src = "../components/icons/user.svg"class = "friends-user-icon"></div>
-            <p class = "friend2">IcEdrAgoN</p>
-
-            <div><img src = "../components/icons/user.svg"class = "friends-user-icon"></div>
-            <p class = "friend3">fly4lyfe</p>
+            <ul>
+                <li>
+                    <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
+                    <!--Instead display the user's actual friends-->
+                    <p class = "friend">Matt_dov99</p>
+                </li>
+                <li>
+                    <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
+                    <p class = "friend">IcEdrAgoN</p>
+                </li>
+                <li>
+                    <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
+                    <p class = "friend">fly4lyfe</p>
+                </li>
+            </ul>            
         </div>
     </div>
     <footer class="footer-section">
