@@ -3,6 +3,34 @@ const router = express.Router();
 const databaseConnection = require('../model/model');
 const mariadb = require('mariadb');
 
+router.get('/getFriends', (req, res) => {
+  const {username} = req.query;
+
+  databaseConnection.query('SELECT id FROM users WHERE username = ?', [username], (err, results) => {
+    if(err){
+      console.error("Error executing user query: ", err);
+      return res.status(500).send('Internal server error');
+    }
+
+    if(results.length != 1){
+      return res.status(400).send('Could not uniquely identify user');
+    }
+
+    let userId = results[0].id;
+
+    databaseConnection.query('SELECT username FROM users WHERE id IN (SELECT user2_id from friends WHERE user1_id = ? ' +
+                             'UNION '+
+                             'SELECT user1_id from friends WHERE user2_id = ?)', [userId, userId], (error, friendResult) => {
+                              if(error){
+                                console.error("Unable to perform friends query: ", error);
+                                return res.status(500).json({message: 'Internal server error'});
+                              }
+
+                              return res.status(200).json(friendResult);
+                             });
+  });
+
+});
 
 // GET /user/getAccount?username=myusername&password=mypassword
 router.get('/getAccount', (req, res) => {

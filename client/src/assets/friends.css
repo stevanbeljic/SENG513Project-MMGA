@@ -61,13 +61,13 @@
         border: 1px solid #C985FF;
         text-align: left;
         font-size: 24px;
-        align-items: center;
-        
+        align-items: center;        
 
         p {
             width: 200px;
             padding: none;
             margin: none;
+            text-align: center;
         }
     }
 

@@ -7,7 +7,6 @@ Vue.component('navBar', {
             </div>
             <div class = "right-container">
               <li id = "home"><RouterLink to="/">Home</RouterLink></li>
-              <!--change these to the appropriate pages after they've been made-->
               <li><RouterLink to="/catalog">Catalog</RouterLink></li>
               <li><RouterLink to="/friends">Friends</RouterLink></li>
               <li><RouterLink to="/discussions">Discussions</RouterLink></li>
