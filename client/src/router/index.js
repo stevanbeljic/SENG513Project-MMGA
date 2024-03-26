@@ -11,6 +11,8 @@ import editProfileView from '../views/editProfileView.vue'
 import AddGameView from '../views/AddGameView.vue'
 import postView from '../views/postView.vue'
 import CommentView from "../views/CommentView.vue"
+import friendRequestView from '../views/friendRequestView.vue'
+import addFriendView from '../views/addFriendView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -73,6 +75,16 @@ const router = createRouter({
       path: '/comment',
       name: 'comment',
       component: CommentView
+    },
+    {
+      path: '/friendRequest',
+      name: 'friendRequest',
+      component: friendRequestView
+    },
+    {
+      path: '/addFriend',
+      name: 'addFriend',
+      component: addFriendView
     }
   ]
 })

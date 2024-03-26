@@ -1,0 +1,57 @@
+.friends-user-icon{
+    grid-area: friends-user-icon
+}
+
+.friendReq1{
+    grid-area: friendReq1
+}
+
+.confirm{
+    grid-area: confirm;
+    background-color: rgb(76, 237, 103);
+    border-color: white;
+    height: 10vh;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 15px 32px;
+    border: none;
+}
+
+.confirm:hover{
+    color:white;
+}
+
+.deny{
+    grid-area: deny;
+    background-color: rgb(237, 95, 76);
+    border-color: white;
+    height: 10vh;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 15px 32px;
+    border: none;
+}
+
+.deny:hover{
+    color:white;
+}
+
+.request-section{
+    display: grid;
+    grid-template-areas: 
+    'friends-user-icon friendReq1 confirm deny';
+    padding: 25px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.friends-btn {
+    border: none;
+    color: black;
+    cursor: pointer;
+    background-color: #f2e1ff;
+    border-radius: 8px;
+    font-family: "kanit";
+    font-size: 24px;
+    text-decoration: none;
+}
