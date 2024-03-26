@@ -60,9 +60,10 @@
 
 #games-container{
     width: 100%;
+    min-height: 84%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /*align-items:center; */
     flex-direction: row;
     flex-wrap: wrap;
     @media (width <= 700px) {
@@ -70,15 +71,10 @@
     }
 }
 
-#games-container::after{
-    content: "";
-    width: 280px;
-    margin: 2.5%;
-}
 
 .game-card{
     width: 250px;
-    height: auto;
+    height: 415px;
     padding: 15px;
     background-color: #F2E1FF;
     margin: 2.5%;
