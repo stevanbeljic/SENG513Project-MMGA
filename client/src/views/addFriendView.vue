@@ -3,6 +3,7 @@
 import "../assets/header.css";
 import "../assets/home.css";
 import "../assets/friends.css";
+import "../assets/addFriend.css"
 import navbar from "../components/navbarView.vue";
 import bottomNavbar from '@/components/bottomNavbarView.vue';
 
@@ -25,17 +26,22 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
             <button class ="friends-btn" id ="request-btn"><RouterLink to = "/friendRequest">Requests</RouterLink></button>
             <button class ="friends-btn"> <RouterLink to = "/addFriend">Add A Friend</RouterLink></button>
         </div>
-        <h2 id = "friends-title">Friends</h2>
-        <div class = "friends-section">
-            <div ><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
-            <!--Instead display the user's actual friends-->
-            <p class = "friend1">Matt_dov99</p>
+        <div class = "addFriend-section">
+            <form id="addFriend-form" @submit.prevent="getFormValues">
+            <div id="addFriend-header">
+                <h2 id = "addFriend-text">Add Friend</h2>
+            </div>
+            <div class = "profile-break"></div>
+            <div class="addFriendForm-inputs">
+                <p>Username </p>
+                <input type="text" v-model="username" placeholder="Username">
+            </div>
 
-            <div><img src = "../components/icons/user.svg"class = "friends-user-icon"></div>
-            <p class = "friend2">IcEdrAgoN</p>
-
-            <div><img src = "../components/icons/user.svg"class = "friends-user-icon"></div>
-            <p class = "friend3">fly4lyfe</p>
+            <div id="search">
+                <!-- Call to search sql tables -->
+                <button type="submit" id = "search-btn">Add</button>
+            </div>
+        </form>
         </div>
     </div>
     <footer class="footer-section">

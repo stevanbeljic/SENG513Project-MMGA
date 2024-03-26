@@ -5,6 +5,7 @@ import "../assets/home.css";
 import "../assets/friends.css";
 import navbar from "../components/navbarView.vue";
 import bottomNavbar from '@/components/bottomNavbarView.vue';
+import "../assets/friendRequest.css"
 
 </script>
 <template>
@@ -25,17 +26,14 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
             <button class ="friends-btn" id ="request-btn"><RouterLink to = "/friendRequest">Requests</RouterLink></button>
             <button class ="friends-btn"> <RouterLink to = "/addFriend">Add A Friend</RouterLink></button>
         </div>
-        <h2 id = "friends-title">Friends</h2>
-        <div class = "friends-section">
-            <div ><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
-            <!--Instead display the user's actual friends-->
-            <p class = "friend1">Matt_dov99</p>
+        <h2 id = "friends-title">Friend Requests</h2>
 
+        <div class = "request-section">
+            <!--Incoming friend requests-->
             <div><img src = "../components/icons/user.svg"class = "friends-user-icon"></div>
-            <p class = "friend2">IcEdrAgoN</p>
-
-            <div><img src = "../components/icons/user.svg"class = "friends-user-icon"></div>
-            <p class = "friend3">fly4lyfe</p>
+            <p class = "friendReq1">TheLegend27</p>
+            <button class = "confirm">Confirm</button>
+            <button class = "deny">Deny</button>
         </div>
     </div>
     <footer class="footer-section">
