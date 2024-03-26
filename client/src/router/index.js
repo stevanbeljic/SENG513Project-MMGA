@@ -10,6 +10,8 @@ import profileView from '../views/profileView.vue'
 import editProfileView from '../views/editProfileView.vue'
 import postView from '../views/postView.vue'
 import addGame from '../views/addGame.vue'
+import friendRequestView from '../views/friendRequestView.vue'
+import addFriendView from '../views/addFriendView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -67,6 +69,16 @@ const router = createRouter({
       path: '/addgame',
       name: 'addgame',
       component: addGame
+    },
+    {
+      path: '/friendRequest',
+      name: 'friendRequest',
+      component: friendRequestView
+    },
+    {
+      path: '/addFriend',
+      name: 'addFriend',
+      component: addFriendView
     }
   ]
 })

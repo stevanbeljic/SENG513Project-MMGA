@@ -1,0 +1,38 @@
+#search-btn{
+    border: none;
+    color: black;
+    cursor: pointer;
+    background-color: #c985ff;
+    border-radius: 8px;
+    font-family: "kanit";
+    font-size: 20px;
+    padding: 14px;
+    margin-top: 20px;
+    box-shadow: 5px 5px 5px lightblue;
+
+}
+
+#search-btn:hover{
+    color:white;
+}
+
+.addFriendForm-inputs > input{
+    padding: 20px 0px 20px 0px;
+    border: none;
+    background-color: #f2e1ff;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px lightblue;
+
+}
+
+
+ 
+ #addFriend-text{
+    border-bottom-style: solid;
+    border-bottom-color: #111;
+ }
+
+ #addFriend-form{
+    padding: 50px;
+ }

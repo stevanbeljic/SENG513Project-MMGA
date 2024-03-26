@@ -1,0 +1,83 @@
+.top-section{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 32%;
+    padding: 5vh;
+    background-image: url(../components/icons/banner.jpg);
+
+}
+
+#friends-loggedin-user-icon{
+    width: 100px;
+    height: 100px;
+}
+
+.section-break{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: #f2e1ff;
+}
+
+.friends-btn {
+    border: none;
+    color: black;
+    cursor: pointer;
+    background-color: #f2e1ff;
+    border-radius: 8px;
+    font-family: "kanit";
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.friends-btn:hover{
+    color: white;
+}
+
+.friends-section{
+    display: grid;/* if style.display === flex... */
+    grid-template-areas: 
+    'friends-user-icon friend1'
+    'friends-user-icon friend2'
+    'friends-user-icon friend3';
+    padding: 25px;
+    width: 100%;
+    justify-content: space-evenly;
+    border-bottom: 1px solid black;
+
+
+}
+
+.friends-user-icon{
+    width: 50px;
+    height: 50px;
+    padding: 20px;
+    grid-area: friends-user-icon;
+}
+
+.friend1{
+    grid-area: friend1;
+    font-weight: bold;
+
+}
+
+.friend2{
+    grid-area: friend2;
+    font-weight: bold;
+
+}
+
+.friend3{
+    grid-area: friend3;
+    font-weight: bold;
+
+    
+}
+
+#friends-title{
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    padding-top: 4vh;
+}
+
