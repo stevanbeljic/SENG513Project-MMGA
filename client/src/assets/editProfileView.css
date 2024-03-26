@@ -45,6 +45,10 @@
 
 }
 
+.form-inputs input:disabled {
+    background-color: gainsboro;
+}
+
 @media only screen and (width < 700px) {
     #update{
      margin-bottom: 175px;

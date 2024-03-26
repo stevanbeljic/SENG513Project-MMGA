@@ -18,7 +18,8 @@ router.get('/homeDashboard', async (req, res) => {
             articlesToSend.push({
               title: article.title,
               imageLink: article.image.original,
-              articleLink: article.site_detail_url
+              articleLink: article.site_detail_url,
+              deck: article.deck
             });
           }
           if (articlesToSend.length === AMOUNT_TO_SEND) {
@@ -27,7 +28,7 @@ router.get('/homeDashboard', async (req, res) => {
         }
   
         if (articlesToSend.length < 1) { //did not find one suitable article
-          res.status(404).json({ message: 'Not enough articles with images found.' });
+          res.status(404).json({ message: 'No suitable article found.' });
         } else {
           res.json(articlesToSend);
         }
@@ -41,5 +42,3 @@ router.get('/homeDashboard', async (req, res) => {
   });
 
 module.exports = router;
-
-//http://www.gamespot.com/api/articles/?api_key=8e0b735d55b6853d8c0b99bc69033830d7bc3409

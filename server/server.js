@@ -9,6 +9,7 @@ require('dotenv').config();
 const userController = require("./controllers/user");
 const gameController = require("./controllers/game");
 const homeController = require("./controllers/home");
+const editProfileController = require("./controllers/editProfile");
 
 // Run the server
 const app = express();
@@ -21,6 +22,7 @@ app.use(cors());
 app.use("/user", userController);
 app.use("/game", gameController);
 app.use("/", homeController);
+app.use("/editProfile", editProfileController);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

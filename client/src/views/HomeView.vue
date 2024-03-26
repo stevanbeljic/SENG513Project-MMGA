@@ -32,9 +32,7 @@
     try {
       await fetchNewsData();
     } catch (error){
-      console.log("-------------------");
       console.log(error);
-      console.log("-------------------");
     }
   });
 
@@ -114,6 +112,7 @@
               <a :href="item.articleLink" target="_blank">
                 <img :src="item.imageLink">
                 <p>{{ item.title }}</p>
+                <p class="articleDesc">{{ item.deck }}</p>
               </a>
             </div>
           </div>
