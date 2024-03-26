@@ -80,7 +80,6 @@ router.get('/getOutgoingFriendRequests', (req, res) => {
             return res.status(500).send('Internal server error');
           }
 
-          console.log(outgoingResult);
           return res.status(200).json(outgoingResult);
         });
   });
