@@ -13,7 +13,7 @@
     height: 5vh;
     border-radius: 5px;
     text-decoration: none;
-
+    margin: 10px;
     border: none;
 }
 
@@ -29,6 +29,7 @@
     border-radius: 5px;
     text-decoration: none;
     border: none;
+    margin: 10px;
 }
 
 .deny:hover{
@@ -36,13 +37,36 @@
 }
 
 .request-section{
-    display: grid;
-    grid-template-areas: 
-    'friends-user-icon friendReq1 confirm deny';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 25px;
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    li {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        
+        button {
+            width: 80px;
+        }
+
+        p {
+            width: 200px;
+        }
+    }
 }
 
 .friends-btn {
@@ -60,4 +84,9 @@
     .request-section{
         padding-bottom: 100px;
     }
+}
+
+.friend-req-title {
+    margin-top: 30px;
+    border-bottom: solid 3px black;
 }
