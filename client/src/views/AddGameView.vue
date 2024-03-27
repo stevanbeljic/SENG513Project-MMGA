@@ -18,6 +18,44 @@
         console.log(username.value);
     };
 
+    const uploadGame = async () => {
+        const title = document.getElementById('ag-title').value;
+        const description = document.getElementById('ag-description').value;
+        const link = document.getElementById('ag-link').value;
+        const googlePrice = document.getElementById('ag-google-play').value;
+        const appStorePrice = document.getElementById('ag-app-store').value;
+        const genre = document.getElementById('ag-genre').value;
+        const imageFile = document.querySelector('input[type="file"]');
+
+        if (!title || !description || !link || !googlePrice || !appStorePrice || !imageFile || !genre || genre=="GENRE") {
+            alert("All values must be sumitted");
+            return;
+        }
+
+        const gameData = new FormData();
+        gameData.append('title', title);
+        gameData.append('description', description);
+        gameData.append('link', link);
+        gameData.append('googlePrice', googlePrice);
+        gameData.append('appStorePrice', appStorePrice);
+        gameData.append('genre', genre);
+        gameData.append('imageFile', imageFile.files[0]);
+
+        console.log('POSTING GAME');
+
+        const response = await fetch(`http://localhost:7003/game/uploadGame`, {
+            method: 'POST',
+            body: gameData
+        });
+        let status = await response.status;
+        if(status === 200){
+            alert("Published");
+            window.location.reload();
+        } else {
+            alert("Failed to publish");
+        }
+    };
+
     onMounted(() => {
         updateSessionData();
         document.getElementById('ag-image-upload').addEventListener('change', function(e) {
@@ -32,7 +70,7 @@
 
     window.addEventListener('storage', updateSessionData);
 
-    defineExpose({loggedIn, username});
+    defineExpose({loggedIn, username, uploadGame});
 </script>
 <template>
     <head>
@@ -71,7 +109,7 @@
                         </select>
                     </div>
                     <div>
-                        <input type="submit" id="ag-submit-button" value="SUBMIT">
+                        <input type="submit" id="ag-submit-button" value="SUBMIT" @click="uploadGame" @click.prevent.self>
                     </div>
                 </div>
             </form>

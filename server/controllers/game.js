@@ -1,7 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const databaseConnection = require('../model/model');
+const multer  = require('multer');
 
+
+var storageDef = multer.diskStorage({
+    destination: './uploads',
+    filename: (req, file, cb) => {
+        cb (null, `${Date.now()}-!${file.originalname}`);
+    },
+});
+
+const upload = multer({storage: storageDef,});
 module.exports = router;
 
 router.get('/getAllGames', (req, res) => {
@@ -27,4 +37,10 @@ router.get('/getGameById', (req, res) => {
             res.json(results);
         }
     })
+});
+
+router.post('/uploadGame', upload.single('imageFile'), (req, res) => {
+    const { imageFile, ...dataWithoutFile } = req.body;
+    console.log(dataWithoutFile);
+    res.status(200).send();
 });
