@@ -24,9 +24,12 @@ import router from "../router/index.js";
                 });
                 console.log(response);
                 if(response.status==201){
-                    router.push("/");
+                    const user_data = await response.json();
+                    console.log(user_data);
                     sessionStorage.setItem("loggedIn", "true");
-                    sessionStorage.setItem("loggedInAs", this.username);
+                    sessionStorage.setItem("loggedInAs", user_data[0].username);
+                    sessionStorage.setItem("loggedInRole", user_data[0].role);
+                    router.push("/");
                 }
             },
         },

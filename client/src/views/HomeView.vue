@@ -12,8 +12,6 @@
   const updateSessionData = () => {
     loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
     username.value = sessionStorage.getItem('loggedInAs');
-    console.log(loggedIn.value);
-    console.log(username.value);
   };
 
   const newsData = ref([]);
@@ -22,7 +20,6 @@
     const response = await fetch('http://localhost:7003/homeDashboard');
     const data = await response.json();
     newsData.value = data;
-    console.log(data);
   };
 
   onMounted(async () => {
@@ -35,7 +32,6 @@
   });
 
   window.addEventListener('storage', updateSessionData);
-
   defineExpose({loggedIn, username});
 
 </script>

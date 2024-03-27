@@ -15,18 +15,22 @@ import { useRoute } from 'vue-router';
             return {route};
         },
         mounted() {
-            console.log(this.$route.params.id)
             let bRoute = "http://localhost:7003/game/getGameById?id="+ this.$route.params.id; 
-            console.log(bRoute);
             fetch(bRoute, {method: "GET"})
             .then(res => res.json())
-            .then(data => {this.game = data[0]
-            console.log(this.game)})
+            .then(data => this.game = data[0])
+            .catch(err => console.log(err.message));
+
+            fetch("http://localhost:7003/discussion/getDiscussionsByGame?id="+ this.$route.params.id, {method: "GET"})
+            .then(res => res.json())
+            .then(data => {this.discussions = data
+            console.log(data)})
             .catch(err => console.log(err.message));
         },
         data() {
             return{
                 game: '',
+                discussions: []
             }
         }
 
@@ -76,10 +80,10 @@ import { useRoute } from 'vue-router';
                 </div>
             </div>
         </div>
-        <div class="discussion-list-section" id="overview-discussion-section">
+        <div class="discussion-list-section" id="overview-discussion-section" v-for="discussion in discussions" :key="discussion.discussion_id">
             <h1 id="discussion-label">Discussions Board</h1>
             <div class="discussion-list-box">
-                <div><h3>Keep Losing to Luigi! >:(</h3></div>
+                <div><h3>{{ discussion.title }}</h3></div>
                 <div><button class="discussion-like-button">❤︎</button></div>
             </div>
             <div class="discussion-list-box">
