@@ -148,9 +148,6 @@ h2 {
     #recentDiscussionsDiv  {
         max-width: 25%;
 
-        @media (max-width: 700px){
-            width: 100%;
-        }
         ul {
             padding: 0;
             margin: 0;
@@ -190,6 +187,15 @@ h2 {
 
         li:nth-child(odd) {
             background-color: #F2E1FF;
+        }
+
+        @media (max-width: 700px){
+            max-width: 100%;
+            width: 100%;
+
+            ul{
+                width: 100%;
+            }
         }
 
     }
