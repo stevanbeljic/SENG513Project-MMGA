@@ -15,18 +15,22 @@ import { useRoute } from 'vue-router';
             return {route};
         },
         mounted() {
-            console.log(this.$route.params.id)
             let bRoute = "http://localhost:7003/game/getGameById?id="+ this.$route.params.id; 
-            console.log(bRoute);
             fetch(bRoute, {method: "GET"})
             .then(res => res.json())
-            .then(data => {this.game = data[0]
-            console.log(this.game)})
+            .then(data => this.game = data[0])
+            .catch(err => console.log(err.message));
+
+            fetch("http://localhost:7003/discussion/getDiscussionsByGame?id="+ this.$route.params.id, {method: "GET"})
+            .then(res => res.json())
+            .then(data => {this.discussions = data
+            console.log(data)})
             .catch(err => console.log(err.message));
         },
         data() {
             return{
                 game: '',
+                discussions: []
             }
         }
 
@@ -63,6 +67,7 @@ import { useRoute } from 'vue-router';
             <div class="discussion-div even"><h2>When is the next update coming out? It’s been forever and the games getting stale</h2></div>
             <div class="discussion-div odd"><h2>Secret level!</h2></div>
             <div class="discussion-div even"><h2>Message from Devs!</h2></div>
+            <div class="discussion-div" v-for="discussion in discussions" :key="discussion.id"><h2>{{ discussion.title }}</h2></div>
         </div>
     </div>
     <footer class="footer-section">
