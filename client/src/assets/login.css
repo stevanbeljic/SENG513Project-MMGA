@@ -117,10 +117,6 @@ body{
     }
 }
 
-.text-headers {
-    border-bottom: 3px solid black;
-}
-
 #guestBtn{
     display: flex;
     align-items: center;

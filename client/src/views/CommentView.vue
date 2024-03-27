@@ -15,10 +15,8 @@
     </header>
     <body>
         <div class="comment-body-container">
-            <div class="comment-back-section">
-                <button id="comment-back-button">< Back to Evil Mario</button>
-            </div>
             <div class="comment-header-section">
+                <button id="comment-back-button">◁ Back to Evil Mario</button>
                 <h1>Keep Losing to Luigi! >:(</h1>
                 <h4>Posted in <u>Evil Mario</u></h4>
             </div>
@@ -35,7 +33,7 @@
                 <h3>Your Comment</h3>
                 <form>
                     <textarea id="reply-message" placeholder="Enter comment"></textarea> <br>
-                    <input type="submit" value="Reply">
+                    <input type="submit" id="reply-button" value="Reply">
                 </form>
             </div>
         </div>

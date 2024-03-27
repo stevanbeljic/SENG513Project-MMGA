@@ -59,6 +59,7 @@
 
 /* Need to make it so that button toggles between white and red (javascript) */
 .discussion-like-button {
+    color: black;
     border: none;
     background-color: #F5E8FF;
     font-size: 20px;
@@ -66,7 +67,7 @@
 }
 
 .discussion-like-button:hover {
-    color: white;
+    color: red;
 }
 
 #discussion-view-all-button {

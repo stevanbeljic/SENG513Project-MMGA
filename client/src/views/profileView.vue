@@ -33,6 +33,12 @@
         userBio.value = data[0].bio;
     }
 
+    const logout = () => {
+        router.push("/");
+        sessionStorage.setItem("loggedIn", "false");
+        sessionStorage.setItem("loggedInAs", null);
+    }
+
     onMounted(async () => {
         updateSessionData();
         if(loggedIn.value != true){
@@ -47,7 +53,7 @@
     });
 
     window.addEventListener('storage', updateSessionData);
-    defineExpose({loggedIn, username, userBio});
+    defineExpose({loggedIn, username, userBio, logout});
 
 </script>
 <template>
@@ -60,19 +66,16 @@
     <body>
     <div class="page-container">
         <div class = "grid-container">
-            <!-- Not sure if we want to customize user profile images... placeholder image for now-->
             <div class = "item1"><img src = "../components/icons/user.svg" id ="users-icon"></div>
-            <!-- This should instead say the corresponding username for whoever is logged in-->
             <div class = "item2" id="usernameDiv" v-text="username"></div>
             <div class = "item3"> <RouterLink to="/editProfile"><button class ="edit-btn">Edit Profile</button></RouterLink></div>
-            <!-- This should be the corresponding bio for the user that is logged in-->
             <div class = "item4" id="bioDiv" v-text="userBio"></div>
+            <div class = "item5"><button class = "logout-btn" @click="logout">Logout </button></div>
         </div>
         <div class = "profile-break"></div>
         <h1 id = "myTopGames">My Top Games</h1>
         <div class = "profile-break"></div>
 
-        <!--Each user's top games should be displayed here -->
         <div class = "top-games">
             <div class = "games-container-profile">
                 <div class = "gameIcon1"><img src = "../components/icons/marioIcon.jpg" id ="marioIcon"></div>

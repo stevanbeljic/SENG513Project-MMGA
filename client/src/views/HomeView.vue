@@ -81,23 +81,23 @@
             <h2>Recent Discussions</h2>
             <ul>
               <li>
-                <p>Keep losing to Luigi :(</p>
+                <h3>Keep losing to Luigi :(</h3>
                 <a>❤︎</a>
               </li>
               <li>
-                <p>Luigi Boss Batte</p>
+                <h3>Luigi Boss Battle</h3>
                 <a>❤︎</a>
               </li>
               <li>
-                <p>Looking for team</p>
+                <h3>Looking for team</h3>
                 <a>❤︎</a>
               </li>
               <li>
-                <p>I calculated how much coins you need to win</p>
+                <h3>I calculated how much coins you need to win</h3>
                 <a>❤︎</a>
               </li>
               <li>
-                <p>Questions about Luigi's strength</p>
+                <h3>Questions about Luigi's strength</h3>
                 <a>❤︎</a>
               </li>
             </ul>

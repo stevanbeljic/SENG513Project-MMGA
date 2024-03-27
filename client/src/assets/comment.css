@@ -32,7 +32,7 @@
 }
 
 .comment-message-box {
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 10px;
     background-color: white;
     align-items: center;
@@ -47,7 +47,7 @@
     border: 1px solid #D9D9D9;
 }
 
-input[type=submit] {
+#reply-button {
     height: 50%;
     width: 20%;
     font-size: 22px;
@@ -60,15 +60,18 @@ input[type=submit] {
 }
 
 #comment-back-button {
-    padding: 0px;
+    transform: translateX(-2vw);
+    padding: 5px 0px;
     border: none;
-    background-color: white;
+    background-color: #C985FF;
     text-align: left;
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
 }
 
 #comment-back-button:hover {
     cursor: pointer;
-    color: #E5C4FF;
+    color: white;
 }
 
 @media only screen and (width < 700px) {
@@ -76,7 +79,7 @@ input[type=submit] {
         margin-top: 0px;
     }
 
-    input[type=submit] {
+    #reply-button {
         width: 40%;
         margin-bottom: 15vh;
     }
