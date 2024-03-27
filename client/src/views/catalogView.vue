@@ -14,43 +14,26 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
         data(){
             return{
                 search: '',
-                games : [
-                    {id: 1 , title: 'Game1', developer: 'Developer1', Genre: 'Genre1', 
-                        AppPrice: '$0.99', Playprice: '$0.99', description:'Description', img: '../components/icons/mario.jpg'},
-                    {id: 2 ,title: 'Game2', developer: 'Developer2', Genre: 'Genre1', 
-                        AppPrice: '$0.99', Playprice: '$0.99', description:'Description', img: '../components/icons/mario.jpg'},
-                    {id: 3 ,title: 'Game3', developer: 'Developer3', Genre: 'Genre1', 
-                        AppPrice: '$0.99', Playprice: '$0.99', description:'Description', img: '../components/icons/mario.jpg'},
-                    {id: 4 ,title: 'Game4', developer: 'Developer4', Genre: 'Genre1', 
-                        AppPrice: '$0.99', Playprice: '$0.99', description:'Description', img: '../components/icons/mario.jpg'},
-                    {id: 5 ,title: 'Game5', developer: 'Developer2', Genre: 'Genre3', 
-                        AppPrice: '$1.99', Playprice: '$2.99', description:'Description', img: '../components/icons/mario.jpg'},
-                    {id: 6 ,title: 'Game6', developer: 'Developer3', Genre: 'Genre3', 
-                        AppPrice: '$1.99', Playprice: '$2.99', description:'Description', img: '../components/icons/mario.jpg'},
-                    {id: 7 ,title: 'Mario', developer: 'Nintendo', Genre: 'Adventure', 
-                        AppPrice: '$1.99', Playprice: '$2.99', description:'Description', img: '../components/icons/mario.jpg'}
-                ],
+                games: []
             }
         },
         computed: {
             filteredGames(){
-                return this.games.filter(item => 
-                    item.title.toLowerCase().includes(this.search.toLowerCase()))
+                if(this.games.length > 0){
+                    return this.games.filter(item => 
+                        item.name.toLowerCase().includes(this.search.toLowerCase()))
+                }
+                else{
+                    return null;
+                }
             }
         },
-        methods: {
-            async getGames(){
+        mounted(){
                 let route = "http://localhost:7003/game/getAllGames";
-                const response = await fetch(route, {method: "GET"});
-                console.log(response);
-                const jsonResp = await response.json();
-                console.log(jsonResp);
-                //this.games = jsonResp;
-                console.log(this.games);
-            }
-        },
-        beforeMount(){
-            this.getGames();
+                fetch(route, {method: "GET"})
+                .then(res => res.json())
+                .then(data => this.games = data)
+                .catch(err => console.log(err.message));
         }
     };
 </script>
@@ -94,7 +77,7 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
             <div v-for="item in filteredGames" :key="item.id" class="newsItem">
                 <a href="/game">
                     <img src="../components/icons/mario.jpg"/>
-                    <p>{{ item.title }}</p>
+                    <p>{{ item.name }}</p>
                     <p class="articleDesc">{{ item.description }}</p>
                 </a>
             </div>
