@@ -45,13 +45,13 @@
                 <h2>Sign Up</h2>
             </div>
             <div class="form-input">
-                <input type="email" v-model="email" placeholder="Email">
+                <input type="email" v-model="email" placeholder="Email" id="email-field">
             </div>
             <div class="form-input">
-                <input type="text" v-model="username" placeholder="Username">
+                <input type="text" v-model="username" placeholder="Username" id="username-field">
             </div>
             <div class="form-input">
-                <input type="password" v-model="password" placeholder="Password">
+                <input type="password" v-model="password" placeholder="Password" id="password-field">
             </div>
             <div class="form-input" id="user-class-selector">
                 <label for="userDev">Which user are you?</label>

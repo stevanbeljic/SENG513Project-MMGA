@@ -45,7 +45,7 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
                 console.log(response);
                 const jsonResp = await response.json();
                 console.log(jsonResp);
-                this.games = jsonResp;
+                //this.games = jsonResp;
                 console.log(this.games);
             }
         },

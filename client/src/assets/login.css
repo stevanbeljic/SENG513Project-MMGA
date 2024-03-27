@@ -43,7 +43,7 @@ body{
     }
 }
 
-.form-input input{
+.form-input #username-field, .form-input #password-field, .form-input #email-field{
     background-color: #F2E1FF;
     border: none;
     outline: none;
@@ -51,6 +51,8 @@ body{
     width: 100%;
     padding: 0px 2%;
     border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
 }
 
 .form-input input:focus, .form-input input:hover, #login-button button:hover, #guestBtn button:hover{
