@@ -2,6 +2,9 @@
 
 -- USE mmgadb;
 
+CREATE DATABASE IF NOT EXISTS mmgadb;
+USE mmgadb;
+
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     role VARCHAR(10) NOT NULL,
