@@ -16,19 +16,19 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
                 search: '',
                 games : [
                     {id: 1 , title: 'Game1', developer: 'Developer1', Genre: 'Genre1', 
-                        AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
+                        AppPrice: '$0.99', Playprice: '$0.99', description:'Description', img: '../components/icons/mario.jpg'},
                     {id: 2 ,title: 'Game2', developer: 'Developer2', Genre: 'Genre1', 
-                        AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
+                        AppPrice: '$0.99', Playprice: '$0.99', description:'Description', img: '../components/icons/mario.jpg'},
                     {id: 3 ,title: 'Game3', developer: 'Developer3', Genre: 'Genre1', 
-                        AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
+                        AppPrice: '$0.99', Playprice: '$0.99', description:'Description', img: '../components/icons/mario.jpg'},
                     {id: 4 ,title: 'Game4', developer: 'Developer4', Genre: 'Genre1', 
-                        AppPrice: '$0.99', Playprice: '$0.99', img: '../components/icons/mario.jpg'},
+                        AppPrice: '$0.99', Playprice: '$0.99', description:'Description', img: '../components/icons/mario.jpg'},
                     {id: 5 ,title: 'Game5', developer: 'Developer2', Genre: 'Genre3', 
-                        AppPrice: '$1.99', Playprice: '$2.99', img: '../components/icons/mario.jpg'},
+                        AppPrice: '$1.99', Playprice: '$2.99', description:'Description', img: '../components/icons/mario.jpg'},
                     {id: 6 ,title: 'Game6', developer: 'Developer3', Genre: 'Genre3', 
-                        AppPrice: '$1.99', Playprice: '$2.99', img: '../components/icons/mario.jpg'},
+                        AppPrice: '$1.99', Playprice: '$2.99', description:'Description', img: '../components/icons/mario.jpg'},
                     {id: 7 ,title: 'Mario', developer: 'Nintendo', Genre: 'Adventure', 
-                        AppPrice: '$1.99', Playprice: '$2.99', img: '../components/icons/mario.jpg'}
+                        AppPrice: '$1.99', Playprice: '$2.99', description:'Description', img: '../components/icons/mario.jpg'}
                 ],
             }
         },
@@ -77,9 +77,8 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
                 <input type="text" placeholder="Search" id="search-input" v-model="search"/>
             </form>
         </div>
-        
         <div id="games-container">
-            <div v-for="item in filteredGames" :key="item.id" class="game-card">
+            <!-- <div v-for="item in filteredGames" :key="item.id" class="game-card">
                 <a href="/game">
                 <div id="game-img-container">
                     <img src="../components/icons/mario.jpg"/>
@@ -90,6 +89,14 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
                 <p>App Store Price: {{ item.AppPrice }}</p>
                 <p>Play Store Price: {{ item.Playprice }}</p>
             </a>
+            </div> -->
+
+            <div v-for="item in filteredGames" :key="item.id" class="newsItem">
+                <a href="/game">
+                    <img src="../components/icons/mario.jpg"/>
+                    <p>{{ item.title }}</p>
+                    <p class="articleDesc">{{ item.description }}</p>
+                </a>
             </div>
         </div>
     </div>
