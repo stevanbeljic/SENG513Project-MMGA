@@ -69,10 +69,46 @@
     @media (width <= 700px) {
         padding-bottom: 120px;
     }
+
+    .newsItem {
+        width: 250px;
+        height: 250px;
+        background-color: #F2E1FF;
+        border-radius: 20px;
+        overflow: hidden;
+        margin: 20px;
+        text-align: center;
+        box-shadow: 0px 0px 23px -5px black;
+        text-overflow: ellipsis;
+        
+        a{
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+        }
+
+        p{
+            margin-top: 5px;
+        }
+
+        img {
+            max-height: 75%;
+            width: 100%;
+        }
+
+        .articleDesc {
+            color: grey;
+            font-size: 10px;
+        }
+    }
+
+    .newsItem:hover {
+        transform: translateY(-10px);
+    }
 }
 
 
-.game-card{
+/* .game-card{
     width: 250px;
     height: 415px;
     padding: 15px;
@@ -108,4 +144,16 @@
 .developer-name, .game-genre{
     font-size: 15px;
     font-weight: 100;
-}
+} */
+
+    #newsContent{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        @media (max-width: 700px){
+            justify-content: center;
+            margin-bottom: 100px;
+        }
+
+        
+    }

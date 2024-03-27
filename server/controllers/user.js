@@ -3,6 +3,39 @@ const router = express.Router();
 const databaseConnection = require('../model/model');
 const mariadb = require('mariadb');
 
+router.post('/confirmRequest', (req, res) => {
+  console.log("here");
+  const {username} = req.query;
+  const {friendUsername} = req.query;
+  databaseConnection.query('INSERT IGNORE INTO `friends`(`user1_id`, `user2_id`) SELECT (SELECT id FROM users WHERE username=?), (SELECT id FROM users WHERE username=?)', [username, friendUsername], (err, results) => {
+    if(err){
+      console.error("Error executing insertion query ", err);
+      return res.status(500).send('Internal server error');
+    }
+    console.log("friendship was inserted");
+    databaseConnection.query('DELETE FROM friendrequests WHERE requestTo = (SELECT id FROM users WHERE username = ?) AND requestFrom = (SELECT id FROM users WHERE username = ?)', [username, friendUsername], (err, results) => {
+      if(err){
+        console.error("Error executing deletion query");
+        return res.status(500).send('Internal server error');
+      }
+    });
+    return res.sendStatus(200);
+  });
+});
+
+router.post('/rejectRequest', (req, res) => {
+  const {username} = req.query;
+  const {friendUsername} = req.query;
+  databaseConnection.query('DELETE FROM friendrequests WHERE requestTo = (SELECT id FROM users WHERE username = ?) AND requestFrom = (SELECT id FROM users WHERE username = ?)', [username, friendUsername], (err, results) => {
+    if(err){
+      console.error("Error executing deletion query");
+      return res.status(500).send('Internal server error');
+    }
+    return res.sendStatus(200);
+  });
+
+});
+
 router.get('/getFriends', (req, res) => {
   const {username} = req.query;
 

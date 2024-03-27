@@ -19,6 +19,35 @@
         console.log(username.value);
     };
 
+    const confirmRequest = async (friendUsername) => {
+        const response = await fetch(`http://localhost:7003/user/confirmRequest?username=${username.value}&friendUsername=${friendUsername}`, {
+            method: 'POST',
+        });
+        let status = await response.status;
+        console.log(status);
+        if(status === 200){
+            console.log("in here");
+            window.location.reload();
+        } else {
+            alert("Unable to add ", friendUsername ,"'s request");
+        }
+    };
+
+    const rejectRequest = async (friendUsername) => {
+        const response = await fetch(`http://localhost:7003/user/rejectRequest?username=${username.value}&friendUsername=${friendUsername}`, {
+            method: 'POST',
+        });
+
+        let status = await response.status;
+        console.log(status);
+        if(status === 200){
+            console.log("in here");
+            window.location.reload();
+        } else {
+            alert("Unable to delete ", friendUsername ,"'s request");
+        }
+    };
+
     const incomingFriendsRequestList = ref([]);
     const fetchIncomingFriendRequests = async () => {
             const route = "http://localhost:7003/user/getIncomingFriendRequests?username=" + username.value;
@@ -74,7 +103,7 @@
 
   window.addEventListener('storage', updateSessionData);
 
-  defineExpose({loggedIn, username});
+  defineExpose({loggedIn, username, confirmRequest, rejectRequest});
 
 
 </script>
@@ -106,8 +135,8 @@
                     <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
                     <p class = "friendReq1">{{ friend.username }}</p>
                     <div>
-                        <button class = "confirm">Confirm</button>
-                        <button class = "deny">Reject</button>
+                        <button class = "confirm" @click="confirmRequest(friend.username)">Confirm</button>
+                        <button class = "deny" @click="rejectRequest(friend.username)">Reject</button>
                     </div>
                 </li>
             </ul>
