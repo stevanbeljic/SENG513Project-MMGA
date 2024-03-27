@@ -1,11 +1,53 @@
 <script setup>
     import "../assets/footer.css";
-import "../assets/header.css";
-import "../assets/home.css";
-import "../assets/friends.css";
-import "../assets/addFriend.css"
-import navbar from "../components/navbarView.vue";
-import bottomNavbar from '@/components/bottomNavbarView.vue';
+    import "../assets/header.css";
+    import "../assets/home.css";
+    import "../assets/friends.css";
+    import "../assets/addFriend.css";
+    import navbar from "../components/navbarView.vue";
+    import bottomNavbar from '@/components/bottomNavbarView.vue';
+    import "../assets/friendRequest.css"
+    import { onMounted, ref } from 'vue';
+    import router from "@/router";
+
+    let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
+    let username = ref(sessionStorage.getItem('loggedInAs'));
+    let friendUser = ref('');
+
+    const updateSessionData = () => {
+        loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
+        username.value = sessionStorage.getItem('loggedInAs');
+    };
+
+    const sendRequest = async () => {
+        if(username.value===friendUser.value){
+            alert("Invalid friend request.");
+            window.location.reload();
+            return;
+        }
+        const response = await fetch(`http://localhost:7003/user/sendRequest?username=${username.value}&friendUser=${friendUser.value}`, {
+            method: 'POST',
+        });
+        let status = await response.status;
+        if(status==409){
+            alert("Already friends with "+friendUser.value);
+        }
+        else if(status !== 200){
+            alert("Unable to send friend request to "+friendUser.value+". Try again later.");
+        }
+        window.location.reload();
+    };
+
+    onMounted(async () => {
+        updateSessionData();
+        if(loggedIn.value != true){
+            router.push("/");
+            alert("Please login to view your Friends List");
+        }
+    });
+    window.addEventListener('storage', updateSessionData);
+
+    defineExpose({sendRequest});
 
 </script>
 <template>
@@ -18,8 +60,7 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
     <div class="page-container">
         <div class = "top-section">
             <img src = "../components/icons/user.svg" id = "friends-loggedin-user-icon">
-            <!--This should instead say the logged in user's username-->
-            <h1>Timmy1234</h1>
+            <h1 v-text="username+'\'s Requests'"></h1>
         </div>
         <div class = "section-break">
             <button class ="friends-btn"><RouterLink to = "/friends">Friends</RouterLink> </button>
@@ -34,12 +75,11 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
             <div class = "profile-break"></div>
             <div class="addFriendForm-inputs">
                 <p>Username </p>
-                <input type="text" v-model="username" placeholder="Username">
+                <input type="text" v-model="friendUser" placeholder="Username" id="friendUser">
             </div>
 
             <div id="search">
-                <!-- Call to search sql tables -->
-                <button type="submit" id = "search-btn">Add</button>
+                <button type="submit" id = "search-btn" @click="sendRequest()">Add</button>
             </div>
         </form>
         </div>

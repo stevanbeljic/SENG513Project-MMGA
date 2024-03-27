@@ -26,7 +26,6 @@ router.post('/confirmRequest', (req, res) => {
 router.post('/rejectRequest', (req, res) => {
   const {username} = req.query;
   const {friendUsername} = req.query;
-  console.log(username,'---',friendUsername);
   databaseConnection.query('DELETE FROM friendrequests WHERE requestTo = (SELECT id FROM users WHERE username = ?) AND requestFrom = (SELECT id FROM users WHERE username = ?)', [username, friendUsername], (err, results) => {
     if(err){
       console.error("Error executing deletion query");
@@ -35,6 +34,38 @@ router.post('/rejectRequest', (req, res) => {
     return res.sendStatus(200);
   });
 
+});
+
+router.post('/sendRequest', (req, res) => {
+  const {username} = req.query;
+  const {friendUser} = req.query;
+
+  databaseConnection.query('SELECT id FROM users WHERE username = ?', [username], (error1, result) =>{
+    if(error1){
+      console.error("Error executing search query", error1);
+      return res.status(500).send('Internal server error');
+    }
+    let userID = result[0].id;
+    databaseConnection.query('SELECT username FROM users WHERE id IN (SELECT user2_id from friends WHERE user1_id = ? UNION SELECT user1_id from friends WHERE user2_id = ?)', [userID, userID], (error, result) =>{
+      if(error){
+        console.error("Error executing search query", error);
+        return res.status(500).send('Internal server error');
+      }
+      console.log(result);
+      if(result.length!=0){
+        return res.sendStatus(409);
+      }
+
+      databaseConnection.query('INSERT INTO `friendrequests` (`requestTo`, `requestFrom`) SELECT (SELECT id FROM users WHERE username=?), (SELECT id FROM users WHERE username=?)', [friendUser, username], (err, results) => {
+        if(err){
+          console.error("Error executing send friend request query", err);
+          return res.status(500).send('Internal server error');
+        }
+        console.log("sent friend request");
+        return res.sendStatus(200);
+      });
+    });
+  });
 });
 
 router.get('/getFriends', (req, res) => {
