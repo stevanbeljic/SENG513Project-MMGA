@@ -27,12 +27,22 @@
 
 }
 
+.item5{
+    grid-area: logout-text;
+    border: #e5c4ff;
+    background-color: #ec402d;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px lightblue;
+
+}
+
 .grid-container{
     display: grid;
     grid-template-areas: 
     'icon username username username edit-profile edit-profile'
-    'icon bio bio bio bio bio'
-    'icon bio bio bio bio bio';
+    'logout-text bio bio bio bio bio'
+    'logout-text bio bio bio bio bio'
+    'logout-text bio bio bio bio bio';
     gap: 25px;
     padding: 10px;
     justify-content: center;
@@ -46,8 +56,8 @@
 }
 
 #users-icon {
-    width:20vw;
-    height:20vh;
+    width:15vw;
+    height:15vh;
 }
 
 .edit-btn {
@@ -60,8 +70,18 @@
     font-size: 24px;
 }
 
-.edit-btn:hover{
+.edit-btn:hover, .logout-btn:hover{
     color:white;
+}
+
+.logout-btn {
+    border: none;
+    color: black;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #ec402d;
+    font-family: "kanit";
+    font-size: 24px;
 }
 
 h1 {

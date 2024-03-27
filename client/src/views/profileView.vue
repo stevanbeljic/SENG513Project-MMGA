@@ -67,6 +67,7 @@
             <div class = "item3"> <RouterLink to="/editProfile"><button class ="edit-btn">Edit Profile</button></RouterLink></div>
             <!-- This should be the corresponding bio for the user that is logged in-->
             <div class = "item4" id="bioDiv" v-text="userBio"></div>
+            <div class = "item5"><RouterLink to = "/login"><button class = "logout-btn">Logout </button></RouterLink></div>
         </div>
         <div class = "profile-break"></div>
         <h1 id = "myTopGames">My Top Games</h1>
