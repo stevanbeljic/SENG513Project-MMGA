@@ -63,11 +63,11 @@ import { useRoute } from 'vue-router';
             </div>
         </div>
         <div class="discussions-container">
-            <div class="discussion-div odd"><h2>Keep Losing to Luigi! >:(</h2></div>
+            <!-- <div class="discussion-div odd"><h2>Keep Losing to Luigi! >:(</h2></div>
             <div class="discussion-div even"><h2>When is the next update coming out? It’s been forever and the games getting stale</h2></div>
             <div class="discussion-div odd"><h2>Secret level!</h2></div>
-            <div class="discussion-div even"><h2>Message from Devs!</h2></div>
-            <div class="discussion-div" v-for="discussion in discussions" :key="discussion.id"><h2>{{ discussion.title }}</h2></div>
+            <div class="discussion-div even"><h2>Message from Devs!</h2></div> -->
+            <div class="discussion-div" v-for="(discussion, index) in discussions" :key="discussion.discussion_id" v-bind:class="{even: ((index+1) % 2 == 0), odd:index % 2 == 0}"><h2>{{ discussion.title }}</h2></div>
         </div>
     </div>
     <footer class="footer-section">
