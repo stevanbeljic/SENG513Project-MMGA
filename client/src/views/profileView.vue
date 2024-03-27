@@ -64,31 +64,52 @@
         <navbar></navbar>
     </header>
     <body>
-    <div class="page-container">
-        <div class = "grid-container">
-            <div class = "item1"><img src = "../components/icons/user.svg" id ="users-icon"></div>
-            <div class = "item2" id="usernameDiv" v-text="username"></div>
-            <div class = "item3"> <RouterLink to="/editProfile"><button class ="edit-btn">Edit Profile</button></RouterLink></div>
+    <div id="profile-div">
+        <div class="profileSubDiv">
+                <img src = "../components/icons/user.svg" id ="users-icon">
+            <div class="userEditDiv">
+                <div class = "profileItem" id="usernameDiv" v-text="username"></div>
+                <div class = "profileItem"> <RouterLink to="/editProfile">
+                    <button class ="edit-btn">Edit Profile</button>
+                </RouterLink></div>
+            </div>
+        </div>
+        <div class="profileSubDiv">
             <div id="profileViewBioLogoutDiv">
-                <div id="bioDiv" v-text="userBio"></div>
-                <div><button class = "logout-btn" @click="logout">Logout </button></div>
+                <div class="profileItem" id="bioDiv" v-text="userBio"></div>
+                <button class = "logout-btn" @click="logout">Logout </button>
             </div>
         </div>
         <div class = "profile-break"></div>
         <h1 id = "myTopGames">My Top Games</h1>
         <div class = "profile-break"></div>
 
-        <div class = "top-games">
-            <div class = "games-container-profile">
-                <div class = "gameIcon1"><img src = "../components/icons/marioIcon.jpg" id ="marioIcon"></div>
-                <div class = "gameTitle1">Evil Mario </div>
-                <div class = "gameTags1">Horror, Thriller</div>
-                <div class = "gameIcon2"><img src = "../components/icons/taurean.jpg" id ="taureanIcon"></div>
-                <div class = "gameTitle2">Taurean </div>
-                <div class = "gameTags2">Adventure, Action</div>
-            </div>
+        <div id = "top-games">
+            <ul>
+                <li>
+                    <div class="topGamesImage">
+                        <img src = "../components/icons/marioIcon.jpg" id ="marioIcon">
+                    </div>
+                    <div class="topGamesImageTitle">
+                        <h3>Evil Mario</h3>
+                    </div>
+                    <div class="topGamesGenres">
+                        <p>Horror, Thriller</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="topGamesImage">
+                        <img src = "../components/icons/taurean.jpg" id ="taureanIcon">
+                    </div>
+                    <div class="topGamesImageTitle">
+                        <h3>Taurean</h3>
+                    </div>
+                    <div class="topGamesGenres">
+                        <p>Adventure, Action</p>
+                    </div>
+                </li>
+            </ul>
         </div>
-
     </div>
     </body>
     <footer class="footer-section">

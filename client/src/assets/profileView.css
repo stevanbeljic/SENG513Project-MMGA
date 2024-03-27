@@ -1,179 +1,148 @@
-.item1 {
-    grid-area: icon;
-}
-.item2 {
-    grid-area: username;
-    background-color: #f2e1ff;
-    font-size: 24px;
-    box-shadow: 5px 5px 5px lightblue;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-
-
-}
-
-.item3 {
-    grid-area: edit-profile;
-    background-color: #e5c4ff;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px lightblue;
-
-}
-
-.grid-container{
-    display: grid;
-    grid-template-areas: 
-    'icon username username username edit-profile edit-profile'
-    'bio bio bio bio bio bio'
-    'bio bio bio bio bio bio'
-    'bio bio bio bio bio bio';
-    gap: 25px;
-    padding: 10px;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.grid-container > div {
-    align-self: center;
-    text-align: center;
-    padding: 20px;
-}
-
-#users-icon {
-    width:150px;
-    height:150px;
-}
-
-#profileViewBioLogoutDiv {
+#profile-div {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    margin-top: 70px;
+    padding: 10px;
     align-items: center;
-    justify-content: center;
-    grid-area: bio;
 
-    div {
-        max-width: 90%;
-        min-width: 90%;
-        margin: 15px;
+    @media (max-width: 700px){
+        margin-top: 10px;
+        padding-bottom: 100px;
     }
 
-    #bioDiv {
-        background-color: #e5c4ff;
-        font-size: 24px;
-        border-radius: 8px;
-        box-shadow: 5px 5px 5px lightblue;
-        padding: 30px 20px 30px 20px;
-        text-align: start;
-    }
-
-    button {
-        border: none;
-        color: black;
-        cursor: pointer;
-        border-radius: 8px;
-        background-color: #ec402d;
-        box-shadow: 5px 5px 5px lightblue;
-        font-family: "kanit";
-        font-size: 24px;
-        width: 100%;
-        padding: 20px 40px 20px 40px;
-        text-align: center;
-        margin: 0;
+    img {
+        width: 150px;
+        padding: 20px;
+        border-radius: 10px;
     }
 
     button:hover {
-        transform: scale(1.02);
         color: white;
     }
 }
 
-.edit-btn {
-    border: none;
-    color: black;
-    cursor: pointer;
-    background-color: #e5c4ff;
-    border-radius: 8px;
-    font-family: "kanit";
-    font-size: 24px;
+.profileSubDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 40px 0px 40px;
+
+    @media (max-width: 700px){
+        margin-bottom: 50px;
+        flex-direction: column;
+    }
+
+    .userEditDiv {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .profileItem {
+            width: 200px;
+            margin: none;
+        }
+    }
+
+    #profileViewBioLogoutDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 485px;
+        text-align: start;
+        @media (max-width: 700px){
+            width: 200px;
+        }
+
+        button {
+            background-color: rgb(255, 135, 135);
+            padding: none;
+            margin: none;
+            border: none;
+            font-family: 'Kanit';
+            font-size: 36px;
+            width: 500px;
+            padding: 0px 40px 0px 40px;
+            border-radius: 15px;
+            margin: 10px;
+            box-shadow: 5px 5px 5px lightblue;
+            cursor: pointer;
+
+            @media (max-width: 700px){
+                width: 200px;
+            }
+        }
+    }
 }
 
-.edit-btn:hover, .logout-btn:hover{
-    color:white;
+#bioDiv {
+    background-color: #f2e1ff;
+    font-size: 20px;
+    width: 100%;
 }
 
-h1 {
-    margin-top: 50px;
-}
-
-
-/* my top games section*/
-
-.gameIcon1{grid-area: gameIcon1;
-    border-bottom: 2px solid black;
-
-}
-
-.gameTitle1{grid-area: gameTitle1;
-    border-bottom: 2px solid black;
-    font-weight: bold;
-
-}
-
-.gameTags1{grid-area: gameTags1;
-    border-bottom: 2px solid black;
-
-}
-
-.gameIcon2{
-    grid-area: gameIcon2;
-
-}
-
-.gameTitle2{grid-area: gameTitle2;
-    font-weight: bold;
-}
-
-.gameTags2{grid-area: gameTags2;
-}
-
-
-.games-container-profile{
-    display: grid;
-    grid-template-areas: 
-    'gameIcon1 gameTitle1 gameTags1 '
-    'gameIcon2 gameTitle2 gameTags2 ';
-    padding: 25px;
-
-
-}
-
-.games-container-profile > div {
+.profileItem {
+    background-color: #f2e1ff;
+    box-shadow: 5px 5px 5px lightblue;
+    font-size: 30px;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
     text-align: center;
-    padding: 20px;
-    background-color: #c985ff;
 
-
+    button {
+        border: none;
+        background-color: #f2e1ff;
+        width: 100%;
+        font-family: 'Kanit';
+        font-size: 30px;
+        border-radius: 15px;
+        cursor: pointer;
+    }
 }
 
-#marioIcon{
-    width:100px;
-    height:100px;
+.gameIcon {
+    width: 200px;
 }
 
-#taureanIcon{
-    width:100px;
-    height:100px;
-}
 
-.profile-break{
-    flex-basis: 100%;
-    height: 0;
-}
+#top-games {
+    ul{
+        display: flex;
+        flex-direction: row;
 
-@media only screen and (width < 700px) {
-   .games-container-profile{
-    margin-bottom: 175px;
-   }
+        @media (max-width: 700px){
+            flex-direction: column;
+        }
+    }
+
+    li {
+        .topGamesImage > img {
+            padding: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        height: 300px;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f2e1ff;
+        border-radius: 15px;
+        padding: 15px;
+        font-size: 24px;
+        margin: 10px;
+        box-shadow: 5px 5px 5px lightblue;
+        border: double 4px lightblue;
+    }
+
+    li:hover {
+        transform: scale(1.02);
+    }
 }
