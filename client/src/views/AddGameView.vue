@@ -39,6 +39,7 @@
         gameData.append('googlePrice', googlePrice);
         gameData.append('appStorePrice', appStorePrice);
         gameData.append('genre', genre);
+        gameData.append('publisher', username.value);
         gameData.append('imageFile', imageFile.files[0]);
 
         console.log('POSTING GAME');
