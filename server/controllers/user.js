@@ -155,7 +155,7 @@ router.get('/getAccount', (req, res) => {
     const { username, password } = req.query;
     // Check credentials against the database
 
-    databaseConnection.query('SELECT * FROM users WHERE username = ?', [username], (err, results) => {
+    databaseConnection.query('SELECT username, role FROM users WHERE username = ?', [username], (err, results) => {
       if (err) {
         console.error('Error executing query:', err);
         return res.status(500).send('Internal server error');
@@ -166,7 +166,7 @@ router.get('/getAccount', (req, res) => {
         //return res.status(401).send('Unauthorized');
       }
       // If user exists and credentials are correct, you can send some data back
-      res.status(201).send("User with provided username and password")
+      res.status(201).json(results);
       //res.json({ message: 'User authenticated successfully', user: results[0] });
     });
   });
