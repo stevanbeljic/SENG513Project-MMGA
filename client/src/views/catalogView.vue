@@ -4,6 +4,7 @@ import "../assets/header.css";
 import "../assets/catalog.css";
 import navbar from "../components/navbarView.vue";
 import bottomNavbar from '@/components/bottomNavbarView.vue';
+import router from "@/router";
 </script>
 
 <script>
@@ -34,6 +35,12 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
                 .then(res => res.json())
                 .then(data => this.games = data)
                 .catch(err => console.log(err.message));
+        },
+        methods: {
+            handleClick: function(e){
+                console.log(e)
+                router.push({ name: 'game', params: { id: e }})
+            }
         }
     };
 </script>
@@ -74,12 +81,12 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
             </a>
             </div> -->
 
-            <div v-for="item in filteredGames" :key="item.id" class="newsItem">
-                <a href="/game">
+            <div v-for="item in filteredGames" :key="item.id" class="newsItem" v-on:click=handleClick(item.id)>
+                <!-- <a href={{ }}> -->
                     <img src="../components/icons/mario.jpg"/>
                     <p>{{ item.name }}</p>
                     <p class="articleDesc">{{ item.description }}</p>
-                </a>
+                <!-- </a> -->
             </div>
         </div>
     </div>
