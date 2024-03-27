@@ -64,7 +64,7 @@
                         <input id="ag-google-play" type="text" placeholder="$0.00">
                         <input id="ag-app-store" type="text" placeholder="$0.00">
                         <select id="ag-genre">
-                            <option disable selected value>genre</option>
+                            <option value="" disabled selected>genre</option>
                             <option value="adventure">adventure</option>
                             <option value="horror">horror</option>
                             <option value="rpg">rpg</option>
