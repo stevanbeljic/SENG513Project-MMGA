@@ -40,10 +40,10 @@ import router from "../router/index.js";
                 <h2 class="text-headers">Login</h2>
             </div>
             <div class="form-input">
-                <input type="text" v-model="username" placeholder="Username" required>
+                <input type="text" v-model="username" placeholder="Username" required id="username-field">
             </div>
             <div class="form-input">
-                <input type="password" v-model="password" placeholder="Password" required>
+                <input type="password" v-model="password" placeholder="Password" required id="password-field">
                 <a class="login-link" href="https://www.google.com/"><p>Forgot Password</p></a>
             </div>
             <div id="login-button">
