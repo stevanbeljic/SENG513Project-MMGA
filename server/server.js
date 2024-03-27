@@ -11,7 +11,7 @@ const gameController = require("./controllers/game");
 const homeController = require("./controllers/home");
 const editProfileController = require("./controllers/editProfile");
 const viewProfileController = require("./controllers/viewProfile");
-
+const discussionController = require("./controllers/discussion");
 // Run the server
 const app = express();
 const PORT = process.env.PORT || 7003;
@@ -25,6 +25,7 @@ app.use("/game", gameController);
 app.use("/", homeController);
 app.use("/editProfile", editProfileController);
 app.use("/viewProfile", viewProfileController);
+app.use("/discussion", discussionController)
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
