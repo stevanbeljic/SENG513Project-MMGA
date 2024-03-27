@@ -20,7 +20,7 @@
     padding: 0px;
     margin-top: 70px;
     background-image: url(../components/icons/banner.jpg);
-    box-shadow: inset 0px 0px 17px 2px #BFEFEB;
+    box-shadow: inset 0px 0px 17px -5px black;
 
     @media (max-width: 700px){
         margin-top: 0px;
