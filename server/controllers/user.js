@@ -26,6 +26,7 @@ router.post('/confirmRequest', (req, res) => {
 router.post('/rejectRequest', (req, res) => {
   const {username} = req.query;
   const {friendUsername} = req.query;
+  console.log(username,'---',friendUsername);
   databaseConnection.query('DELETE FROM friendrequests WHERE requestTo = (SELECT id FROM users WHERE username = ?) AND requestFrom = (SELECT id FROM users WHERE username = ?)', [username, friendUsername], (err, results) => {
     if(err){
       console.error("Error executing deletion query");

@@ -15,8 +15,6 @@
     const updateSessionData = () => {
         loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
         username.value = sessionStorage.getItem('loggedInAs');
-        console.log(loggedIn.value);
-        console.log(username.value);
     };
 
     const confirmRequest = async (friendUsername) => {
@@ -24,9 +22,7 @@
             method: 'POST',
         });
         let status = await response.status;
-        console.log(status);
         if(status === 200){
-            console.log("in here");
             window.location.reload();
         } else {
             alert("Unable to add ", friendUsername ,"'s request");
@@ -39,9 +35,20 @@
         });
 
         let status = await response.status;
-        console.log(status);
         if(status === 200){
-            console.log("in here");
+            window.location.reload();
+        } else {
+            alert("Unable to delete ", friendUsername ,"'s request");
+        }
+    };
+
+    const revokeRequest = async (friendUsername) => {
+        const response = await fetch(`http://localhost:7003/user/rejectRequest?username=${friendUsername}&friendUsername=${username.value}`, {
+            method: 'POST',
+        });
+
+        let status = await response.status;
+        if(status === 200){
             window.location.reload();
         } else {
             alert("Unable to delete ", friendUsername ,"'s request");
@@ -51,8 +58,6 @@
     const incomingFriendsRequestList = ref([]);
     const fetchIncomingFriendRequests = async () => {
             const route = "http://localhost:7003/user/getIncomingFriendRequests?username=" + username.value;
-            console.log(route);
-            console.log(username.value);
             const response = await fetch(route, {
                 method: "GET",
                 headers: {
@@ -64,14 +69,11 @@
             });
 
             incomingFriendsRequestList.value = await response.json();
-            console.log(incomingFriendsRequestList.value);
     };
 
     const outgoingFriendsRequestList = ref([]);
     const fetchOutgoingFriendRequests = async () => {
             const route = "http://localhost:7003/user/getOutgoingFriendRequests?username=" + username.value;
-            console.log(route);
-            console.log(username.value);
             const response = await fetch(route, {
                 method: "GET",
                 headers: {
@@ -83,7 +85,6 @@
             });
 
             outgoingFriendsRequestList.value = await response.json();
-            console.log(outgoingFriendsRequestList.value);
     };
 
   onMounted(async () => {
@@ -103,7 +104,7 @@
 
   window.addEventListener('storage', updateSessionData);
 
-  defineExpose({loggedIn, username, confirmRequest, rejectRequest});
+  defineExpose({loggedIn, username, confirmRequest, rejectRequest, revokeRequest});
 
 
 </script>
@@ -151,7 +152,7 @@
                 <li class="outgoingFriendReq" v-for="friend in outgoingFriendsRequestList" :key="friend.username">
                     <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
                     <p class = "friendReq1">{{ friend.username }}</p>
-                    <button class = "deny">Cancel</button>
+                    <button class = "deny" @click="revokeRequest(friend.username)">Cancel</button>
                 </li>
             </ul>
         </div>
