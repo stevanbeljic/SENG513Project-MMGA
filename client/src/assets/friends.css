@@ -20,6 +20,7 @@
     padding: 0px;
     margin-top: 70px;
     background-image: url(../components/icons/banner.jpg);
+    box-shadow: inset 0px 0px 17px 2px #BFEFEB;
 
     @media (max-width: 700px){
         margin-top: 0px;
@@ -86,7 +87,8 @@
         border: 1px solid #C985FF;
         text-align: left;
         font-size: 24px;
-        align-items: center;        
+        align-items: center;     
+        box-shadow: 5px 5px 5px 0px #BFEFEB;   
 
         p {
             width: 200px;

@@ -69,8 +69,10 @@
             <div class = "item1"><img src = "../components/icons/user.svg" id ="users-icon"></div>
             <div class = "item2" id="usernameDiv" v-text="username"></div>
             <div class = "item3"> <RouterLink to="/editProfile"><button class ="edit-btn">Edit Profile</button></RouterLink></div>
-            <div class = "item4" id="bioDiv" v-text="userBio"></div>
-            <div class = "item5"><button class = "logout-btn" @click="logout">Logout </button></div>
+            <div id="profileViewBioLogoutDiv">
+                <div id="bioDiv" v-text="userBio"></div>
+                <div><button class = "logout-btn" @click="logout">Logout </button></div>
+            </div>
         </div>
         <div class = "profile-break"></div>
         <h1 id = "myTopGames">My Top Games</h1>

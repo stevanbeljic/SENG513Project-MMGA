@@ -1,8 +1,6 @@
 <script setup>
   import bottomNavbar from '@/components/bottomNavbarView.vue';
   import { onMounted, ref } from 'vue';
-  import VueMq from 'vue-mq';
-  import { RouterLink } from 'vue-router';
   import "../assets/footer.css";
   import "../assets/header.css";
   import "../assets/home.css";

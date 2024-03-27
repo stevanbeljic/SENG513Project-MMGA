@@ -1,8 +1,8 @@
 .item1 {
     grid-area: icon;
-
 }
-.item2 {grid-area: username;
+.item2 {
+    grid-area: username;
     background-color: #f2e1ff;
     font-size: 24px;
     box-shadow: 5px 5px 5px lightblue;
@@ -13,24 +13,9 @@
 
 }
 
-.item3 {grid-area: edit-profile;
+.item3 {
+    grid-area: edit-profile;
     background-color: #e5c4ff;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px lightblue;
-
-}
-
-.item4 {grid-area: bio;
-    background-color: #f2e1ff;
-    white-space: initial; /*This should wrap the text to a new line if users have a long bio */
-    box-shadow: 5px 5px 5px lightblue;
-
-}
-
-.item5{
-    grid-area: logout-text;
-    border: #e5c4ff;
-    background-color: #ec402d;
     border-radius: 8px;
     box-shadow: 5px 5px 5px lightblue;
 
@@ -40,9 +25,9 @@
     display: grid;
     grid-template-areas: 
     'icon username username username edit-profile edit-profile'
-    'logout-text bio bio bio bio bio'
-    'logout-text bio bio bio bio bio'
-    'logout-text bio bio bio bio bio';
+    'bio bio bio bio bio bio'
+    'bio bio bio bio bio bio'
+    'bio bio bio bio bio bio';
     gap: 25px;
     padding: 10px;
     justify-content: center;
@@ -56,8 +41,52 @@
 }
 
 #users-icon {
-    width:15vw;
-    height:15vh;
+    width:150px;
+    height:150px;
+}
+
+#profileViewBioLogoutDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    grid-area: bio;
+
+    div {
+        max-width: 90%;
+        min-width: 90%;
+        margin: 15px;
+    }
+
+    #bioDiv {
+        background-color: #e5c4ff;
+        font-size: 24px;
+        border-radius: 8px;
+        box-shadow: 5px 5px 5px lightblue;
+        padding: 30px 20px 30px 20px;
+        text-align: start;
+    }
+
+    button {
+        border: none;
+        color: black;
+        cursor: pointer;
+        border-radius: 8px;
+        background-color: #ec402d;
+        box-shadow: 5px 5px 5px lightblue;
+        font-family: "kanit";
+        font-size: 24px;
+        width: 100%;
+        padding: 20px 40px 20px 40px;
+        text-align: center;
+        margin: 0;
+    }
+
+    button:hover {
+        transform: scale(1.02);
+        color: white;
+    }
 }
 
 .edit-btn {
@@ -72,16 +101,6 @@
 
 .edit-btn:hover, .logout-btn:hover{
     color:white;
-}
-
-.logout-btn {
-    border: none;
-    color: black;
-    cursor: pointer;
-    border-radius: 8px;
-    background-color: #ec402d;
-    font-family: "kanit";
-    font-size: 24px;
 }
 
 h1 {
