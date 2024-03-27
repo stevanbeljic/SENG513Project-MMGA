@@ -15,3 +15,16 @@ router.get('/getAllGames', (req, res) => {
         }
     })
 });
+
+router.get('/getGameById', (req, res) => {
+    const {id} = req.query;
+    databaseConnection.query('SELECT * FROM game WHERE id=?', [id],(err, results) => {
+        if (err) {
+          console.error('Error executing query:', err);
+          return res.status(500).send('Internal server error');
+        }
+        else{
+            res.json(results);
+        }
+    })
+});

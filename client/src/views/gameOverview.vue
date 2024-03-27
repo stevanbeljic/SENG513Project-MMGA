@@ -5,6 +5,33 @@ import "../assets/header.css";
 import "../assets/home.css";
 import navbar from "../components/navbarView.vue";
 import bottomNavbar from '@/components/bottomNavbarView.vue';
+import { useRoute } from 'vue-router';
+
+</script>
+<script>
+    export default {
+        setup(){
+            const route = useRoute();
+            return {route};
+        },
+        mounted() {
+            console.log(this.$route.params.id)
+            let bRoute = "http://localhost:7003/game/getGameById?id="+ this.$route.params.id; 
+            console.log(bRoute);
+            fetch(bRoute, {method: "GET"})
+            .then(res => res.json())
+            .then(data => {this.game = data[0]
+            console.log(this.game)})
+            .catch(err => console.log(err.message));
+        },
+        data() {
+            return{
+                game: '',
+            }
+        }
+
+
+    }
 </script>
 <template>
     <head>
@@ -18,17 +45,17 @@ import bottomNavbar from '@/components/bottomNavbarView.vue';
             <div id="cover-image">
                 <img src = "../components/icons/mario.jpg"/>
             </div>
-            <h1 id="game-name">Evil Mario</h1>
-            <h3 id="publisher-name">by: Nintendo Games</h3>
-            <h3 id="game-categories">Horror, Thriller</h3>
-            <p id="game-description">Step into the shadows with 'Evil Mario,' where Luigi must confront his corrupted brother in a chilling battle of light versus darkness</p>
+            <h1 id="game-name"> {{ game.name }}</h1>
+            <h3 id="publisher-name">by: {{ game.publisher }}</h3>
+            <h3 id="game-categories">Genre: {{ game.genre }}</h3>
+            <p id="game-description">{{ game.description }}</p>
             <div id="appStore-info" class="store-info">
                 <img src="../components/icons/app-store-icon.jpg"/>
-                <p>$0.99</p>
+                <p>${{ game.appstoreprice }}</p>
             </div>
             <div id="playStore-info" class="store-info">
                 <img src="../components/icons/playstore-icon.svg"/>
-                <p>$0.99</p>
+                <p>${{ game.playstoreprice }}</p>
             </div>
         </div>
         <div class="discussions-container">

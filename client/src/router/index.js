@@ -1,18 +1,18 @@
 import catalogView from '@/views/catalogView.vue'
 import GameOverview from '@/views/gameOverview.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import AddGameView from '../views/AddGameView.vue'
+import CommentView from "../views/CommentView.vue"
 import HomeView from '../views/HomeView.vue'
 import loginView from '../views/LoginView.vue'
 import signUpView from '../views/SignUpView.vue'
-import discussionView from '../views/discussionView.vue'
-import friendsView from '../views/friendsView.vue'
-import profileView from '../views/profileView.vue'
-import editProfileView from '../views/editProfileView.vue'
-import AddGameView from '../views/AddGameView.vue'
-import postView from '../views/postView.vue'
-import CommentView from "../views/CommentView.vue"
-import friendRequestView from '../views/friendRequestView.vue'
 import addFriendView from '../views/addFriendView.vue'
+import discussionView from '../views/discussionView.vue'
+import editProfileView from '../views/editProfileView.vue'
+import friendRequestView from '../views/friendRequestView.vue'
+import friendsView from '../views/friendsView.vue'
+import postView from '../views/postView.vue'
+import profileView from '../views/profileView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -37,7 +37,7 @@ const router = createRouter({
       component: catalogView
     },
     {
-      path: '/game',
+      path: '/game/:id',
       name: 'game',
       component: GameOverview
     },
