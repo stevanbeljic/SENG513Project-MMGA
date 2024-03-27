@@ -37,6 +37,7 @@
         router.push("/");
         sessionStorage.setItem("loggedIn", "false");
         sessionStorage.setItem("loggedInAs", null);
+        sessionStorage.setItem("loggedInRole", "guest");
     }
 
     onMounted(async () => {
