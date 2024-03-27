@@ -10,7 +10,7 @@
     grid-area: confirm;
     background-color: rgb(76, 237, 103);
     border-color: white;
-    height: 5vh;
+    height: 40px;
     border-radius: 5px;
     text-decoration: none;
     margin: 10px;
@@ -25,7 +25,7 @@
     grid-area: deny;
     background-color: rgb(237, 95, 76);
     border-color: white;
-    height: 5vh;
+    height: 40px;
     border-radius: 5px;
     text-decoration: none;
     border: none;
