@@ -51,7 +51,11 @@
 
 @media only screen and (width < 700px) {
     #update{
-     margin-bottom: 175px;
+        margin-bottom: 75px;
+    }
+
+    #editProfile-form {
+        margin-top: 70px;
     }
  }
  
