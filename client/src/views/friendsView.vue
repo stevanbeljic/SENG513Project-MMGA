@@ -63,10 +63,14 @@
     <header class = "header-section">
         <navbar></navbar>
     </header>
-    <div class="page-container">
+    <div class="friend-page-container">
         <div class = "top-section">
-            <img src = "../components/icons/user.svg" id = "friends-loggedin-user-icon">
-            <h1 v-text="username+'\'s Friends'"></h1>
+            <div>
+                <img src = "../components/icons/user.svg" id = "friends-loggedin-user-icon">
+            </div>
+            <div>
+                <h1 v-text="username+'\'s Friends'"></h1>
+            </div>
         </div>
         <div class = "section-break">
             <button class ="friends-btn"><RouterLink to = "/friends">Friends</RouterLink> </button>

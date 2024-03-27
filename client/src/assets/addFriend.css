@@ -9,11 +9,22 @@
     padding: 14px;
     margin-top: 20px;
     box-shadow: 5px 5px 5px lightblue;
+    width: 80%;
+}
 
+#search {
+    width: 100%;
 }
 
 #search-btn:hover{
     color:white;
+}
+
+.addFriendForm-inputs {
+    p {
+        margin-bottom: 0;
+        text-align: start;
+    }
 }
 
 .addFriendForm-inputs > input{
@@ -26,8 +37,6 @@
 
 }
 
-
- 
  #addFriend-text{
     border-bottom-style: solid;
     border-bottom-color: #111;
@@ -35,6 +44,11 @@
 
  #addFriend-form{
     padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
  }
 
  @media only screen and (width < 700px){

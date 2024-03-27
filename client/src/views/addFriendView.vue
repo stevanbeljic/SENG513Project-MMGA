@@ -20,6 +20,9 @@
     };
 
     const sendRequest = async () => {
+        if(friendUser.value == null || friendUser.value == ""){
+            return;
+        }
         if(username.value===friendUser.value){
             alert("Invalid friend request.");
             window.location.reload();
@@ -57,31 +60,35 @@
     <header class = "header-section">
         <navbar></navbar>
     </header>
-    <div class="page-container">
+    <div class="friend-page-container">
         <div class = "top-section">
-            <img src = "../components/icons/user.svg" id = "friends-loggedin-user-icon">
-            <h1 v-text="username+'\'s Requests'"></h1>
+            <div>
+                <img src = "../components/icons/user.svg" id = "friends-loggedin-user-icon">
+            </div>
+            <div>
+                <h1 v-text="username+'\'s Requests'"></h1>
+            </div>
         </div>
         <div class = "section-break">
             <button class ="friends-btn"><RouterLink to = "/friends">Friends</RouterLink> </button>
             <button class ="friends-btn" id ="request-btn"><RouterLink to = "/friendRequest">Requests</RouterLink></button>
             <button class ="friends-btn"> <RouterLink to = "/addFriend">Add A Friend</RouterLink></button>
         </div>
-        <div class = "addFriend-section">
+        <div id = "addFriendDiv">
             <form id="addFriend-form" @submit.prevent="getFormValues">
-            <div id="addFriend-header">
-                <h2 id = "addFriend-text">Add Friend</h2>
-            </div>
-            <div class = "profile-break"></div>
-            <div class="addFriendForm-inputs">
-                <p>Username </p>
-                <input type="text" v-model="friendUser" placeholder="Username" id="friendUser">
-            </div>
+                <div id="addFriend-header">
+                    <h2 id = "addFriend-text">Add Friend</h2>
+                </div>
+                <div class = "profile-break"></div>
+                <div class="addFriendForm-inputs">
+                    <p>Username </p>
+                    <input type="text" v-model="friendUser" placeholder="Username" id="friendUser">
+                </div>
 
-            <div id="search">
-                <button type="submit" id = "search-btn" @click="sendRequest()">Add</button>
-            </div>
-        </form>
+                <div id="search">
+                    <button type="submit" id = "search-btn" @click="sendRequest()">Add</button>
+                </div>
+            </form>
         </div>
     </div>
     <footer class="footer-section">

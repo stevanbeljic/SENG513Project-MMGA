@@ -20,9 +20,10 @@ h2 {
 }
 
 #dashboardDiv {
-    margin-top: 11vh;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
+    overflow:hidden;
 
     @media (max-width: 700px){
         margin-top: 0;
