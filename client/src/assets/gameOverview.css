@@ -1,132 +1,106 @@
-.game-overview{
-    border-radius: 5px;
-    background-color: #F2E1FF;
-    margin: 2%;
-    padding: 2% 0;
-    width: 96%;
-    height: auto;
-    display: grid;
-    
-    @media (width > 700px) {
-        grid-template-columns: 50% 30% 20%;
-        grid-template-areas: 
-        "img title app"
-        "img dev app"
-        "img . play"
-        "img genre play"
-        "img desc desc"
-        "img desc desc";
+.body-container {
+    display: flex;
+    margin-top: 10vh;
+    flex-direction: column;
+    align-items: center;
+
+    @media only screen and (width <= 700px) {
+        margin-top: 10px;
+        padding-bottom: 15vh;
     }
-    @media (width <= 700px) {
-        grid-template-columns: 70% 30%;
-        grid-template-areas: 
-        "img img"
-        "title app"
-        "dev app"
-        "genre play"
-        ". play"
-        "desc desc"
-        "desc desc";
-    }
-    
 }
 
-#cover-image{
-    grid-area: img;
+.game-overview{
+    background-color: #EBD1FF;
+    margin: 10px;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    flex-direction: row;
+    @media (width <= 700px) {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+#cover-image{
+    justify-content: center;
+    align-items: center;
+    margin: 0px 3vw;
+    padding: 20px;
+}
+
+#game-information {
+    display: grid;
+    grid-template-areas: 
+        'details'
+        'desc';
+    grid-row-gap: 5vw;
+    margin: 0px 3vw;
+    padding: 10px;
+}
+
+#game-details {
+    grid-area: details;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    @media (width <= 700px) {
+        flex-direction: column;
+    }
 }
 
 #cover-image > img {
-    width: auto;
-    min-width: 80%;
-    height: auto;
-    max-height: 90%;
-    border-radius: 10px;
+    height: 20vw;
 }
 
-#game-name{
-    grid-area: title;
-    margin: 0 0 0 5%;
+#advanced-details {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    @media (width <= 700px) {
+        flex-direction: row;
+    }
 }
 
-#publisher-name{
-    grid-area: dev;
-    margin: 0 0 0 5%;
-}
-
-#game-categories{
-    grid-area: genre;
-    margin: 0 0 0 5%;
+#basic-details {
+    margin-left: 10px;
 }
 
 #game-description{
     grid-area: desc;
-    margin: 0 0 0 5%;
 }
 
-#appStore-info{
-    grid-area: app;
+#game-publisher > h1, #game-publisher > p {
+    margin: 0px;
+}
+
+.store-info {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    margin: 10px;
 }
 
-#appStore-info > img {
+#app-store, #play-store {
+    width: 50px;
+    height: 50px;
+}
+
+#app-store {
     border-radius: 15px;
 }
 
-#playStore-info{
-    grid-area: play;
+.store-info > p {
+    margin-left: 10px;
 }
 
-.store-info{
-    margin: 5% 0;
+#overview-discussion-section {
+    width: 90%;
 }
 
-.store-info > img{
-    @media (width > 700px) {
-        width: 70px;
-        height: 70px;
-    }
-    @media (width <= 700px) {
-        width: 30px;
-        height: 30px;
-    }
-}
-
-#game-overview > h1, #game-overview > h2, #game-overview > h3{
-    margin: 0 0 0 5% ;
-}
-
-#game-overview > p{
-    margin: 0 0 0 2.5%
-}
-
-.discussions-container{
-    margin: 2%;
-    padding: 2% 0 120px 0;
-    width: 96%;
-    display: block;
-}
-
-.discussion-div{
-    width: 100%;
-}
-
-.odd{
-    background-color: #EBD1FF;
-}
-
-.even{
-    background-color: #F2E1FF;
-}
-
-.discussion-div > h2{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-size: 2rem;
+#discussion-label {
+    margin-top: 5vh;
+    margin-bottom: 5px;
 }

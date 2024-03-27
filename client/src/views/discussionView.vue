@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div class="discussion-view-all-section">
-                <button id="discussion-view-all-button">↪ VIEW ALL</button>
+                <button class="discussion-view-all-button">↪ VIEW ALL</button>
             </div>
         </div>
     </div>
