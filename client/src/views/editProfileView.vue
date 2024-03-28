@@ -29,7 +29,7 @@
         });
 
         if(response.status==200){
-            router.push("/profile");
+            router.push("/profile/"+username.value);
         } else {
             alert("Unable to update account information");
         }
