@@ -80,22 +80,14 @@ import { useRoute } from 'vue-router';
                 </div>
             </div>
         </div>
-        <div class="discussion-list-section" id="overview-discussion-section" v-for="discussion in discussions" :key="discussion.discussion_id">
+        <div class="discussion-list-section" id="overview-discussion-section">
             <h1 id="discussion-label">Discussions Board</h1>
-            <div class="discussion-list-box">
+            <div class="discussion-list-box" v-for="discussion in discussions" :key="discussion.discussion_id">
                 <div><h3>{{ discussion.title }}</h3></div>
                 <div><button class="discussion-like-button">❤︎</button></div>
             </div>
-            <div class="discussion-list-box">
-                <div><h3>When is the next update coming out? It’s been forever and the games getting stale</h3></div>
-                <div><button class="discussion-like-button">❤︎</button></div>
-            </div>
-            <div class="discussion-list-box">
-                <div><h3>Secret level!</h3></div>
-                <div><button class="discussion-like-button">❤︎</button></div>
-            </div>
             <div class="discussion-view-all-section">
-                <button id="discussion-view-all-button">↪ VIEW ALL</button>
+                <button class="discussion-view-all-button">↪ VIEW ALL</button>
             </div>
         </div>
     </div>

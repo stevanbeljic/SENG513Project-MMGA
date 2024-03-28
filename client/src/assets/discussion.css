@@ -70,7 +70,7 @@
     color: red;
 }
 
-#discussion-view-all-button {
+.discussion-view-all-button {
     border: none;
     background-color: #EBD1FF;
     padding: 10px;
