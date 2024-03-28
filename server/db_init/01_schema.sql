@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     role VARCHAR(10) NOT NULL,
     username VARCHAR(20) UNIQUE NOT NULL,
-    password VARCHAR(30) NOT NULL,
+    password VARCHAR(100) NOT NULL,
     bio VARCHAR(150)
 );
 

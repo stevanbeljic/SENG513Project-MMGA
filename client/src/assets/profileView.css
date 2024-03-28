@@ -75,6 +75,10 @@
                 width: 200px;
             }
         }
+
+        button:hover {
+            background-color: red;
+        }
     }
 }
 
