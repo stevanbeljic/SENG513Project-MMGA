@@ -56,8 +56,8 @@
 
     <body>
         <div class="page-container">
-            <div class ="back-arrow"><RouterLink to = "/profile"> <img src = "../components/icons/backArrow.svg" id = "arrow-img"> </RouterLink></div>
-            <RouterLink to ="/profile"><p class = "back-text"> Back to User Profile</p></RouterLink>
+            <div class ="back-arrow"><RouterLink :to="`/profile/${username}`"> <img src = "../components/icons/backArrow.svg" id = "arrow-img"> </RouterLink></div>
+            <RouterLink :to="`/profile/${username}`"><p class = "back-text"> Back to User Profile</p></RouterLink>
 
             <form id="editProfile-form" @submit.prevent="submitForm">
                 <div id="editProfile-header">

@@ -52,7 +52,7 @@ const router = createRouter({
       component: discussionView
     },
     {
-      path: '/profile',
+      path: '/profile/:username',
       name: 'profile',
       component: profileView
     },

@@ -5,18 +5,22 @@
     import navbar from "../components/navbarView.vue";
     import "../assets/profileView.css";
     import bottomNavbar from '@/components/bottomNavbarView.vue';
-    import { onMounted, ref } from 'vue';
+    import { onMounted, ref, watch } from 'vue';
+    import { useRoute } from 'vue-router';
     import router from "@/router";
+
+    let route = useRoute();
 
     let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
     let username = ref(sessionStorage.getItem('loggedInAs'));
     let userBio = ref('');
+    let profileUsername = ref('');
 
     const updateSessionData = () => {
         loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
         username.value = sessionStorage.getItem('loggedInAs');
+        
     };
-
 
     const userData = ref([]);
     const fetchUserInfo = async () => {
@@ -25,11 +29,11 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username: username.value })
+            body: JSON.stringify({ username: profileUsername.value })
         });
         const data = await response.json();
         userData.value = data;
-        username.value = data[0].username;
+        profileUsername.value = data[0].username;
         userBio.value = data[0].bio;
     }
 
@@ -42,6 +46,9 @@
 
     onMounted(async () => {
         updateSessionData();
+        const route = useRoute();
+        profileUsername.value = route.params.username;
+
         if(loggedIn.value != true){
             router.push("/login");
         } else {
@@ -53,8 +60,13 @@
         }
     });
 
+    watch(() => route.params.username, async (newUsername) => {
+        profileUsername.value = newUsername;
+        await fetchUserInfo();
+    });
+
     window.addEventListener('storage', updateSessionData);
-    defineExpose({loggedIn, username, userBio, logout});
+    defineExpose({loggedIn, username, userBio, logout, profileUsername});
 
 </script>
 <template>
@@ -69,8 +81,8 @@
         <div class="profileSubDiv">
                 <img src = "../components/icons/user.svg" id ="users-icon">
             <div class="userEditDiv">
-                <div class = "profileItem" id="usernameDiv" v-text="username"></div>
-                <div class = "profileItem"> <RouterLink to="/editProfile">
+                <div class = "profileItem" id="usernameDiv" v-text="profileUsername"></div>
+                <div v-if="profileUsername===username" class = "profileItem"> <RouterLink to="/editProfile">
                     <button class ="edit-btn">Edit Profile</button>
                 </RouterLink></div>
             </div>
@@ -78,7 +90,7 @@
         <div class="profileSubDiv">
             <div id="profileViewBioLogoutDiv">
                 <div class="profileItem" id="bioDiv" v-text="userBio"></div>
-                <button class = "logout-btn" @click="logout">Logout </button>
+                <button v-if="profileUsername===username" class="logout-btn" @click="logout">Logout </button>
             </div>
         </div>
         <div class = "profile-break"></div>

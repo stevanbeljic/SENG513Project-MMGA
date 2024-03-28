@@ -84,8 +84,10 @@
                     <p class="friend">0 friends :(</p>
                 </li>
                 <li v-for="friend in friendsList" :key="friend.username">
-                    <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
-                    <p class = "friend">{{ friend.username }}</p>
+                    <router-link :to="{ name: 'profile', params: { username: friend.username } }">
+                        <div><img src = "../components/icons/user.svg" class = "friends-user-icon"></div>
+                        <p class = "friend">{{ friend.username }}</p>
+                    </router-link>
                 </li>
             </ul>            
         </div>

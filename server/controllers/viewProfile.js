@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const databaseConnection = require('../model/model');
 
-//retrieves the feed for the user
 router.post('/', async (req, res) => {
     const {username} = req.body;
     databaseConnection.query('SELECT username, role, bio FROM users where username = ?', [username], (error, result) => {
