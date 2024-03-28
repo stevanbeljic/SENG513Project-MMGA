@@ -52,12 +52,13 @@ CREATE TABLE IF NOT EXISTS discussion (
 
 CREATE TABLE IF NOT EXISTS comments (
     comment_text VARCHAR(2500),
-    comment_ordinal INT NOT NULL,
-    discussion_id INT,
-    poster_id INT,
+    comment_ordinal INT AUTO_INCREMENT,
+    discussion_id INT NOT NULL,
+    poster_id INT NOT NULL,
     FOREIGN KEY (discussion_id) REFERENCES discussion(discussion_id),
     FOREIGN KEY (poster_id) REFERENCES users(id),
-    PRIMARY KEY (discussion_id, poster_id, comment_ordinal)
+    PRIMARY KEY (comment_ordinal),
+    UNIQUE (discussion_id, comment_ordinal)
 );
 
 CREATE TABLE IF NOT EXISTS friendrequests (

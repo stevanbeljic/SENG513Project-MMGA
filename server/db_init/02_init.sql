@@ -78,24 +78,24 @@ VALUES (NULL, 'What am I Supposed to do?', 'This game lacks a tutorial that expl
 Might be a good thing for the developer to add as currently I no longer want to play the game', '10', '3', '2024-03-05');
 
 -- Comment Seeding
-INSERT IGNORE INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
-VALUES ('It really is not that hard kid. You must just be really bad at the game lol', '1', '1', '2');
+INSERT IGNORE INTO `comments` (`comment_text`, `discussion_id`, `poster_id`) 
+VALUES ('It really is not that hard kid. You must just be really bad at the game lol', '1', '2');
 
-INSERT IGNORE INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
-VALUES ('Hey thats not nice :( I am trying really hard but I am just stuck', '2', '1', '1');
+INSERT IGNORE INTO `comments` (`comment_text`, `discussion_id`, `poster_id`) 
+VALUES ('Hey thats not nice :( I am trying really hard but I am just stuck', '1', '1');
 
-INSERT IGNORE INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
+INSERT IGNORE INTO `comments` (`comment_text`, `discussion_id`, `poster_id`) 
 VALUES ('Ok ok I am sorry, how you win is run away every time he winds up for a power attack,
-and only go after him after he becomes vulnerable', '3', '1', '2');
+and only go after him after he becomes vulnerable', '1', '2');
 
-INSERT IGNORE INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
-VALUES ('Thank you for the feedback. Maybe in the future we can collaborate on another hit game!', '1', '4', '3');
+INSERT IGNORE INTO `comments` (`comment_text`, `discussion_id`, `poster_id`) 
+VALUES ('Thank you for the feedback. Maybe in the future we can collaborate on another hit game!', '4', '3');
 
-INSERT IGNORE INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
-VALUES ('Thank you for your feedback. I will look into adding something like what you suggested so that the game is easier to play.', '1', '1', '7');
+INSERT IGNORE INTO `comments` (`comment_text`, `discussion_id`, `poster_id`) 
+VALUES ('Thank you for your feedback. I will look into adding something like what you suggested so that the game is easier to play.', '1', '7');
 
-INSERT IGNORE INTO `comments` (`comment_text`, `comment_ordinal`, `discussion_id`, `poster_id`) 
-VALUES ('This is a hilarious review for this game. Yes there are some jump scares but it is really not that bad.', '1', '3', '10');
+INSERT IGNORE INTO `comments` (`comment_text`, `discussion_id`, `poster_id`) 
+VALUES ('This is a hilarious review for this game. Yes there are some jump scares but it is really not that bad.', '3', '10');
 
 -- Friend request seesing
 INSERT IGNORE INTO `friendrequests` (`requestTo`, `requestFrom`) VALUES ('1', '3');
