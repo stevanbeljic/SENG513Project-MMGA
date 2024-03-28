@@ -13,9 +13,10 @@ var storageDef = multer.diskStorage({
 
 const upload = multer({storage: storageDef,});
 module.exports = router;
+let defaultImage = '/uploads/defaultImage.svg';
 
 router.get('/getAllGames', (req, res) => {
-    let defaultImage = '/uploads/defaultImage.svg';
+    
     databaseConnection.query('SELECT * FROM game',(err, results) => {
         if (err) {
           console.error('Error executing query:', err);
@@ -28,7 +29,6 @@ router.get('/getAllGames', (req, res) => {
                 }
             });
 
-            console.log(results);
             return res.json(results);
         }
     })
@@ -42,6 +42,9 @@ router.get('/getGameById', (req, res) => {
           return res.status(500).send('Internal server error');
         }
         else {
+            if(results[0].thumbnail == null){
+                results[0].thumbnail = defaultImage;
+            }
             res.json(results);
         }
     })

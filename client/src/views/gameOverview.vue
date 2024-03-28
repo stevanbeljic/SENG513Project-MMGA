@@ -47,7 +47,7 @@ import { useRoute } from 'vue-router';
     <div class="body-container">
         <div class="game-overview">
             <div id="cover-image">
-                <img src = "../components/icons/mario.jpg"/>
+                <img :src="'http://localhost:7003' + game.thumbnail" alt="Image Unavailable"/>
             </div>
             <div id="game-information">
                 <div id="game-details">
