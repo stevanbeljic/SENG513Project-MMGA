@@ -83,7 +83,7 @@ import router from "@/router";
 
             <div v-for="item in filteredGames" :key="item.id" class="newsItem" v-on:click=handleClick(item.id)>
                 <!-- <a href={{ }}> -->
-                    <img src="../components/icons/mario.jpg"/>
+                    <img :src="'http://localhost:7003' + item.thumbnail"/>
                     <p>{{ item.name }}</p>
                     <p class="articleDesc">{{ item.description }}</p>
                 <!-- </a> -->

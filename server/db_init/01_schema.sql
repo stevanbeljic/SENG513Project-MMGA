@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS game (
     name VARCHAR(50) NOT NULL UNIQUE,
     description VARCHAR(400) NOT NULL,
     genre VARCHAR(50) NOT NULL,
-    thumbnail VARCHAR(100) NOT NULL, -- relative path to image
+    thumbnail VARCHAR(100), -- relative path to image
     appstoreprice DECIMAL(4, 2),
     playstoreprice DECIMAL(4, 2),
     publisher VARCHAR(20),

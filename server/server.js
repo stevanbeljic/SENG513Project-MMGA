@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 7003;
 // Middleware
 app.use(express.json()); // This line adds JSON parsing middleware
 app.use(cors());
+app.use('/uploads', express.static('uploads')); //used to access images stored in server
 // Routes
 app.use("/user", userController);
 app.use("/game", gameController);

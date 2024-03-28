@@ -15,13 +15,21 @@ const upload = multer({storage: storageDef,});
 module.exports = router;
 
 router.get('/getAllGames', (req, res) => {
+    let defaultImage = '/uploads/defaultImage.svg';
     databaseConnection.query('SELECT * FROM game',(err, results) => {
         if (err) {
           console.error('Error executing query:', err);
           return res.status(500).send('Internal server error');
         }
-        else{
-            res.json(results);
+        else {
+            results.forEach(g => {
+                if (g.thumbnail == null){
+                    g.thumbnail = defaultImage;
+                }
+            });
+
+            console.log(results);
+            return res.json(results);
         }
     })
 });
@@ -41,7 +49,7 @@ router.get('/getGameById', (req, res) => {
 
 router.post('/uploadGame', upload.single('imageFile'), (req, res) => {
     const { title, description, link, googlePrice, appStorePrice, genre, publisher} = req.body;
-    let thumbnail = './uploads/'+req.file.filename;
+    let thumbnail = '/uploads/'+req.file.filename;
 
     databaseConnection.query('SELECT id FROM users WHERE username = ?', [publisher], (err, results) => {
         if (err){

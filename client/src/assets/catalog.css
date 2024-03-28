@@ -71,9 +71,14 @@
     }
 
     .newsItem {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         width: 250px;
         height: 250px;
         background-color: #F2E1FF;
+        padding: 10px;
         border-radius: 20px;
         overflow: hidden;
         margin: 20px;
@@ -92,7 +97,8 @@
         }
 
         img {
-            max-height: 75%;
+            max-height: 150px;
+            margin: 5px;
             width: 100%;
         }
 

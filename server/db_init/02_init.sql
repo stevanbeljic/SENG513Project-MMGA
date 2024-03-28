@@ -32,29 +32,29 @@ INSERT IGNORE INTO `friends` (`user1_id`, `user2_id`) VALUES ('10', '9');
 INSERT IGNORE INTO `friends` (`user1_id`, `user2_id`) VALUES ('9', '10');
 
 -- Game Seeding
-INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
+INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Evil Mario', 'Can you be the first to beat this once heroic Italian plumber turned bad? Step up to the plate and find out for yourself', 
-'Horror', './evil-mario.png', '3.99', '3.49', 'BadGuyGames', '3');
+'Horror', '3.99', '3.49', 'BadGuyGames', '3');
 
-INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
+INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Jumpy Frogs', 'Ribbit. Hop across the pond without falling in. Be sure to watch out for the birds looking for a tastey snack.', 
-'Adventure', './frog-hopping-on-lilypad.jpeg', '12.99', '12.99', NULL, '4');
+'Adventure', '12.99', '12.99', NULL, '4');
 
-INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
+INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Hot Dog Mania', 'Race to be the first to find and eat the most hot dogs befor the timer runs out.', 
-'Indie', './hot-dog-eating.png', '0', '0', 'That Indie Studio', '7');
+'Indie', '0', '0', 'That Indie Studio', '7');
 
-INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
+INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Escape The Jungle', 'Be the first out of the jungle, but be sure to watch out for the wild animals trying to stop you', 
-'Action', './Jungle-animals.jpeg', '2.99', '3.99', NULL, '9');
+'Action', '2.99', '3.99', NULL, '9');
 
-INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
+INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Heisty Heist', 'Attempt to make as much money as possible before being caught by the cops.', 
-'Action', './clown-mask-robbery.png', NULL, NULL, 'BadGuyGames', '3');
+'Action', NULL, NULL, 'BadGuyGames', '3');
 
-INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `thumbnail`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
+INSERT IGNORE INTO `game` (`id`, `name`, `description`, `genre`, `appstoreprice`, `playstoreprice`, `publisher`, `author_id`) 
 VALUES (NULL, 'Rancher Pros 2', 'Run a popular ranch in this relaxing look into another way of life.', 
-'Farming', './tractor.png', '0.99', '0.99', NULL, '9');
+'Farming', '0.99', '0.99', NULL, '9');
 
 -- Discussion Seeding
 INSERT IGNORE INTO `discussion` (`discussion_id`, `title`, `description`, `poster_id`, `game_id`, `post_date`) 
