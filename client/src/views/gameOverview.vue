@@ -6,7 +6,7 @@ import "../assets/home.css";
 import navbar from "../components/navbarView.vue";
 import bottomNavbar from '@/components/bottomNavbarView.vue';
 import { useRoute } from 'vue-router';
-
+import router from "@/router";
 </script>
 <script>
     export default {
@@ -31,6 +31,12 @@ import { useRoute } from 'vue-router';
             return{
                 game: '',
                 discussions: []
+            }
+        },
+        methods: {
+            handleDiscussionClick: function(id){
+                console.log(id)
+                router.push({ name: 'discussionpost', params: { discussionId: id }})
             }
         }
 
@@ -83,7 +89,7 @@ import { useRoute } from 'vue-router';
         <div class="discussion-list-section" id="overview-discussion-section">
             <h1 id="discussion-label">Discussions Board</h1>
             <div class="discussion-list-box" v-for="discussion in discussions" :key="discussion.discussion_id">
-                <div><h3>{{ discussion.title }}</h3></div>
+                <div v-on:click="handleDiscussionClick(discussion.discussion_id)" class="discussionTitle"><h3>{{ discussion.title }}</h3></div>
                 <div><button class="discussion-like-button">❤︎</button></div>
             </div>
             <div class="discussion-view-all-section">
