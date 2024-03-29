@@ -92,7 +92,7 @@ INSERT IGNORE INTO `comments` (`comment_text`, `discussion_id`, `poster_id`)
 VALUES ('Thank you for the feedback. Maybe in the future we can collaborate on another hit game!', '4', '3');
 
 INSERT IGNORE INTO `comments` (`comment_text`, `discussion_id`, `poster_id`) 
-VALUES ('Thank you for your feedback. I will look into adding something like what you suggested so that the game is easier to play.', '1', '7');
+VALUES ('Thank you for your feedback. I will look into adding something like what you suggested so that the game is easier to play.', '5', '7');
 
 INSERT IGNORE INTO `comments` (`comment_text`, `discussion_id`, `poster_id`) 
 VALUES ('This is a hilarious review for this game. Yes there are some jump scares but it is really not that bad.', '3', '10');

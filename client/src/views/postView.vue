@@ -5,6 +5,8 @@
     import { onMounted, ref } from 'vue';
     import navbar from "../components/navbarView.vue";
     import bottomNavbar from '@/components/bottomNavbarView.vue';
+    import { useRoute } from 'vue-router';
+    import router from "@/router";
     let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
     let username = ref(sessionStorage.getItem('loggedInAs'));
 
@@ -22,6 +24,48 @@ window.addEventListener('storage', updateSessionData);
 defineExpose({loggedIn, username});
 </script>
 
+<script>
+    export default {
+        setup(){
+            const route = useRoute();
+            return {route};
+        },
+        mounted() {
+            fetch("http://localhost:7003/discussion/getDiscussionAndPosterById?id=" +  this.$route.params.discussionId, {method: "GET"})
+            .then(res => res.json())
+            .then(data => {
+                this.game_name = data[0].name;
+                this.game_id = data[0].id;
+                this.discussion_title = data[0].title;
+                this.discussion_description = data[0].description;
+                this.poster = data[0].username
+            })
+            .catch(err => console.log(err.message));
+
+            fetch("http://localhost:7003/discussion/getDiscussionResponses?id=" +  this.$route.params.discussionId, {method: "GET"})
+            .then(res => res.json())
+            .then(data => {this.responses = data
+            console.log(this.responses)})
+            .catch(err => console.log(err.message));
+        },
+        data() {
+            return{
+                game_name: '',
+                game_id: '',
+                discussion_title: '',
+                discussion_description: '',
+                poster: '',
+                responses: []
+            }
+        },
+        methods: {
+            backToGame: function(){
+                router.push({ name: 'game', params: { id: this.game_id }})
+            }
+        }
+    }
+</script>
+
 <template>
     <head>
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
@@ -34,13 +78,13 @@ defineExpose({loggedIn, username});
   <body>
     <div id="discussionContent">
         <div id="backButton">
-            <a><p>◁ Back to <span>Evil Mario</span></p></a>
+            <p v-on:click="backToGame">◁ Back to <span>{{ game_name }}</span></p>
         </div>
         <div id="postTitle">
-            <h1>Keep Losing to Luigi >:(</h1>
+            <h1>{{ discussion_title }}</h1>
         </div>
         <div id="postContent">
-            <p>Luigi is seriously not fair to play against! His abilities are way too strong. I need some serious tips if anyone has any. Please help me out!</p>
+            <p> {{ discussion_description }} </p>
         </div>
         <hr/>
         <div id="responseDiv">
@@ -49,7 +93,15 @@ defineExpose({loggedIn, username});
         </div>
         <div id="replies">
             <ul>
-                <li class="replyItem">
+                <li class="replyItem" v-for="response in responses" v-bind:key="response.comment_ordinal">
+                    <div class="replierName">
+                        <p>{{ response.username }}</p>
+                    </div>
+                    <div class="replyMessage">
+                        <p>{{ response.comment_text }}</p>
+                    </div>
+                </li>
+                <!-- <li class="replyItem">
                     <div class="replierName">
                         <p>LuigiH8er27</p>
                     </div>
@@ -72,7 +124,7 @@ defineExpose({loggedIn, username});
                     <div class="replyMessage">
                         <p>Don't worry, it should be pretty easy once you learn how the AI works.</p>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

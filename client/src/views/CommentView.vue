@@ -29,6 +29,7 @@
                         You can't have anything nice nowadays!</p>
                 </div>
             </div>
+            
             <div class="reply-section">
                 <h3>Your Comment</h3>
                 <form>

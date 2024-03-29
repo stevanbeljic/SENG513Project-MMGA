@@ -67,7 +67,7 @@ const router = createRouter({
       component: AddGameView
     },
     {
-      path: '/discussionpost',
+      path: '/discussionpost/:discussionId',
       name: 'discussionpost',
       component: postView
     },
