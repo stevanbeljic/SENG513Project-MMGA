@@ -15,6 +15,7 @@
   };
 
   const newsData = ref([]);
+  const trendingGame = ref([]);
 
   const fetchNewsData = async () => {
     const response = await fetch('http://localhost:7003/homeDashboard');
@@ -22,9 +23,18 @@
     newsData.value = data;
   };
 
+  const fetchTrendingGame = async () => {
+    const response = await fetch('http://localhost:7003/game/trendingGame');
+    const data = await response.json();
+    trendingGame.value = await data;
+
+    console.log(trendingGame.value.id);
+  }
+
   onMounted(async () => {
     updateSessionData();
     try {
+      await fetchTrendingGame();
       await fetchNewsData();
     } catch (error){
       console.log(error);
@@ -49,26 +59,26 @@
     <div id="dashboardDiv">
       <div id="topHalfDiv">
         <div id="trendingDiv">
-          <div class="subTitleDiv">
-            <h2>Trending Release🔥</h2>
-          </div>
-          <div id="trendingContentDiv">
-            <img src = "../components/icons/mario.jpg"/>
-            <div id="gameDescDiv">
-              <h3>Evil Mario</h3>
-              <p id="publisher">Evil Nintendo Studios</p>
-              <p id="gameDescription">Luigi must embark on a harrowing adventure to save his brother, Mario, from an evil force corrupting his mind and soul.</p>
-              <div id="genreDiv">
-                <p class="genre">Family</p>
-                <p class="genre">Horror</p>
-              </div>
-              <div id="info">
-                <p class="tags">▶ 1.8M</p>
-                <p class="tags">★ 81k</p>
-                <p class="tags" id="price">$0.99</p>
-              </div>
+            <div class="subTitleDiv">
+              <h2>Trending Release🔥</h2>
             </div>
-          </div>
+            <router-link id="routerLink" :to="'/game/' + trendingGame.id">
+              <div id="trendingContentDiv">
+                <img :src="'http://localhost:7003' + trendingGame.thumbnail" alt="Image Unavailable"/>
+                <div id="gameDescDiv">
+                  <h3 v-text="trendingGame.name"></h3>
+                  <p id="publisher" v-text="trendingGame.publisher"></p>
+                  <p id="gameDescription" v-text="trendingGame.description"></p>
+                  <div id="genreDiv">
+                    <p class="genre" v-text="trendingGame.genre"></p>
+                  </div>
+                  <div id="info">
+                    <p class="tags" id="price" v-text="'App Store: $'+trendingGame.appstoreprice"></p>
+                    <p class="tags" id="price" v-text="'Play Store: $'+trendingGame.playstoreprice"></p>
+                  </div>
+                </div>
+              </div>
+            </router-link>
         </div>
         <div id="recentDiscussionsDiv">
           <div class="subTitleDiv">
