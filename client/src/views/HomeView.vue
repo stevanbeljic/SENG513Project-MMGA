@@ -26,9 +26,9 @@
   const fetchTrendingGame = async () => {
     const response = await fetch('http://localhost:7003/game/trendingGame');
     const data = await response.json();
-    trendingGame.value = data;
+    trendingGame.value = await data;
 
-    console.log(trendingGame.value);
+    console.log(trendingGame.value.id);
   }
 
   onMounted(async () => {
@@ -59,24 +59,26 @@
     <div id="dashboardDiv">
       <div id="topHalfDiv">
         <div id="trendingDiv">
-          <div class="subTitleDiv">
-            <h2>Trending Release🔥</h2>
-          </div>
-          <div id="trendingContentDiv">
-            <img :src="'http://localhost:7003' + trendingGame.thumbnail" alt="Image Unavailable"/>
-            <div id="gameDescDiv">
-              <h3 v-text="trendingGame.name"></h3>
-              <p id="publisher" v-text="trendingGame.publisher"></p>
-              <p id="gameDescription" v-text="trendingGame.description"></p>
-              <div id="genreDiv">
-                <p class="genre" v-text="trendingGame.genre"></p>
-              </div>
-              <div id="info">
-                <p class="tags" id="price" v-text="'App Store: $'+trendingGame.appstoreprice"></p>
-                <p class="tags" id="price" v-text="'Play Store: $'+trendingGame.playstoreprice"></p>
-              </div>
+            <div class="subTitleDiv">
+              <h2>Trending Release🔥</h2>
             </div>
-          </div>
+            <router-link id="routerLink" :to="'/game/' + trendingGame.id">
+              <div id="trendingContentDiv">
+                <img :src="'http://localhost:7003' + trendingGame.thumbnail" alt="Image Unavailable"/>
+                <div id="gameDescDiv">
+                  <h3 v-text="trendingGame.name"></h3>
+                  <p id="publisher" v-text="trendingGame.publisher"></p>
+                  <p id="gameDescription" v-text="trendingGame.description"></p>
+                  <div id="genreDiv">
+                    <p class="genre" v-text="trendingGame.genre"></p>
+                  </div>
+                  <div id="info">
+                    <p class="tags" id="price" v-text="'App Store: $'+trendingGame.appstoreprice"></p>
+                    <p class="tags" id="price" v-text="'Play Store: $'+trendingGame.playstoreprice"></p>
+                  </div>
+                </div>
+              </div>
+            </router-link>
         </div>
         <div id="recentDiscussionsDiv">
           <div class="subTitleDiv">

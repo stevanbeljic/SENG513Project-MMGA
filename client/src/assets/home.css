@@ -52,6 +52,11 @@ h2 {
             width: 100%;
         }
 
+        #routerLink {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .subTitleDiv {
             width: 100%;
         }
@@ -144,6 +149,10 @@ h2 {
                 }
 
             }
+        }
+
+        #trendingContentDiv:hover{
+            box-shadow: inset 0px 0px 45px -11px #000000;
         }
     }
 
