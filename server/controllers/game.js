@@ -50,6 +50,22 @@ router.get('/getGameById', (req, res) => {
     })
 });
 
+router.get('/trendingGame', (req, res) => {
+    databaseConnection.query('SELECT * FROM `game` ORDER BY RAND() LIMIT 1', (err, results) => {
+        if (err) {
+            console.error('Error fetching trending game', err);
+            return res.status(500).send('Internal server error');
+        }
+
+        if(results[0].thumbnail == null){
+            results[0].thumbnail = defaultImage;
+        }
+
+        console.log(results[0]);
+        return res.json(results[0]);
+    })
+});
+
 router.post('/uploadGame', upload.single('imageFile'), (req, res) => {
     const { title, description, link, googlePrice, appStorePrice, genre, publisher} = req.body;
     let thumbnail = '/uploads/'+req.file.filename;
