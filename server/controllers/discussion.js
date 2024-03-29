@@ -44,3 +44,19 @@ router.get('/getDiscussionResponses', (req, res) => {
           }    
     });
 });
+
+router.post('/addDiscussionResponse', (req, res) => {
+    const{ comment, discussion_id, poster_id} = req.body;
+    if (!comment || !discussion_id || !poster_id) {
+
+        return res.status(400).send('All fields are required');
+    }
+    databaseConnection.query('INSERT INTO comments (comment_text, discussion_id, poster_id) VALUES (?, ?, ?)', [comment, discussion_id, poster_id], (err, result) => {
+        if(err){
+            console.error("Error inserting game to database: ",err);
+            return res.status(500).send('Internal server error: Unable to create comment');
+        }
+
+        return res.status(200).send("Comment added successfully");
+    });
+});

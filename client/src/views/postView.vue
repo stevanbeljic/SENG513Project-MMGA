@@ -61,6 +61,9 @@ defineExpose({loggedIn, username});
         methods: {
             backToGame: function(){
                 router.push({ name: 'game', params: { id: this.game_id }})
+            },
+            addResponse: function(){
+                router.push({ name: 'comment', params: { discussionId: this.$route.params.discussionId}});
             }
         }
     }
@@ -78,7 +81,7 @@ defineExpose({loggedIn, username});
   <body>
     <div id="discussionContent">
         <div id="backButton">
-            <p v-on:click="backToGame">◁ Back to <span>{{ game_name }}</span></p>
+            <p v-on:click="backToGame" class="discussionTitle">◁ Back to <span>{{ game_name }}</span></p>
         </div>
         <div id="postTitle">
             <h1>{{ discussion_title }}</h1>
@@ -89,7 +92,7 @@ defineExpose({loggedIn, username});
         <hr/>
         <div id="responseDiv">
             <h2>Replies</h2>
-            <p><a>+ Add a Response</a></p>
+            <p v-on:click="addResponse" id="addResponse">+ Add a Response</p>
         </div>
         <div id="replies">
             <ul>

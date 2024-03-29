@@ -72,7 +72,7 @@ const router = createRouter({
       component: postView
     },
     {
-      path: '/comment',
+      path: '/comment/:discussionId',
       name: 'comment',
       component: CommentView
     },

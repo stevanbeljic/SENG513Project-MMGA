@@ -114,3 +114,7 @@ hr {
         }
     }
 }
+
+#addResponse:hover{
+    cursor: pointer;
+}

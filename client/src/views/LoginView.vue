@@ -29,6 +29,7 @@ import router from "../router/index.js";
                     sessionStorage.setItem("loggedIn", "true");
                     sessionStorage.setItem("loggedInAs", user_data[0].username);
                     sessionStorage.setItem("loggedInRole", user_data[0].role);
+                    sessionStorage.setItem("loggedInId", user_data[0].id);
                     router.push("/");
                 }
             },

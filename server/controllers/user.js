@@ -155,7 +155,7 @@ router.get('/getAccount', (req, res) => {
     const { username, password } = req.query;
     // Check credentials against the database
 
-    databaseConnection.query('SELECT username, role FROM users WHERE username = ?', [username], (err, results) => {
+    databaseConnection.query('SELECT username, role, id FROM users WHERE username = ?', [username], (err, results) => {
       if (err) {
         console.error('Error executing query:', err);
         return res.status(500).send('Internal server error');
