@@ -82,6 +82,11 @@
     font-family: 'Kanit', sans-serif;
 }
 
+.discussion-view-all-button:hover {
+    color: white;
+    cursor: pointer;
+}
+
 @media only screen and (width < 700px) {
     .discussion-body-container {
         margin-top: 10px;

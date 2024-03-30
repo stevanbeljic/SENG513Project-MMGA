@@ -5,12 +5,17 @@
     import navbar from "../components/navbarView.vue";
     import bottomNavbar from "../components/bottomNavbarView.vue";
     import { onMounted, ref } from "vue";
+    import { useRoute } from "vue-router";
     import router from "@/router";
 
-    const fetchGame = async (id) => {
-        const response = await fetch('http://localhost:7003/discussion/getDiscussionsByGame?id='+id);
-        return await response.json();
-    }
+    const game = ref([]);
+    const route = useRoute();
+
+    const fetchGame = async () => {
+        const response = await fetch('http://localhost:7003/game/getGameById?id='+route.params.gameid);
+        const games = await response.json();
+        game.value = games[0];
+    };
 
     const handleDiscussionClick = (id) =>{
         router.push({ name: 'discussionpost', params: { discussionId: id }})
@@ -19,14 +24,14 @@
     onMounted(async () =>{
         try {
             fetchGame();
+            console.log('here');
         } catch (error) {
             console.log(error);
-            router.push("/");
             alert("Unable to post at this time");
         }
     });
 
-    defineExpose({handleDiscussionClick});
+    defineExpose({handleDiscussionClick, game});
 </script>
 <template>
     <head>
@@ -36,12 +41,12 @@
         <navbar></navbar>
     </header>
 
-    <body>
+    <body id="addDiscBody">
         <div id="newDiscussionDiv">
             <span>
                 <div id="gameDiv">
-                    <h1>Posting in Evil Mario</h1>
-                    <img src="../components/icons/mario.jpg">
+                    <h1 v-text="'Posting in '+game.name"></h1>
+                    <img :src="'http://localhost:7003' + game.thumbnail" alt="Image Unavailable"/>
                 </div>
                 <div id="discussionContent">
                     <form>

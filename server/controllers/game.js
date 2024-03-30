@@ -42,10 +42,14 @@ router.get('/getGameById', (req, res) => {
           return res.status(500).send('Internal server error');
         }
         else {
-            if(results[0].thumbnail == null){
-                results[0].thumbnail = defaultImage;
+            try{
+                if(results[0].thumbnail == null){
+                    results[0].thumbnail = defaultImage;
+                }
+                res.json(results);
+            } catch (error){
+                return res.status(500).send('Internal server error');
             }
-            res.json(results);
         }
     })
 });

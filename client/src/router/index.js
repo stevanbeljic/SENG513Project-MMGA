@@ -14,6 +14,7 @@ import friendsView from '../views/friendsView.vue'
 import postView from '../views/postView.vue'
 import profileView from '../views/profileView.vue'
 import addDiscussion from '../views/addDiscussion.vue'
+import viewAllDiscussions from '../views/viewAllDiscussions.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -88,9 +89,14 @@ const router = createRouter({
       component: addFriendView
     },
     {
-      path: '/addDiscussion',
+      path: '/addDiscussion/:gameid',
       name: 'addDiscussion',
       component: addDiscussion
+    },
+    {
+      path: '/allDiscussions/:gameid',
+      name: 'allDiscussions',
+      component: viewAllDiscussions
     }
   ]
 })

@@ -29,6 +29,10 @@
         router.push({ name: 'discussionpost', params: { discussionId: id }})
     }
 
+    const handleViewAll = (id) => {
+        router.push({ name: 'allDiscussions', params: { gameid: id}});
+    }
+
     onMounted(async () =>{
         try {
             fetchAllGames();
@@ -37,7 +41,7 @@
         }
     });
 
-    defineExpose({handleDiscussionClick});
+    defineExpose({handleDiscussionClick, handleViewAll});
 </script>
 <template>
     <head>
@@ -54,7 +58,7 @@
             </div>
             <div class="discussion-list-section">
                 <div v-if="game.discussions.length != 0">
-                    <div class="discussion-list-box"  v-for="discussion in game.discussions" :key="discussion.discussion_id">
+                    <div class="discussion-list-box"  v-for="discussion in game.discussions.slice(0, 3)" :key="discussion.discussion_id">
                         <div>
                             <h3 v-on:click="handleDiscussionClick(discussion.discussion_id)" v-text="discussion.title"></h3>
                         </div>
@@ -69,7 +73,7 @@
                 </div>
             </div>
             <div class="discussion-view-all-section">
-                <button class="discussion-view-all-button">↪ View all</button>
+                <button class="discussion-view-all-button" v-on:click="handleViewAll(game.id)">↪ View all</button>
             </div>
         </div>
     </div>

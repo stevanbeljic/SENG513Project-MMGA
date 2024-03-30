@@ -1,0 +1,20 @@
+#postButtonDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+
+    #postButton {
+        border: none;
+        background-color: white;
+        font-family: 'Kanit';
+        font-size: 25px;
+        box-shadow: 5px 5px 5px -2px black;
+        margin: 5px;
+    }
+
+    #postButton:hover {
+        cursor: pointer;
+        color: pink;
+    }
+}
