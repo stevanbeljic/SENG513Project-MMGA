@@ -48,7 +48,7 @@
         discussionData.append('user', loggedInId.value);
         discussionData.append('game', game.value.id);
         discussionData.append('date', postDate);
-        
+
         const response = await fetch(`http://localhost:7003/discussion/postDiscussion`, {
             method: 'POST',
             body: discussionData
@@ -68,7 +68,6 @@
         updateSessionData();
         try {
             fetchGame();
-            console.log('here');
         } catch (error) {
             console.log(error);
             alert("Unable to post at this time");

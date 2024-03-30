@@ -5,6 +5,7 @@
   import "../assets/header.css";
   import "../assets/home.css";
   import navbar from "../components/navbarView.vue";
+  import router from "@/router";
 
   let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
   let username = ref(sessionStorage.getItem('loggedInAs'));
@@ -16,6 +17,7 @@
 
   const newsData = ref([]);
   const trendingGame = ref([]);
+  const trendingDiscussions = ref([]);
 
   const fetchNewsData = async () => {
     const response = await fetch('http://localhost:7003/homeDashboard');
@@ -27,22 +29,32 @@
     const response = await fetch('http://localhost:7003/game/trendingGame');
     const data = await response.json();
     trendingGame.value = await data;
-
-    console.log(trendingGame.value.id);
   }
+
+  const fetchTrendingDiscussions = async() => {
+    const response = await fetch('http://localhost:7003/discussion/trendingDiscussions');
+    const data = await response.json();
+    trendingDiscussions.value = await data;
+  }
+
+  const handleDiscussionClick = (id) =>{
+        console.log(id);
+        router.push({ name: 'discussionpost', params: { discussionId: id }})
+    }
 
   onMounted(async () => {
     updateSessionData();
     try {
       await fetchTrendingGame();
       await fetchNewsData();
+      await fetchTrendingDiscussions();
     } catch (error){
       console.log(error);
     }
   });
 
   window.addEventListener('storage', updateSessionData);
-  defineExpose({loggedIn, username});
+  defineExpose({loggedIn, username, handleDiscussionClick});
 
 </script>
 
@@ -84,24 +96,8 @@
           <div class="subTitleDiv">
             <h2>Recent Discussions</h2>
             <ul>
-              <li>
-                <h3>Keep losing to Luigi :(</h3>
-                <a>❤︎</a>
-              </li>
-              <li>
-                <h3>Luigi Boss Battle</h3>
-                <a>❤︎</a>
-              </li>
-              <li>
-                <h3>Looking for team</h3>
-                <a>❤︎</a>
-              </li>
-              <li>
-                <h3>I calculated how much coins you need to win</h3>
-                <a>❤︎</a>
-              </li>
-              <li>
-                <h3>Questions about Luigi's strength</h3>
+              <li v-for="d in trendingDiscussions" :key="d.discussion_id">
+                <h3 v-text="d.title" v-on:click="handleDiscussionClick(d.discussion_id)"></h3>
                 <a>❤︎</a>
               </li>
             </ul>

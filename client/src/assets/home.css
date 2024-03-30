@@ -188,6 +188,11 @@ h2 {
                 font-size: 20px;
             }
 
+            h3:hover {
+                color: white;
+                cursor: pointer;
+            }
+
             a {
                 color: black;
             }

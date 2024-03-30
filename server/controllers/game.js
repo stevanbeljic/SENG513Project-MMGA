@@ -65,7 +65,7 @@ router.get('/trendingGame', (req, res) => {
             results[0].thumbnail = defaultImage;
         }
 
-        console.log(results[0]);
+        //console.log(results[0]);
         return res.json(results[0]);
     })
 });

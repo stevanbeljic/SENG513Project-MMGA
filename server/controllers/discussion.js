@@ -77,3 +77,14 @@ router.post('/addDiscussionResponse', (req, res) => {
         return res.status(200).send("Comment added successfully");
     });
 });
+
+router.get('/trendingDiscussions', (req, res) => {
+    databaseConnection.query('SELECT * FROM `discussion` ORDER BY `discussion_id` DESC LIMIT 5', (err, result) => {
+        if (err) {
+            console.error('Error executing query:', err);
+            return res.status(500).send('Internal server error');
+        } else {
+            return res.status(200).json(result);
+        }  
+    });
+});
