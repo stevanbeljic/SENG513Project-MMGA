@@ -53,6 +53,10 @@
     margin: 2px 0px;
 }
 
+.discussion-list-box h3 {
+    cursor: pointer;
+}
+
 .discussion-view-all-section {
     text-align: right;
     background-color: #EBD1FF;

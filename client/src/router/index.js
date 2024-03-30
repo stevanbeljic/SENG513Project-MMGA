@@ -13,6 +13,7 @@ import friendRequestView from '../views/friendRequestView.vue'
 import friendsView from '../views/friendsView.vue'
 import postView from '../views/postView.vue'
 import profileView from '../views/profileView.vue'
+import addDiscussion from '../views/addDiscussion.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -85,6 +86,11 @@ const router = createRouter({
       path: '/addFriend',
       name: 'addFriend',
       component: addFriendView
+    },
+    {
+      path: '/addDiscussion',
+      name: 'addDiscussion',
+      component: addDiscussion
     }
   ]
 })

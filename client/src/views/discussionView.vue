@@ -65,11 +65,11 @@
                 </div>
                 <div class="discussion-list-box" v-else>
                     <h3>Be the first to talk about {{ game.name }}!</h3>
-                    <button class="discussion-like-button">+</button>
+                    <button class="discussion-like-button" v-on:click="handleNewDiscussionClick">+</button>
                 </div>
             </div>
             <div class="discussion-view-all-section">
-                <button class="discussion-view-all-button">↪ VIEW ALL</button>
+                <button class="discussion-view-all-button">↪ View all</button>
             </div>
         </div>
     </div>
