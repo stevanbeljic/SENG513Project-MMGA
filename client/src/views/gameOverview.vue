@@ -37,9 +37,13 @@ import router from "@/router";
             handleDiscussionClick: function(id){
                 console.log(id)
                 router.push({ name: 'discussionpost', params: { discussionId: id }})
-            }
-        }
+            },
 
+            handleViewAll: function(id){
+                router.push({ name: 'allDiscussions', params: {gameid: id} });
+            }
+
+        }
 
     }
 </script>
@@ -88,12 +92,12 @@ import router from "@/router";
         </div>
         <div class="discussion-list-section" id="overview-discussion-section">
             <h1 id="discussion-label">Discussions Board</h1>
-            <div class="discussion-list-box" v-for="discussion in discussions" :key="discussion.discussion_id">
+            <div class="discussion-list-box" v-for="discussion in discussions.slice(0, 5)" :key="discussion.discussion_id">
                 <div v-on:click="handleDiscussionClick(discussion.discussion_id)" class="discussionTitle"><h3>{{ discussion.title }}</h3></div>
                 <div><button class="discussion-like-button">❤︎</button></div>
             </div>
             <div class="discussion-view-all-section">
-                <button class="discussion-view-all-button">↪ VIEW ALL</button>
+                <button class="discussion-view-all-button" v-on:click="handleViewAll(game.id)">↪ VIEW ALL</button>
             </div>
         </div>
     </div>

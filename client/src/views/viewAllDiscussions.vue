@@ -30,7 +30,11 @@
     }
 
     const handleNewDiscussion = (id) => {
-        router.push({ name: 'addDiscussion', param: {gameid: id} });
+        if(loggedIn.value){
+            router.push({ name: 'addDiscussion', params: {gameid: id} });
+        } else {
+            router.push('/login');
+        }
     }
 
     onMounted(async () =>{
@@ -72,7 +76,7 @@
                     </div>
                     <div class="discussion-list-box" v-else>
                         <h3>Be the first to talk about {{ game.name }}!</h3>
-                        <button class="discussion-like-button">+</button>
+                        <button class="discussion-like-button" v-on:click="handleNewDiscussion(game.id)">+</button>
                     </div>
                 </div>
             </div>

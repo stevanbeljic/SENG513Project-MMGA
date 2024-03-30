@@ -8,6 +8,7 @@
     import router from "@/router";
 
 
+    let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
     const fetchedGames = ref([]);
     const fetchAllGames = async () => {
         const response = await fetch('http://localhost:7003/game/getAllGames');
@@ -33,6 +34,15 @@
         router.push({ name: 'allDiscussions', params: { gameid: id}});
     }
 
+    const handleNewDiscussion = (id) => {
+        if(loggedIn.value){
+            router.push({ name: 'addDiscussion', params: {gameid: id} });
+        } else {
+            router.push('/login');
+        }
+        
+    }
+
     onMounted(async () =>{
         try {
             fetchAllGames();
@@ -41,7 +51,7 @@
         }
     });
 
-    defineExpose({handleDiscussionClick, handleViewAll});
+    defineExpose({handleDiscussionClick, handleViewAll, handleNewDiscussion});
 </script>
 <template>
     <head>
@@ -69,7 +79,7 @@
                 </div>
                 <div class="discussion-list-box" v-else>
                     <h3>Be the first to talk about {{ game.name }}!</h3>
-                    <button class="discussion-like-button" v-on:click="handleNewDiscussionClick">+</button>
+                    <button class="discussion-like-button" v-on:click="handleNewDiscussion(game.id)">+</button>
                 </div>
             </div>
             <div class="discussion-view-all-section">
