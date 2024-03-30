@@ -28,11 +28,12 @@
 }
 
 .discussion-game-section > img {
-    width: 20%;
+    max-height: 200px;
+    max-width: 300px;
 }
 
 .discussion-game-section > h1 {
-    font-size: 3.5vw;
+    font-size: 50px;
     overflow-wrap: break-word;
 }
 

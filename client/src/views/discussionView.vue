@@ -4,6 +4,40 @@
     import "../assets/discussion.css";
     import navbar from "../components/navbarView.vue";
     import bottomNavbar from "../components/bottomNavbarView.vue";
+    import { onMounted, ref } from "vue";
+    import router from "@/router";
+
+
+    const fetchedGames = ref([]);
+    const fetchAllGames = async () => {
+        const response = await fetch('http://localhost:7003/game/getAllGames');
+        const games = await response.json();
+        for (let game of games) {
+            game.discussions = await fetchDiscussion(game.id);
+        }
+
+        fetchedGames.value = games;
+    };
+
+    const fetchDiscussion = async (id) => {
+        const response = await fetch('http://localhost:7003/discussion/getDiscussionsByGame?id='+id);
+        return await response.json();
+    }
+
+    const handleDiscussionClick = (id) =>{
+        console.log(id);
+        router.push({ name: 'discussionpost', params: { discussionId: id }})
+    }
+
+    onMounted(async () =>{
+        try {
+            fetchAllGames();
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
+    defineExpose({handleDiscussionClick});
 </script>
 <template>
     <head>
@@ -13,73 +47,25 @@
         <navbar></navbar>
     </header>
     <div class="discussion-body-container">
-        <!-- Could likely automate the creation of discussion cards with loops -->
-        <div class="discussion-card">
+        <div v-for="game in fetchedGames" :key="game.id" class="discussion-card">
             <div class="discussion-game-section">
-                <img src="../components/icons/mario.jpg">
-                <h1>Evil Mario</h1>
+                <img :src="'http://localhost:7003' + game.thumbnail" alt="Image Unavailable"/>
+                <h1 v-text="game.name"></h1>
             </div>
             <div class="discussion-list-section">
-                <!-- Could automate the entry of discussion boxes using loops -->
-                <div class="discussion-list-box">
-                    <div>
-                        <h3>Mario has to be the most overpowered character in the game.</h3>
-                    </div>
-                    <div>
-                        <button class="discussion-like-button">❤︎</button>
-                    </div>
-                </div>
-                <div class="discussion-list-box">
-                    <div>
-                        <h3>So I found a bug in Princess Peach's Castle...</h3>
-                    </div>
-                    <div>
-                        <button class="discussion-like-button">❤︎</button>
+                <div v-if="game.discussions.length != 0">
+                    <div class="discussion-list-box"  v-for="discussion in game.discussions" :key="discussion.discussion_id">
+                        <div>
+                            <h3 v-on:click="handleDiscussionClick(discussion.discussion_id)" v-text="discussion.title"></h3>
+                        </div>
+                        <div>
+                            <button class="discussion-like-button">❤︎</button>
+                        </div>
                     </div>
                 </div>
-                <div class="discussion-list-box">
-                    <div>
-                        <h3>Evil Mario: Everything You Need To Know Before Starting</h3>
-                    </div>
-                    <div>
-                        <button class="discussion-like-button">❤︎</button>
-                    </div>
-                </div>
-            </div>
-            <div class="discussion-view-all-section">
-                <button class="discussion-view-all-button">↪ VIEW ALL</button>
-            </div>
-        </div>
-        <div class="discussion-card">
-            <div class="discussion-game-section">
-                <img src="../components/icons/mario.jpg">
-                <h1>Evil Mario</h1>
-            </div>
-            <div class="discussion-list-section">
-                <!-- Could automate the entry of discussion boxes using loops -->
-                <div class="discussion-list-box">
-                    <div>
-                        <h3>Mario has to be the most overpowered character in the game.</h3>
-                    </div>
-                    <div>
-                        <button class="discussion-like-button">❤︎</button>
-                    </div>
-                </div>
-                <div class="discussion-list-box">
-                    <div>
-                        <h3>So I found a bug in Princess Peach's Castle...</h3>
-                    </div>
-                    <div>
-                        <button class="discussion-like-button">❤︎</button>
-                    </div>
-                </div>
-                <div class="discussion-list-box">
-                    <div>
-                        <h3>Evil Mario: Everything You Need To Know Before Starting</h3>
-                    </div>
-                    <div>
-                        <button class="discussion-like-button">❤︎</button>
-                    </div>
+                <div class="discussion-list-box" v-else>
+                    <h3>Be the first to talk about {{ game.name }}!</h3>
+                    <button class="discussion-like-button">+</button>
                 </div>
             </div>
             <div class="discussion-view-all-section">

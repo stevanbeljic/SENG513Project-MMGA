@@ -92,7 +92,7 @@ defineExpose({loggedIn, username});
         <hr/>
         <div id="responseDiv">
             <h2>Replies</h2>
-            <p v-on:click="addResponse" id="addResponse">+ Add a Response</p>
+            <p v-if="loggedIn==true" v-on:click="addResponse" id="addResponse">+ Add a Response</p>
         </div>
         <div id="replies">
             <ul>
