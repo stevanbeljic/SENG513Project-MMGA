@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const databaseConnection = require('../model/model');
+const multer  = require('multer');
+const upload = multer();
 
 module.exports = router;
+
 
 router.get('/getDiscussionsByGame', (req, res) => {
     const {id} = req.query;
@@ -28,6 +31,20 @@ router.get('/getDiscussionAndPosterById', (req, res) => {
           else{
               res.json(result);
           }     
+    });
+});
+
+router.post('/postDiscussion', upload.none(), (req, res) => {
+    const { title, text, user, game, date } = req.body;
+
+    databaseConnection.query('INSERT INTO `discussion` (`title`, `description`, `poster_id`, `game_id`, `post_date`) VALUES (?, ?, ?, ?, ?)', [title, text, user, game, date], (err, results) => {
+
+        if(err){
+            console.error("Error inserting new discussion: ", err);
+            return res.status(500).send('Internal server error posting discussion');
+        }
+
+        return res.status(200).send('Discussion published');
     });
 });
 

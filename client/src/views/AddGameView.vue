@@ -42,8 +42,6 @@
         gameData.append('publisher', username.value);
         gameData.append('imageFile', imageFile.files[0]);
 
-        console.log('POSTING GAME');
-
         const response = await fetch(`http://localhost:7003/game/uploadGame`, {
             method: 'POST',
             body: gameData

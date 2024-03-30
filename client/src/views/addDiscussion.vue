@@ -10,6 +10,14 @@
 
     const game = ref([]);
     const route = useRoute();
+    let username = ref(sessionStorage.getItem('loggedInAs'));
+    let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
+    let loggedInId = ref(sessionStorage.getItem('loggedInId'));
+
+    const updateSessionData = () => {
+        loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
+        username.value = sessionStorage.getItem('loggedInAs');
+    };
 
     const fetchGame = async () => {
         const response = await fetch('http://localhost:7003/game/getGameById?id='+route.params.gameid);
@@ -17,11 +25,47 @@
         game.value = games[0];
     };
 
-    const handleDiscussionClick = (id) =>{
-        router.push({ name: 'discussionpost', params: { discussionId: id }})
+    const postDiscussion = async () => {
+        const title = document.getElementById('discussionTitle').value;
+        const text = document.getElementById('discussionText').value;
+        const user = username.value;
+
+
+        if (!title || !text || !user) {
+            alert("Title and text must be provided");
+            return;
+        }
+
+        const date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let postDate = `${year}-${month}-${day}`;
+
+        const discussionData = new FormData();
+        discussionData.append('title', title);
+        discussionData.append('text', text);
+        discussionData.append('user', loggedInId.value);
+        discussionData.append('game', game.value.id);
+        discussionData.append('date', postDate);
+        
+        const response = await fetch(`http://localhost:7003/discussion/postDiscussion`, {
+            method: 'POST',
+            body: discussionData
+        });
+        let status = await response.status;
+        if(status === 200){
+            alert("Published");
+            router.push("/allDiscussions/"+game.value.id);
+            return;
+        } else {
+            alert("Failed to publish");
+            return;
+        }
     }
 
     onMounted(async () =>{
+        updateSessionData();
         try {
             fetchGame();
             console.log('here');
@@ -31,7 +75,7 @@
         }
     });
 
-    defineExpose({handleDiscussionClick, game});
+    defineExpose({ game , postDiscussion});
 </script>
 <template>
     <head>
@@ -50,9 +94,9 @@
                 </div>
                 <div id="discussionContent">
                     <form>
-                        <input class="newDiscussionData" type="text" placeholder="Enter a title">
-                        <textarea class="newDiscussionData" rows="10" placeholder="What did you want to say..."></textarea>
-                        <input class="newDiscussionData" id="submitDiscussion" type="submit" value="Post">
+                        <input class="newDiscussionData" type="text" id="discussionTitle" placeholder="Enter a title">
+                        <textarea class="newDiscussionData" rows="10" id="discussionText"  placeholder="What did you want to say..."></textarea>
+                        <input class="newDiscussionData" id="submitDiscussion" type="submit" value="Post" @click.prevent.self @click="postDiscussion">
                     </form>
                 </div>
             </span>
