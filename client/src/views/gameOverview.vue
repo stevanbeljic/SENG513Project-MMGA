@@ -12,9 +12,21 @@ import router from "@/router";
 <script>
     let loggedInId = ref(sessionStorage.getItem('loggedInId'));
     let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
+    let added = ref([]);
     
-    const updateSessionData = () => {
+    const updateSessionData = async () => {
+        const route = useRoute();
         loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
+        const response = await fetch("http://localhost:7003/game/existsTopGame?userid="+loggedInId.value+"&gameid="+route.params.id, {method: "GET"});
+        
+        added.value = false;
+        if (response.status == 200){
+            const data = await response.json();
+            if (data.length > 0){
+                added.value = true;
+            }
+        }
+        return;
     };
 
     export default {
@@ -57,6 +69,7 @@ import router from "@/router";
                 const response = await fetch("http://localhost:7003/game/addTopGame?userid="+loggedInId.value+"&gameid="+gameid, {method: "POST"});
                 if (response.status == 200){
                     alert("Added game");
+                    window.location.reload();
                     return;
                 } else {
                     alert("Unable to add to Top Games");
@@ -107,7 +120,8 @@ import router from "@/router";
                 </div>
                 <div id="game-description">
                     <p>{{ game.description }}</p>
-                    <button v-if="loggedIn" id="addToTopGames" v-on:click="addToTopGames(game.id)" >Add to your Top Games</button>
+                    <button v-if="loggedIn && !added" id="addToTopGames" v-on:click="addToTopGames(game.id)" >Add to your Top Games</button>
+                    <button v-else-if="loggedIn && added" id="addedToTopGames" disabled="true" v-on:click="addToTopGames(game.id)" >In your Top Games</button>
                 </div>
             </div>
         </div>

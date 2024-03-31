@@ -82,6 +82,18 @@ router.post('/addTopGame', (req, res) => {
     });
 });
 
+router.get('/existsTopGame', (req, res) => {
+    const { userid, gameid } = req.query;
+    databaseConnection.query('SELECT * FROM `topgames` WHERE user_id = ? AND game_id = ?', [userid, gameid], (err, results) => {
+        if (err) {
+            console.error('Error reading from topgames table: ',err);
+            return res.status(500).send('Internal server error');
+        }
+
+        return res.status(200).json({ length: results.length });
+    })
+});
+
 router.post('/uploadGame', upload.single('imageFile'), (req, res) => {
     const { title, description, link, googlePrice, appStorePrice, genre, publisher} = req.body;
     let thumbnail = '/uploads/'+req.file.filename;

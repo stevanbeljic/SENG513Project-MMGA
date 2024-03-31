@@ -74,8 +74,16 @@
     grid-area: desc;
 }
 
-#game-description > #addToTopGames {
+#game-description > #addToTopGames, #addedToTopGames {
     border: none;
+    font-family: 'Kanit';
+    font-size: 24px;
+    box-shadow: 5px 5px 5px gray;
+}
+
+#game-description > #addedToTopGames:disabled {
+    background-color: lightgrey;
+    color: black;
     font-family: 'Kanit';
     font-size: 24px;
     box-shadow: 5px 5px 5px gray;
@@ -83,6 +91,11 @@
 
 #game-description > #addToTopGames:hover {
     background-color:aquamarine;
+}
+
+#game-description > #addedToTopGames:hover {
+    background-color:firebrick;
+    color: white;
 }
 
 #game-publisher > h1, #game-publisher > p {
