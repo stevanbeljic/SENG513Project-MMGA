@@ -68,3 +68,11 @@ CREATE TABLE IF NOT EXISTS friendrequests (
     FOREIGN KEY (requestFrom) REFERENCES users(id),
     PRIMARY KEY (requestTo, requestFrom)
 );
+
+CREATE TABLE IF NOT EXISTS topgames (
+    user_id INT,
+    game_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (game_id) REFERENCES game(id),
+    PRIMARY KEY (user_id, game_id)
+);

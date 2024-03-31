@@ -6,15 +6,25 @@ import "../assets/home.css";
 import navbar from "../components/navbarView.vue";
 import bottomNavbar from '@/components/bottomNavbarView.vue';
 import { useRoute } from 'vue-router';
+import { ref } from "vue";
 import router from "@/router";
 </script>
 <script>
+    let loggedInId = ref(sessionStorage.getItem('loggedInId'));
+    let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
+    
+    const updateSessionData = () => {
+        loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
+    };
+
     export default {
         setup(){
             const route = useRoute();
             return {route};
         },
         mounted() {
+            updateSessionData();
+
             let bRoute = "http://localhost:7003/game/getGameById?id="+ this.$route.params.id; 
             fetch(bRoute, {method: "GET"})
             .then(res => res.json())
@@ -41,8 +51,18 @@ import router from "@/router";
 
             handleViewAll: function(id){
                 router.push({ name: 'allDiscussions', params: {gameid: id} });
-            }
+            },
 
+            addToTopGames: async function(gameid){
+                const response = await fetch("http://localhost:7003/game/addTopGame?userid="+loggedInId.value+"&gameid="+gameid, {method: "POST"});
+                if (response.status == 200){
+                    alert("Added game");
+                    return;
+                } else {
+                    alert("Unable to add to Top Games");
+                    return;
+                }
+            }
         }
 
     }
@@ -87,6 +107,7 @@ import router from "@/router";
                 </div>
                 <div id="game-description">
                     <p>{{ game.description }}</p>
+                    <button v-if="loggedIn" id="addToTopGames" v-on:click="addToTopGames(game.id)" >Add to your Top Games</button>
                 </div>
             </div>
         </div>

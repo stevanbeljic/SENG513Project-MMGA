@@ -171,6 +171,25 @@ router.get('/getAccount', (req, res) => {
     });
   });
 
+router.get('/topGames', (req, res) => {
+  const { username } = req.query;
+  let defaultImage = '/uploads/defaultImage.svg';
+  databaseConnection.query('SELECT name, id, genre, thumbnail FROM game WHERE id IN ( SELECT game_id FROM `topgames` WHERE user_id = (SELECT id FROM users WHERE username = ?))', [username], (err, results) => {
+    if (err){
+      console.error('Error fetching top games: ', err);
+      return res.status(500).send('Internal server error');
+    }
+
+    results.forEach(g => {
+      if (g.thumbnail == null){
+          g.thumbnail = defaultImage;
+      }
+    });
+
+    return res.status(200).json(results);
+  });
+});
+
 router.post('/createAccount', (req, res) => {
   const { username, email, password, role} = req.body;
   if (!username || !email || !password || !role) {

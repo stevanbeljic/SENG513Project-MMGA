@@ -70,6 +70,18 @@ router.get('/trendingGame', (req, res) => {
     })
 });
 
+router.post('/addTopGame', (req, res) => {
+    const { userid, gameid } = req.query;
+    databaseConnection.query('INSERT IGNORE INTO `topgames` (`user_id`, `game_id`) VALUES (? ,?) ', [userid, gameid], (err, result) => {
+        if(err){
+            console.error('Error adding top game', err);
+            return res.status(500).send("Internal server error");
+        }
+
+        return res.status(200).send("Added top game");
+    });
+});
+
 router.post('/uploadGame', upload.single('imageFile'), (req, res) => {
     const { title, description, link, googlePrice, appStorePrice, genre, publisher} = req.body;
     let thumbnail = '/uploads/'+req.file.filename;

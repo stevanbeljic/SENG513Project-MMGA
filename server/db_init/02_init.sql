@@ -101,3 +101,9 @@ VALUES ('This is a hilarious review for this game. Yes there are some jump scare
 INSERT IGNORE INTO `friendrequests` (`requestTo`, `requestFrom`) VALUES ('1', '3');
 INSERT IGNORE INTO `friendrequests` (`requestTo`, `requestFrom`) VALUES ('1', '4');
 INSERT IGNORE INTO `friendrequests` (`requestTo`, `requestFrom`) VALUES ('7', '1');
+
+-- top games seeding
+INSERT IGNORE INTO `topgames` (`user_id`, `game_id`) VALUES ('1', '1');
+INSERT IGNORE INTO `topgames` (`user_id`, `game_id`) VALUES ('1', '2');
+INSERT IGNORE INTO `topgames` (`user_id`, `game_id`) VALUES ('1', '3');
+INSERT IGNORE INTO `topgames` (`user_id`, `game_id`) VALUES ('2', '1');

@@ -37,6 +37,13 @@
         userBio.value = data[0].bio;
     }
 
+    const topGames = ref([]);
+    const fetchTopGames = async() => {
+        const response = await fetch('http://localhost:7003/user/topGames?username='+profileUsername.value);
+        topGames.value = await response.json();
+        console.log(topGames.value);
+    }
+
     const logout = () => {
         router.push("/");
         sessionStorage.setItem("loggedIn", "false");
@@ -54,6 +61,7 @@
         } else {
             try {
                 await fetchUserInfo();
+                await fetchTopGames();
             } catch (error){
                 console.log(error);
             }
@@ -66,7 +74,7 @@
     });
 
     window.addEventListener('storage', updateSessionData);
-    defineExpose({loggedIn, username, userBio, logout, profileUsername});
+    defineExpose({loggedIn, username, userBio, logout, profileUsername, topGames});
 
 </script>
 <template>
@@ -98,27 +106,16 @@
         <div class = "profile-break"></div>
 
         <div id = "top-games">
-            <ul>
-                <li>
+            <ul v-if="topGames">
+                <li v-for="game in topGames" :key="game.id">
                     <div class="topGamesImage">
-                        <img src = "../components/icons/marioIcon.jpg" id ="marioIcon">
+                        <img :src="'http://localhost:7003' + game.thumbnail" alt="Image Unavailable" id ="marioIcon">
                     </div>
                     <div class="topGamesImageTitle">
-                        <h3>Evil Mario</h3>
+                        <h3 v-text="game.name"></h3>
                     </div>
                     <div class="topGamesGenres">
-                        <p>Horror, Thriller</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="topGamesImage">
-                        <img src = "../components/icons/taurean.jpg" id ="taureanIcon">
-                    </div>
-                    <div class="topGamesImageTitle">
-                        <h3>Taurean</h3>
-                    </div>
-                    <div class="topGamesGenres">
-                        <p>Adventure, Action</p>
+                        <p v-text="game.genre"></p>
                     </div>
                 </li>
             </ul>
