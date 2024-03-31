@@ -18,7 +18,6 @@ import router from "@/router";
         const route = useRoute();
         loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
         loggedInId.value = sessionStorage.getItem('loggedInId');
-        console.log(loggedInId.value);
         const response = await fetch("http://localhost:7003/game/existsTopGame?userid="+loggedInId.value+"&gameid="+route.params.id, {method: "GET"});
         
         added.value = false;
