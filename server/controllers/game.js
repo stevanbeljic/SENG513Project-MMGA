@@ -72,6 +72,7 @@ router.get('/trendingGame', (req, res) => {
 
 router.post('/addTopGame', (req, res) => {
     const { userid, gameid } = req.query;
+    console.log("userid: "+userid+", gameid: "+gameid);
     databaseConnection.query('INSERT IGNORE INTO `topgames` (`user_id`, `game_id`) VALUES (? ,?) ', [userid, gameid], (err, result) => {
         if(err){
             console.error('Error adding top game', err);
@@ -89,7 +90,7 @@ router.get('/existsTopGame', (req, res) => {
             console.error('Error reading from topgames table: ',err);
             return res.status(500).send('Internal server error');
         }
-
+        console.log("Length: "+results.length);
         return res.status(200).json({ length: results.length });
     })
 });

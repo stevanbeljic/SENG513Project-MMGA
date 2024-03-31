@@ -19,7 +19,6 @@
     const updateSessionData = () => {
         loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
         username.value = sessionStorage.getItem('loggedInAs');
-        
     };
 
     const userData = ref([]);
@@ -41,7 +40,6 @@
     const fetchTopGames = async() => {
         const response = await fetch('http://localhost:7003/user/topGames?username='+profileUsername.value);
         topGames.value = await response.json();
-        console.log(topGames.value);
     }
 
     const logout = () => {
@@ -102,11 +100,11 @@
             </div>
         </div>
         <div class = "profile-break"></div>
-        <h1 id = "myTopGames">My Top Games</h1>
+        <h1 v-if="topGames.length!=0" id = "myTopGames">My Top Games</h1>
         <div class = "profile-break"></div>
 
-        <div id = "top-games">
-            <ul v-if="topGames">
+        <div id = "top-games" v-if="topGames.length!=0">
+            <ul>
                 <li v-for="game in topGames" :key="game.id">
                     <div class="topGamesImage">
                         <img :src="'http://localhost:7003' + game.thumbnail" alt="Image Unavailable" id ="marioIcon">
