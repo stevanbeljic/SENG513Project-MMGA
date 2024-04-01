@@ -88,3 +88,7 @@ router.get('/trendingDiscussions', (req, res) => {
         }  
     });
 });
+
+// router.get('/likedDiscussions', (req, res) => {
+
+// }

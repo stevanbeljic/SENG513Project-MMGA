@@ -107,3 +107,13 @@ INSERT IGNORE INTO `topgames` (`user_id`, `game_id`) VALUES ('1', '1');
 INSERT IGNORE INTO `topgames` (`user_id`, `game_id`) VALUES ('1', '2');
 INSERT IGNORE INTO `topgames` (`user_id`, `game_id`) VALUES ('1', '3');
 INSERT IGNORE INTO `topgames` (`user_id`, `game_id`) VALUES ('2', '1');
+
+-- likes seeding
+INSERT IGNORE INTO `likes` (`user_id`, `discussion_id`) VALUES ('1', '2');
+INSERT IGNORE INTO `likes` (`user_id`, `discussion_id`) VALUES ('1', '4');
+INSERT IGNORE INTO `likes` (`user_id`, `discussion_id`) VALUES ('1', '7');
+INSERT IGNORE INTO `likes` (`user_id`, `discussion_id`) VALUES ('2', '2');
+INSERT IGNORE INTO `likes` (`user_id`, `discussion_id`) VALUES ('3', '2');
+INSERT IGNORE INTO `likes` (`user_id`, `discussion_id`) VALUES ('4', '9');
+INSERT IGNORE INTO `likes` (`user_id`, `discussion_id`) VALUES ('4', '1');
+INSERT IGNORE INTO `likes` (`user_id`, `discussion_id`) VALUES ('5', '5');
