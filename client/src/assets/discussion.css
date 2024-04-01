@@ -6,7 +6,6 @@
 }
 
 .discussion-body-container > div {
-    min-width: 450px;
     width: 80%;
 }
 
@@ -89,7 +88,7 @@
 
 @media only screen and (width < 700px) {
     .discussion-body-container {
-        margin-top: 10px;
+        margin-top: 5vh;
         padding-bottom: 15vh;
     }
 }
