@@ -20,19 +20,19 @@
   const trendingDiscussions = ref([]);
 
   const fetchNewsData = async () => {
-    const response = await fetch('http://backend:8080/homeDashboard');
+    const response = await fetch('http://localhost:8080/homeDashboard');
     const data = await response.json();
     newsData.value = data;
   };
 
   const fetchTrendingGame = async () => {
-    const response = await fetch('http://backend:8080/game/trendingGame');
+    const response = await fetch('http://localhost:8080/game/trendingGame');
     const data = await response.json();
     trendingGame.value = await data;
   }
 
   const fetchTrendingDiscussions = async() => {
-    const response = await fetch('http://backend:8080/discussion/trendingDiscussions');
+    const response = await fetch('http://localhost:8080/discussion/trendingDiscussions');
     const data = await response.json();
     trendingDiscussions.value = await data;
   }
@@ -76,7 +76,7 @@
             </div>
             <router-link id="routerLink" :to="'/game/' + trendingGame.id">
               <div id="trendingContentDiv">
-                <img :src="'http://backend:8080' + trendingGame.thumbnail" alt="Image Unavailable"/>
+                <img :src="'http://localhost:8080' + trendingGame.thumbnail" alt="Image Unavailable"/>
                 <div id="gameDescDiv">
                   <h3 v-text="trendingGame.name"></h3>
                   <p id="publisher" v-text="trendingGame.publisher"></p>

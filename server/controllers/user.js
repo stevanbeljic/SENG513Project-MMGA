@@ -5,6 +5,13 @@ const mariadb = require('mariadb');
 const bcrypt = require('bcryptjs');
 const saltTime = 2;
 
+
+
+module.exports = function(databaseConnection) {
+  const router = express.Router();
+
+
+  
 router.post('/confirmRequest', (req, res) => {
   console.log("here");
   const {username} = req.query;
@@ -232,4 +239,6 @@ router.post('/createAccount', async (req, res) => {
     });
   });
 });
-module.exports = router;
+
+  return router;
+};

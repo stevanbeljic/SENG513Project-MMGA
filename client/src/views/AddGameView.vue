@@ -42,7 +42,7 @@
         gameData.append('publisher', username.value);
         gameData.append('imageFile', imageFile.files[0]);
 
-        const response = await fetch(`http://backend:8080/game/uploadGame`, {
+        const response = await fetch(`http://localhost:8080/game/uploadGame`, {
             method: 'POST',
             body: gameData
         });

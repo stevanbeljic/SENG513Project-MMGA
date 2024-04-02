@@ -30,7 +30,7 @@ import router from "@/router";
             }
         },
         mounted(){
-                let route = "http://backend:8080/game/getAllGames";
+                let route = "http://localhost:8080/game/getAllGames";
                 fetch(route, {method: "GET"})
                 .then(res => res.json())
                 .then(data => this.games = data)
@@ -83,7 +83,7 @@ import router from "@/router";
 
             <div v-for="item in filteredGames" :key="item.id" class="newsItem" v-on:click=handleClick(item.id)>
                 <!-- <a href={{ }}> -->
-                    <img :src="'http://backend:8080' + item.thumbnail" alt="Image Unavailable"/>
+                    <img :src="'http://localhost:8080' + item.thumbnail" alt="Image Unavailable"/>
                     <p>{{ item.name }}</p>
                     <p class="articleDesc">{{ item.description }}</p>
                 <!-- </a> -->
