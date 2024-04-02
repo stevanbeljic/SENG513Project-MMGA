@@ -5,6 +5,7 @@
     import { onMounted, ref } from 'vue';
     import navbar from "../components/navbarView.vue";
     import bottomNavbar from "../components/bottomNavbarView.vue";
+import router from "@/router";
 
     let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
     let username = ref(sessionStorage.getItem('loggedInAs'));
@@ -49,7 +50,7 @@
         let status = await response.status;
         if(status === 200){
             alert("Published");
-            window.location.reload();
+            router.push('/');
         } else {
             alert("Failed to publish");
         }
