@@ -23,9 +23,14 @@ const connectToDatabase = new Promise((resolve, reject) => {
   setTimeout(() => {
     try {
       databaseConnection = mysql.createConnection({
-          host: "db",
-          user: "root",
-          password: "password"
+          
+          //host: "db",  //uncomment this if using docker
+          //user: "root", //uncomment this if using docker
+          //password: "password" //uncomment this if using docker
+
+          host: "localhost", //uncomment this if using XAMPP
+          user: "root", //uncomment this if using XAMPP
+          password: "" //uncomment this if using XAMPP
       });
 
       console.log(`Connected!`);
