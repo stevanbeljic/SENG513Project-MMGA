@@ -2,11 +2,12 @@
 import "../assets/login.css";
 import "../router/index.js";
 import router from "../router/index.js";
+
     export default {
         methods: {
             async handleLogin() {
                 console.log('Button clicked!');
-                const route = "http://localhost:7003/user/getAccount?username=" +
+                const route = "http://localhost:8080/user/getAccount?username=" +
                 this.username +
                 "&password=" +
                 this.password;
@@ -35,6 +36,9 @@ import router from "../router/index.js";
                     alert("Unauthorized credentials. Please try again or sign up below.");
                 }
             },
+            pushToSignup() {
+                this.$router.push('/signup');
+            }
         },
     };
 </script>
@@ -67,7 +71,7 @@ import router from "../router/index.js";
                             <RouterLink to = "/" id ="routerGuestBtn">Continue as Guest</RouterLink>
                         </button>
                     </div>
-                    <a class="login-link" href="./signup"><p>Sign Up</p></a>
+                    <a class="login-link" v-on:click="pushToSignup"><p>Sign Up</p></a>
                 </div>
             </form>
         </div>

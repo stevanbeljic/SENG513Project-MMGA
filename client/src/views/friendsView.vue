@@ -20,7 +20,7 @@
 
     const friendsList = ref([]);
     const fetchFriendInfo = async () => {
-            const route = "http://localhost:7003/user/getFriends?username=" + username.value;
+            const route = "http://localhost:8080/user/getFriends?username=" + username.value;
             console.log(route);
             console.log(username.value);
             const response = await fetch(route, {

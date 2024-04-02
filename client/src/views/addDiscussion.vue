@@ -20,7 +20,7 @@
     };
 
     const fetchGame = async () => {
-        const response = await fetch('http://localhost:7003/game/getGameById?id='+route.params.gameid);
+        const response = await fetch('http://localhost:8080/game/getGameById?id='+route.params.gameid);
         const games = await response.json();
         game.value = games[0];
     };
@@ -49,7 +49,7 @@
         discussionData.append('game', game.value.id);
         discussionData.append('date', postDate);
 
-        const response = await fetch(`http://localhost:7003/discussion/postDiscussion`, {
+        const response = await fetch(`http://localhost:8080/discussion/postDiscussion`, {
             method: 'POST',
             body: discussionData
         });
@@ -89,7 +89,7 @@
             <span>
                 <div id="gameDiv">
                     <h1 v-text="'Posting in '+game.name"></h1>
-                    <img :src="'http://localhost:7003' + game.thumbnail" alt="Image Unavailable"/>
+                    <img :src="'http://localhost:8080' + game.thumbnail" alt="Image Unavailable"/>
                 </div>
                 <div id="discussionContent">
                     <form>

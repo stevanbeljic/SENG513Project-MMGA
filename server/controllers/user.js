@@ -2,9 +2,16 @@ const express = require('express');
 const router = express.Router();
 const databaseConnection = require('../model/model');
 const mariadb = require('mariadb');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const saltTime = 2;
 
+
+
+module.exports = function(databaseConnection) {
+  const router = express.Router();
+
+
+  
 router.post('/confirmRequest', (req, res) => {
   console.log("here");
   const {username} = req.query;
@@ -227,9 +234,27 @@ router.post('/createAccount', async (req, res) => {
         return res.status(500).send('Internal server error');
       }
 
-      // User account created successfully
+      if(role == 'developer'){
+        databaseConnection.query('SELECT id FROM users WHERE username = ?', [username], (err, results) => {
+          if (err){
+            console.error("Error getting user id: ", err);
+            return res.status(500).send("Internal server error");
+          }
+
+          const userId = results[0].id;
+
+          databaseConnection.query('INSERT INTO developer (developer_id) VALUES (?)', [userId], (err, result) => {
+            if (err){
+              console.error("Error inserting developer: ", err);
+              return res.status(500).send("Internal server error");
+            }
+          })
+        })
+      }
       res.status(201).send('User account created successfully');
+      })
     });
   });
-});
-module.exports = router;
+
+  return router;
+};
