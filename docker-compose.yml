@@ -8,6 +8,8 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: mmgadb
+    volumes:
+      - mmga_data:/var/lib/mysql
   backend:
     build: 
       context: .
@@ -33,3 +35,6 @@ services:
       PMA_HOST: db
     depends_on:
       - db
+
+volumes:
+  mmga_data: {}
