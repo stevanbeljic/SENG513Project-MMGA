@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+console.log('dockerized version');
 </script>
 
 <template>

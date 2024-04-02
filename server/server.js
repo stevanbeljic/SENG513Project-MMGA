@@ -14,7 +14,7 @@ const viewProfileController = require("./controllers/viewProfile");
 const discussionController = require("./controllers/discussion");
 // Run the server
 const app = express();
-const PORT = process.env.PORT || 7003;
+const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(express.json()); // This line adds JSON parsing middleware

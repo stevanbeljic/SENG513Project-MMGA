@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const databaseConnection = require('../model/model');
 const mariadb = require('mariadb');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const saltTime = 2;
 
 router.post('/confirmRequest', (req, res) => {

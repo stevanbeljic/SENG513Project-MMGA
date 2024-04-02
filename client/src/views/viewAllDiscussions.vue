@@ -14,14 +14,14 @@
     let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
 
     const fetchGame = async () => {
-        const response = await fetch('http://localhost:7003/game/getGameById?id='+route.params.gameid);
+        const response = await fetch('http://backend:8080/game/getGameById?id='+route.params.gameid);
         const games = await response.json();
         game.value = games[0];
         game.value.discussions = await fetchDiscussion(game.value.id);
     };
 
     const fetchDiscussion = async (id) => {
-        const response = await fetch('http://localhost:7003/discussion/getDiscussionsByGame?id='+id);
+        const response = await fetch('http://backend:8080/discussion/getDiscussionsByGame?id='+id);
         return await response.json();
     }
 
@@ -59,7 +59,7 @@
         <div class="discussion-body-container">
             <div v-if="game" class="discussion-card">
                 <div id="viewDiscGame" class="discussion-game-section">
-                    <img :src="'http://localhost:7003' + game.thumbnail" alt="Image Unavailable"/>
+                    <img :src="'http://backend:8080' + game.thumbnail" alt="Image Unavailable"/>
                     <h1 v-text="game.name+' - Discussions'"></h1>
                 </div>
                 <div class="discussion-list-section">
