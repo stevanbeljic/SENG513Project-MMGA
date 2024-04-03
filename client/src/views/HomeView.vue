@@ -83,7 +83,7 @@
         }
       }
     }
-  }
+  };
 
   onMounted(async () => {
     updateSessionData();
@@ -142,7 +142,10 @@
             <ul>
               <li v-for="d in trendingDiscussions" :key="d.discussion_id">
                 <h3 v-text="d.title" v-on:click="handleDiscussionTitleClick(d.discussion_id)"></h3>
-                <button :class="[isLiked(d.discussion_id) ? 'liked-button' : 'unliked-button']" @click="toggleLike($event, d.discussion_id)">❤︎</button>
+                <div class="likes-container">
+                  <button :class="[isLiked(d.discussion_id) ? 'liked-button' : 'unliked-button']" 
+                  @click="toggleLike($event, d.discussion_id)">❤︎</button>
+                </div>
               </li>
             </ul>
           </div>

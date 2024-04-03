@@ -122,7 +122,3 @@ router.post('/removeLikedDiscussion', (req, res) => {
         return res.status(200).send("Like removed successfully");
     });
 });
-
-// router.get('/numOfLikesByDiscussion'), (req, res) => {
-
-// }

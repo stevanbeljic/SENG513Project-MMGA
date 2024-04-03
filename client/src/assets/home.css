@@ -268,3 +268,14 @@ h2 {
     }
 }
 
+.likes-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.likes-container > button,
+.likes-container > p {
+    margin: 0;
+}
+

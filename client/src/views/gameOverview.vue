@@ -13,6 +13,7 @@ import router from "@/router";
     let loggedInId = ref(sessionStorage.getItem('loggedInId'));
     let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
     let added = ref([]);
+    const likedDiscussions = ref([]);
     
     const updateSessionData = async () => {
         const route = useRoute();
@@ -28,7 +29,7 @@ import router from "@/router";
             }
         }
         return;
-    };
+    };  
 
     export default {
         setup(){
@@ -48,6 +49,10 @@ import router from "@/router";
             .then(res => res.json())
             .then(data => {this.discussions = data
             console.log(data)})
+            .catch(err => console.log(err.message));
+            fetch('http://localhost:7003/discussion/likedDiscussionsByUserID?userid=' + loggedInId.value, {method: "GET"})
+            .then(res => res.json())
+            .then(data => this.likedDiscussions.value = data)
             .catch(err => console.log(err.message));
         },
         data() {
@@ -76,9 +81,41 @@ import router from "@/router";
                     alert("Unable to add to Top Games");
                     return;
                 }
+            },
+            toggleLike: async function(event, discussion_id) {
+                if (loggedIn.value != true) {
+                    alert("You must be logged in to like discussions");
+                } else {
+                    // get the button that was pressed
+                    const button = event.currentTarget;
+                    // toggle the button
+                    button.classList.toggle("liked-button");
+                    button.classList.toggle("unliked-button");
+                    if (button.classList.contains("unliked-button")) {
+                        // if button is now unliked, remove from likes
+                        const response = await fetch("http://localhost:7003/discussion/removeLikedDiscussion?userid=" + loggedInId.value 
+                        +"&discussionid=" + discussion_id, { method: "POST" });
+                        if (response.status != 200) {
+                        alert("Liked discussion was not removed successfully.");
+                        }
+                    } else if (button.classList.contains("liked-button")) {
+                        // if button is now liked, add to likes
+                        const response = await fetch("http://localhost:7003/discussion/addLikedDiscussion?userid=" + loggedInId.value 
+                        +"&discussionid=" + discussion_id, { method: "POST" });
+                        if (response.status != 200) {
+                        alert("Liked discussion was not added successfully.");
+                        }
+                    }
+                }                
+            },
+            isLiked: function(discussion_id) {
+                if (loggedIn.value != true) {
+                    return false;
+                } else {
+                    return likedDiscussions.value.some(d => d.discussion_id == discussion_id);
+                }
             }
         }
-
     }
 </script>
 <template>
@@ -130,7 +167,10 @@ import router from "@/router";
             <h1 id="discussion-label">Discussions Board</h1>
             <div class="discussion-list-box" v-for="discussion in discussions.slice(0, 5)" :key="discussion.discussion_id">
                 <div v-on:click="handleDiscussionClick(discussion.discussion_id)" class="discussionTitle"><h3>{{ discussion.title }}</h3></div>
-                <div><button class="discussion-like-button">❤︎</button></div>
+                <div class="likes-container">
+                  <button :class="[isLiked(discussion.discussion_id) ? 'liked-button' : 'unliked-button']" 
+                  @click="toggleLike($event, discussion.discussion_id)">❤︎</button>
+                </div>
             </div>
             <div class="discussion-view-all-section">
                 <button class="discussion-view-all-button" v-on:click="handleViewAll(game.id)">↪ VIEW ALL</button>
