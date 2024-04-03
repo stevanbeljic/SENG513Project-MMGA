@@ -66,7 +66,16 @@
     border: none;
     background-color: transparent;
     font-size: 20px;
-    margin-right: 20px;
+    cursor: pointer;
+}
+
+.unliked-button:hover, 
+.liked-button:hover {
+    transform: scale(1.1);
+}
+
+.like-animation {
+    animation: like 0.35s ease;
 }
 
 .unliked-button {
@@ -75,6 +84,19 @@
 
 .liked-button {
     color: red;
+}
+
+
+@keyframes like {
+    0% {
+        transform: scale(0.8);
+    }
+    80% {
+        transform: scale(1.35);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .discussion-view-all-button {

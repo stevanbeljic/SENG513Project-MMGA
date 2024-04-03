@@ -53,32 +53,35 @@
         }
     };
 
-  const toggleLike = async(event, discussion_id) => {
-        if (loggedIn.value != true) {
-            alert("You must be logged in to like discussions");
-        } else {
-        // get the button that was pressed
-            const button = event.currentTarget;
-            // toggle the button
-            button.classList.toggle("liked-button");
-            button.classList.toggle("unliked-button");
-            if (button.classList.contains("unliked-button")) {
-                // if button is now unliked, remove from likes
-                const response = await fetch("http://localhost:7003/discussion/removeLikedDiscussion?userid=" + loggedInId.value 
-                +"&discussionid=" + discussion_id, { method: "POST" });
-                if (response.status != 200) {
-                alert("Liked discussion was not removed successfully.");
-                }
-            } else if (button.classList.contains("liked-button")) {
-                // if button is now liked, add to likes
-                const response = await fetch("http://localhost:7003/discussion/addLikedDiscussion?userid=" + loggedInId.value 
-                +"&discussionid=" + discussion_id, { method: "POST" });
-                if (response.status != 200) {
-                alert("Liked discussion was not added successfully.");
-                }
-            }
+    const toggleLike = async(event, discussion_id) => {
+    if (loggedIn.value != true) {
+      alert("You must be logged in to like discussions");
+    } else {
+      // get the button that was pressed
+      const button = event.currentTarget;
+      // toggle the button
+      button.classList.toggle("liked-button");
+      button.classList.toggle("unliked-button");
+      if (button.classList.contains("unliked-button")) {
+        button.classList.remove("like-animation");
+        // if button is now unliked, remove from likes
+        const response = await fetch("http://localhost:7003/discussion/removeLikedDiscussion?userid=" + loggedInId.value 
+        +"&discussionid=" + discussion_id, { method: "POST" });
+        if (response.status != 200) {
+          alert("Liked discussion was not removed successfully.");
         }
-    };
+      } else if (button.classList.contains("liked-button")) {
+        // trigger like animation
+        button.classList.add("like-animation");
+        // if button is now liked, add to likes
+        const response = await fetch("http://localhost:7003/discussion/addLikedDiscussion?userid=" + loggedInId.value 
+        +"&discussionid=" + discussion_id, { method: "POST" });
+        if (response.status != 200) {
+          alert("Liked discussion was not added successfully.");
+        }
+      }
+    }
+  };
 
     onMounted(async () =>{
         try {

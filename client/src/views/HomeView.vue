@@ -68,6 +68,7 @@
       button.classList.toggle("liked-button");
       button.classList.toggle("unliked-button");
       if (button.classList.contains("unliked-button")) {
+        button.classList.remove("like-animation");
         // if button is now unliked, remove from likes
         const response = await fetch("http://localhost:7003/discussion/removeLikedDiscussion?userid=" + loggedInId.value 
         +"&discussionid=" + discussion_id, { method: "POST" });
@@ -75,6 +76,8 @@
           alert("Liked discussion was not removed successfully.");
         }
       } else if (button.classList.contains("liked-button")) {
+        // trigger like animation
+        button.classList.add("like-animation");
         // if button is now liked, add to likes
         const response = await fetch("http://localhost:7003/discussion/addLikedDiscussion?userid=" + loggedInId.value 
         +"&discussionid=" + discussion_id, { method: "POST" });

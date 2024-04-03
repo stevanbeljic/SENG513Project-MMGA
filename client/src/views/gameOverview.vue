@@ -13,7 +13,7 @@ import router from "@/router";
     let loggedInId = ref(sessionStorage.getItem('loggedInId'));
     let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
     let added = ref([]);
-    const likedDiscussions = ref([]);
+    let likedDiscussions = ref([])
     
     const updateSessionData = async () => {
         const route = useRoute();
@@ -29,7 +29,13 @@ import router from "@/router";
             }
         }
         return;
-    };  
+    }; 
+
+    const fetchLikedDiscussions = async() => {
+        const response = await fetch('http://localhost:7003/discussion/likedDiscussionsByUserID?userid=' + loggedInId.value);
+        const data = await response.json();
+        likedDiscussions.value = await data;
+    };
 
     export default {
         setup(){
@@ -50,10 +56,8 @@ import router from "@/router";
             .then(data => {this.discussions = data
             console.log(data)})
             .catch(err => console.log(err.message));
-            fetch('http://localhost:7003/discussion/likedDiscussionsByUserID?userid=' + loggedInId.value, {method: "GET"})
-            .then(res => res.json())
-            .then(data => this.likedDiscussions.value = data)
-            .catch(err => console.log(err.message));
+            
+            fetchLikedDiscussions();
         },
         data() {
             return{
@@ -92,6 +96,7 @@ import router from "@/router";
                     button.classList.toggle("liked-button");
                     button.classList.toggle("unliked-button");
                     if (button.classList.contains("unliked-button")) {
+                        button.classList.remove("like-animation");
                         // if button is now unliked, remove from likes
                         const response = await fetch("http://localhost:7003/discussion/removeLikedDiscussion?userid=" + loggedInId.value 
                         +"&discussionid=" + discussion_id, { method: "POST" });
@@ -99,6 +104,8 @@ import router from "@/router";
                         alert("Liked discussion was not removed successfully.");
                         }
                     } else if (button.classList.contains("liked-button")) {
+                        // trigger like animation
+                        button.classList.add("like-animation");
                         // if button is now liked, add to likes
                         const response = await fetch("http://localhost:7003/discussion/addLikedDiscussion?userid=" + loggedInId.value 
                         +"&discussionid=" + discussion_id, { method: "POST" });
@@ -106,7 +113,7 @@ import router from "@/router";
                         alert("Liked discussion was not added successfully.");
                         }
                     }
-                }                
+                }               
             },
             isLiked: function(discussion_id) {
                 if (loggedIn.value != true) {
