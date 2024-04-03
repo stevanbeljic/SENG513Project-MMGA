@@ -192,13 +192,6 @@ h2 {
                 color: white;
                 cursor: pointer;
             }
-
-            a {
-                color: black;
-            }
-            a:hover {
-                color: red;
-            }
         }
 
         li:nth-child(odd) {

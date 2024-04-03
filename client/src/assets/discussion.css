@@ -62,16 +62,18 @@
     background-color: #EBD1FF;
 }
 
-/* Need to make it so that button toggles between white and red (javascript) */
-.discussion-like-button {
-    color: black;
+.unliked-button, .liked-button {
     border: none;
-    background-color: #F5E8FF;
+    background-color: transparent;
     font-size: 20px;
-    margin-left: 50px;
+    margin-right: 20px;
 }
 
-.discussion-like-button:hover {
+.unliked-button {
+    color: black;
+}
+
+.liked-button {
     color: red;
 }
 

@@ -9,6 +9,7 @@
 
   let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
   let username = ref(sessionStorage.getItem('loggedInAs'));
+  let loggedInId = ref(sessionStorage.getItem('loggedInId'));
 
   const updateSessionData = () => {
     loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
@@ -18,6 +19,7 @@
   const newsData = ref([]);
   const trendingGame = ref([]);
   const trendingDiscussions = ref([]);
+  const likedDiscussions = ref([]);
 
   const fetchNewsData = async () => {
     const response = await fetch('https://seng513project-production.up.railway.app/homeDashboard');
@@ -37,10 +39,51 @@
     trendingDiscussions.value = await data;
   }
 
-  const handleDiscussionClick = (id) =>{
-        console.log(id);
-        router.push({ name: 'discussionpost', params: { discussionId: id }})
+  const fetchLikedDiscussions = async() => {
+    const response = await fetch('http://localhost:7003/discussion/likedDiscussionsByUserID?userid=' + loggedInId.value);
+    const data = await response.json();
+    likedDiscussions.value = await data;
+  }
+
+  const handleDiscussionTitleClick = (id) =>{
+      console.log(id);
+      router.push({ name: 'discussionpost', params: { discussionId: id }});
     }
+  
+  const isLiked = (discussion_id) => {
+    if (loggedIn.value != true) {
+      return false;
+    } else {
+      return likedDiscussions.value.some(d => d.discussion_id == discussion_id);
+    }
+  };
+
+  const toggleLike = async(event, discussion_id) => {
+    if (loggedIn.value != true) {
+      alert("You must be logged in to like discussions");
+    } else {
+      // get the button that was pressed
+      const button = event.currentTarget;
+      // toggle the button
+      button.classList.toggle("liked-button");
+      button.classList.toggle("unliked-button");
+      if (button.classList.contains("unliked-button")) {
+        // if button is now unliked, remove from likes
+        const response = await fetch("http://localhost:7003/discussion/removeLikedDiscussion?userid=" + loggedInId.value 
+        +"&discussionid=" + discussion_id, { method: "POST" });
+        if (response.status != 200) {
+          alert("Liked discussion was not removed successfully.");
+        }
+      } else if (button.classList.contains("liked-button")) {
+        // if button is now liked, add to likes
+        const response = await fetch("http://localhost:7003/discussion/addLikedDiscussion?userid=" + loggedInId.value 
+        +"&discussionid=" + discussion_id, { method: "POST" });
+        if (response.status != 200) {
+          alert("Liked discussion was not added successfully.");
+        }
+      }
+    }
+  }
 
   onMounted(async () => {
     updateSessionData();
@@ -48,13 +91,14 @@
       await fetchTrendingGame();
       await fetchNewsData();
       await fetchTrendingDiscussions();
+      await fetchLikedDiscussions();
     } catch (error){
       console.log(error);
     }
   });
 
   window.addEventListener('storage', updateSessionData);
-  defineExpose({loggedIn, username, handleDiscussionClick});
+  defineExpose({loggedIn, username, handleDiscussionTitleClick});
 
 </script>
 
@@ -97,8 +141,8 @@
             <h2>Recent Discussions</h2>
             <ul>
               <li v-for="d in trendingDiscussions" :key="d.discussion_id">
-                <h3 v-text="d.title" v-on:click="handleDiscussionClick(d.discussion_id)"></h3>
-                <a>❤︎</a>
+                <h3 v-text="d.title" v-on:click="handleDiscussionTitleClick(d.discussion_id)"></h3>
+                <button :class="[isLiked(d.discussion_id) ? 'liked-button' : 'unliked-button']" @click="toggleLike($event, d.discussion_id)">❤︎</button>
               </li>
             </ul>
           </div>
