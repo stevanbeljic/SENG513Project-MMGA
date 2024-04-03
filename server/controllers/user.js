@@ -13,7 +13,6 @@ module.exports = function(databaseConnection) {
 
   
 router.post('/confirmRequest', (req, res) => {
-  console.log("here");
   const {username} = req.query;
   const {friendUsername} = req.query;
   databaseConnection.query('INSERT IGNORE INTO `friends`(`user1_id`, `user2_id`) SELECT (SELECT id FROM users WHERE username=?), (SELECT id FROM users WHERE username=?)', [username, friendUsername], (err, results) => {
@@ -21,7 +20,6 @@ router.post('/confirmRequest', (req, res) => {
       console.error("Error executing insertion query ", err);
       return res.status(500).send('Internal server error');
     }
-    console.log("friendship was inserted");
     databaseConnection.query('DELETE FROM friendrequests WHERE requestTo = (SELECT id FROM users WHERE username = ?) AND requestFrom = (SELECT id FROM users WHERE username = ?)', [username, friendUsername], (err, results) => {
       if(err){
         console.error("Error executing deletion query");
@@ -60,7 +58,6 @@ router.post('/sendRequest', (req, res) => {
         console.error("Error executing search query", error);
         return res.status(500).send('Internal server error');
       }
-      console.log(result);
       if(result.length!=0){
         return res.sendStatus(409);
       }
@@ -70,7 +67,6 @@ router.post('/sendRequest', (req, res) => {
           console.error("Error executing send friend request query", err);
           return res.status(500).send('Internal server error');
         }
-        console.log("sent friend request");
         return res.sendStatus(200);
       });
     });
@@ -210,8 +206,6 @@ router.post('/createAccount', async (req, res) => {
 
     return res.status(400).send('All fields are required');
   }
-  console.log(username, email, password, role);
-  console.log(req.body);
   // Check if the username already exists
   databaseConnection.query('SELECT * FROM users WHERE username = ?', [username], async (err, results) => {
     if (err) {
@@ -225,7 +219,6 @@ router.post('/createAccount', async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, saltTime);
-    console.log(hashedPassword);
 
     // Insert the new user into the database
     databaseConnection.query('INSERT INTO users (role, username, password) VALUES (?, ?, ?)', [role, username, hashedPassword], (err, result) => {
