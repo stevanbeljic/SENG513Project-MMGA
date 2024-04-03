@@ -63,7 +63,7 @@ module.exports = function(databaseConnection) {
                 console.error('Error fetching trending game', err);
                 return res.status(500).send('Internal server error');
             }
-    
+                
             if(results[0].thumbnail == null){
                 results[0].thumbnail = defaultImage;
             }
@@ -100,7 +100,7 @@ module.exports = function(databaseConnection) {
         const { title, description, link, googlePrice, appStorePrice, genre, publisher} = req.body;
         let thumbnail = '/uploads/'+req.file.filename;
     
-        databaseConnection.query('SELECT id FROM users WHERE username = ?', [publisher], (err, results) => {
+        databaseConnection.query('SELECT developer_id FROM developer WHERE developer_id IN (SELECT id FROM users WHERE username = ?)', [publisher], (err, results) => {
             if (err){
                 console.error('Error identifying author id: ', err);
                 return res.status(500).send('Internal server error');
