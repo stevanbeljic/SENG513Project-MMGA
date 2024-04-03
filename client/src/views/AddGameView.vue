@@ -5,18 +5,24 @@
     import { onMounted, ref } from 'vue';
     import navbar from "../components/navbarView.vue";
     import bottomNavbar from "../components/bottomNavbarView.vue";
-import router from "@/router";
+    import router from "@/router";
+
+    const DEV_ROLE = "developer";
 
     let loggedIn = ref(sessionStorage.getItem('loggedIn') === 'true');
     let username = ref(sessionStorage.getItem('loggedInAs'));
+    let loggedInRole = ref(sessionStorage.getItem('loggedInRole'));
+
 
     const updateSessionData = () => {
-        //a session variable to check if logged in user is developer needed to access this page
-        //implement later
+        loggedInRole.value = sessionStorage.getItem('loggedInRole');
         loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
         username.value = sessionStorage.getItem('loggedInAs'); 
-        console.log(loggedIn.value);
-        console.log(username.value);
+
+        if(loggedInRole.value != DEV_ROLE){
+            router.push("/");
+            alert("Sign in as a developer to publish");
+        }
     };
 
     const uploadGame = async () => {
