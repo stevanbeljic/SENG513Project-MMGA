@@ -61,7 +61,7 @@
     background-color: #EBD1FF;
 }
 
-.unliked-button, .liked-button {
+.unliked-button, .liked-button, .add-discussion-button {
     border: none;
     background-color: transparent;
     font-size: 20px;
@@ -69,7 +69,8 @@
 }
 
 .unliked-button:hover, 
-.liked-button:hover {
+.liked-button:hover,
+.add-discussion-button:hover {
     transform: scale(1.1);
 }
 

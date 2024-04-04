@@ -128,7 +128,9 @@
                 </div>
                 <div class="discussion-list-box" v-else>
                     <h3>Be the first to talk about {{ game.name }}!</h3>
-                    <button class="discussion-like-button" v-on:click="handleNewDiscussion(game.id)">+</button>
+                    <div class="likes-container">
+                        <button class="add-discussion-button" v-on:click="handleNewDiscussion(game.id)">+</button>
+                    </div>
                 </div>
             </div>
             <div class="discussion-view-all-section">
