@@ -19,7 +19,7 @@ import router from "@/router";
         const route = useRoute();
         loggedIn.value = sessionStorage.getItem('loggedIn') === 'true';
         loggedInId.value = sessionStorage.getItem('loggedInId');
-        const response = await fetch("https://seng513project-production.up.railway.app/game/existsTopGame?userid="+loggedInId.value+"&gameid="+route.params.id, {method: "GET"});
+        const response = await fetch("http://localhost:8080/game/existsTopGame?userid="+loggedInId.value+"&gameid="+route.params.id, {method: "GET"});
         
         added.value = false;
         if (response.status == 200){
@@ -32,7 +32,7 @@ import router from "@/router";
     }; 
 
     const fetchLikedDiscussions = async() => {
-        const response = await fetch('http://localhost:7003/discussion/likedDiscussionsByUserID?userid=' + loggedInId.value);
+        const response = await fetch('http://localhost:8080/discussion/likedDiscussionsByUserID?userid=' + loggedInId.value);
         const data = await response.json();
         likedDiscussions.value = await data;
     };
@@ -45,13 +45,13 @@ import router from "@/router";
         mounted() {
             updateSessionData();
 
-            let bRoute = "https://seng513project-production.up.railway.app/game/getGameById?id="+ this.$route.params.id; 
+            let bRoute = "http://localhost:8080/game/getGameById?id="+ this.$route.params.id; 
             fetch(bRoute, {method: "GET"})
             .then(res => res.json())
             .then(data => this.game = data[0])
             .catch(err => console.log(err.message));
 
-            fetch("https://seng513project-production.up.railway.app/discussion/getDiscussionsByGame?id="+ this.$route.params.id, {method: "GET"})
+            fetch("http://localhost:8080/discussion/getDiscussionsByGame?id="+ this.$route.params.id, {method: "GET"})
             .then(res => res.json())
             .then(data => {this.discussions = data
             console.log(data)})
@@ -76,7 +76,7 @@ import router from "@/router";
             },
 
             addToTopGames: async function(gameid){
-                const response = await fetch("https://seng513project-production.up.railway.app/game/addTopGame?userid="+loggedInId.value+"&gameid="+gameid, {method: "POST"});
+                const response = await fetch("http://localhost:8080/game/addTopGame?userid="+loggedInId.value+"&gameid="+gameid, {method: "POST"});
                 if (response.status == 200){
                     alert("Added game");
                     window.location.reload();
@@ -98,7 +98,7 @@ import router from "@/router";
                     if (button.classList.contains("unliked-button")) {
                         button.classList.remove("like-animation");
                         // if button is now unliked, remove from likes
-                        const response = await fetch("http://localhost:7003/discussion/removeLikedDiscussion?userid=" + loggedInId.value 
+                        const response = await fetch("http://localhost:8080/discussion/removeLikedDiscussion?userid=" + loggedInId.value 
                         +"&discussionid=" + discussion_id, { method: "POST" });
                         if (response.status != 200) {
                         alert("Liked discussion was not removed successfully.");
@@ -107,7 +107,7 @@ import router from "@/router";
                         // trigger like animation
                         button.classList.add("like-animation");
                         // if button is now liked, add to likes
-                        const response = await fetch("http://localhost:7003/discussion/addLikedDiscussion?userid=" + loggedInId.value 
+                        const response = await fetch("http://localhost:8080/discussion/addLikedDiscussion?userid=" + loggedInId.value 
                         +"&discussionid=" + discussion_id, { method: "POST" });
                         if (response.status != 200) {
                         alert("Liked discussion was not added successfully.");
@@ -135,7 +135,7 @@ import router from "@/router";
     <div class="body-container">
         <div class="game-overview">
             <div id="cover-image">
-                <img :src="'https://seng513project-production.up.railway.app' + game.thumbnail" alt="Image Unavailable"/>
+                <img :src="'http://localhost:8080' + game.thumbnail" alt="Image Unavailable"/>
             </div>
             <div id="game-information">
                 <div id="game-details">

@@ -1,0 +1,40 @@
+version: '3'
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mmgadb
+    volumes:
+      - mmga_data:/var/lib/mysql
+  backend:
+    build: 
+      context: .
+      dockerfile: dockerfile.node
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+  frontend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./client:/app
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+
+volumes:
+  mmga_data: {}

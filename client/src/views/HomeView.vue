@@ -22,25 +22,25 @@
   const likedDiscussions = ref([]);
 
   const fetchNewsData = async () => {
-    const response = await fetch('https://seng513project-production.up.railway.app/homeDashboard');
+    const response = await fetch('http://localhost:8080/homeDashboard');
     const data = await response.json();
     newsData.value = data;
   };
 
   const fetchTrendingGame = async () => {
-    const response = await fetch('https://seng513project-production.up.railway.app/game/trendingGame');
+    const response = await fetch('http://localhost:8080/game/trendingGame');
     const data = await response.json();
     trendingGame.value = await data;
   }
 
   const fetchTrendingDiscussions = async() => {
-    const response = await fetch('https://seng513project-production.up.railway.app/discussion/trendingDiscussions');
+    const response = await fetch('http://localhost:8080/discussion/trendingDiscussions');
     const data = await response.json();
     trendingDiscussions.value = await data;
   }
 
   const fetchLikedDiscussions = async() => {
-    const response = await fetch('http://localhost:7003/discussion/likedDiscussionsByUserID?userid=' + loggedInId.value);
+    const response = await fetch('http://localhost:8080/discussion/likedDiscussionsByUserID?userid=' + loggedInId.value);
     const data = await response.json();
     likedDiscussions.value = await data;
   }
@@ -70,7 +70,7 @@
       if (button.classList.contains("unliked-button")) {
         button.classList.remove("like-animation");
         // if button is now unliked, remove from likes
-        const response = await fetch("http://localhost:7003/discussion/removeLikedDiscussion?userid=" + loggedInId.value 
+        const response = await fetch("http://localhost:8080/discussion/removeLikedDiscussion?userid=" + loggedInId.value 
         +"&discussionid=" + discussion_id, { method: "POST" });
         if (response.status != 200) {
           alert("Liked discussion was not removed successfully.");
@@ -79,7 +79,7 @@
         // trigger like animation
         button.classList.add("like-animation");
         // if button is now liked, add to likes
-        const response = await fetch("http://localhost:7003/discussion/addLikedDiscussion?userid=" + loggedInId.value 
+        const response = await fetch("http://localhost:8080/discussion/addLikedDiscussion?userid=" + loggedInId.value 
         +"&discussionid=" + discussion_id, { method: "POST" });
         if (response.status != 200) {
           alert("Liked discussion was not added successfully.");
@@ -123,7 +123,7 @@
             </div>
             <router-link id="routerLink" :to="'/game/' + trendingGame.id">
               <div id="trendingContentDiv">
-                <img :src="'https://seng513project-production.up.railway.app' + trendingGame.thumbnail" alt="Image Unavailable"/>
+                <img :src="'http://localhost:8080' + trendingGame.thumbnail" alt="Image Unavailable"/>
                 <div id="gameDescDiv">
                   <h3 v-text="trendingGame.name"></h3>
                   <p id="publisher" v-text="trendingGame.publisher"></p>

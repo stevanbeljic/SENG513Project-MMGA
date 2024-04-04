@@ -23,6 +23,7 @@
     margin-top: 10px;
     box-shadow: 5px 5px 5px lightblue;
     padding: 10px;
+    width: 80%;
 }
 
 #newDiscussionDiv #gameDiv{
@@ -39,7 +40,6 @@
 
     img {
         box-shadow: 5px 5px 5px -5px black;
-        width: 400px;
         max-height: 300px;
     }
 }
@@ -61,7 +61,7 @@
     }
 
     .newDiscussionData {
-        width: 400px;
+        width: 80%;
         box-shadow: 5px 5px 5px -5px black;
         border: none;
         font-family: 'Kanit';
@@ -81,21 +81,20 @@
     }
 
     form {
+        width:100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         background-color: #C985FF;
         align-items: center;
-        padding: 10px;
-        box-shadow: 5px 5px 5px lightblue;
     }
 
     form > #submitDiscussion {
-        width: 300px;
+        width: 50%
     }
 
     form > #submitDiscussion:hover {
-        background-color: greenyellow;
+        background-color: #f2ffe8;
         cursor: pointer;
     }
 
