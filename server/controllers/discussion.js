@@ -91,52 +91,39 @@ module.exports = function(databaseConnection) {
         });
     });
 
-
+    router.get('/likedDiscussionsByUserID', (req, res) => {
+        const {userid} = req.query;
+        databaseConnection.query('SELECT * from likes WHERE user_id = ?', [userid], (err, result) => {
+            if (err) {
+                console.error('Error reading from likes table: ', err);
+                return res.status(500).send('Internal server error');
+            } else {
+                return res.status(200).json(result);
+            }
+        })
+    });
+    
+    router.post('/addLikedDiscussion', (req, res) => {
+        const { userid, discussionid } = req.query;
+        databaseConnection.query('INSERT IGNORE INTO `likes` (`user_id`, `discussion_id`) VALUES (?, ?)', [userid, discussionid], (err, result) => {
+            if(err){
+                console.error("Error inserting like into database: ", err);
+                return res.status(500).send('Internal server error: Unable to add like');
+            }
+            return res.status(200).send("Like added successfully");
+        });
+    });
+    
+    router.post('/removeLikedDiscussion', (req, res) => {
+        const { userid, discussionid } = req.query;
+        databaseConnection.query('DELETE FROM `likes` WHERE user_id = ? AND discussion_id = ?', [userid, discussionid], (err, result) => {
+            if(err){
+                console.error("Error deleting from database database: ", err);
+                return res.status(500).send('Internal server error: Unable to remove like');
+            }
+            return res.status(200).send("Like removed successfully");
+        });
+    });
 
     return router;
 };
-
-router.get('/trendingDiscussions', (req, res) => {
-    databaseConnection.query('SELECT * FROM `discussion` ORDER BY `discussion_id` DESC LIMIT 5', (err, result) => {
-        if (err) {
-            console.error('Error executing query:', err);
-            return res.status(500).send('Internal server error');
-        } else {
-            return res.status(200).json(result);
-        }  
-    });
-});
-
-router.get('/likedDiscussionsByUserID', (req, res) => {
-    const {userid} = req.query;
-    databaseConnection.query('SELECT * from likes WHERE user_id = ?', [userid], (err, result) => {
-        if (err) {
-            console.error('Error reading from likes table: ', err);
-            return res.status(500).send('Internal server error');
-        } else {
-            return res.status(200).json(result);
-        }
-    })
-});
-
-router.post('/addLikedDiscussion', (req, res) => {
-    const { userid, discussionid } = req.query;
-    databaseConnection.query('INSERT IGNORE INTO `likes` (`user_id`, `discussion_id`) VALUES (?, ?)', [userid, discussionid], (err, result) => {
-        if(err){
-            console.error("Error inserting like into database: ", err);
-            return res.status(500).send('Internal server error: Unable to add like');
-        }
-        return res.status(200).send("Like added successfully");
-    });
-});
-
-router.post('/removeLikedDiscussion', (req, res) => {
-    const { userid, discussionid } = req.query;
-    databaseConnection.query('DELETE FROM `likes` WHERE user_id = ? AND discussion_id = ?', [userid, discussionid], (err, result) => {
-        if(err){
-            console.error("Error deleting from database database: ", err);
-            return res.status(500).send('Internal server error: Unable to remove like');
-        }
-        return res.status(200).send("Like removed successfully");
-    });
-});
