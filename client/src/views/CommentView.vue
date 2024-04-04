@@ -92,7 +92,7 @@
                 <h4>Posted in <u>{{game_name}}</u></h4>
             </div>
             <div class="comment-user-section">
-                <p>Replying to <u>{{poster}}</u>'s comment</p>
+                <p>Replying to <u>{{poster}}</u>'s thread</p>
                 <div class="comment-message-box">
                     <p>{{discussion_description}}</p>
                 </div>

@@ -134,7 +134,7 @@
                 </div>
             </div>
             <div class="discussion-view-all-section">
-                <button class="discussion-view-all-button" v-on:click="handleViewAll(game.id)">↪ View all</button>
+                <button class="discussion-view-all-button" v-on:click="handleViewAll(game.id)">↪ VIEW ALL</button>
             </div>
         </div>
     </div>

@@ -74,7 +74,13 @@ import router from "@/router";
             handleViewAll: function(id){
                 router.push({ name: 'allDiscussions', params: {gameid: id} });
             },
-
+            handleNewDiscussion: function(id) {
+                if(loggedIn.value){
+                    router.push({ name: 'addDiscussion', params: {gameid: id} });
+                } else {
+                    router.push('/login');
+                }
+            },
             addToTopGames: async function(gameid){
                 const response = await fetch("http://localhost:8080/game/addTopGame?userid="+loggedInId.value+"&gameid="+gameid, {method: "POST"});
                 if (response.status == 200){
@@ -145,7 +151,7 @@ import router from "@/router";
                             <p id="publisher-name">By: {{ game.publisher }}</p>
                         </div>
                         <div>
-                            <h3 id="game-categories">{{ game.genre }}</h3>
+                            <p id="game-categories">{{ game.genre }}</p>
                         </div>
                     </div>
                     <div id="advanced-details">
@@ -172,11 +178,19 @@ import router from "@/router";
         </div>
         <div class="discussion-list-section" id="overview-discussion-section">
             <h1 id="discussion-label">Discussions Board</h1>
-            <div class="discussion-list-box" v-for="discussion in discussions.slice(0, 5)" :key="discussion.discussion_id">
-                <div v-on:click="handleDiscussionClick(discussion.discussion_id)" class="discussionTitle"><h3>{{ discussion.title }}</h3></div>
+            <div v-if="discussions.length != 0">
+                <div class="discussion-list-box" v-for="discussion in discussions.slice(0, 3)" :key="discussion.discussion_id">
+                    <div v-on:click="handleDiscussionClick(discussion.discussion_id)" class="discussionTitle"><h3>{{ discussion.title }}</h3></div>
+                    <div class="likes-container">
+                    <button :class="[isLiked(discussion.discussion_id) ? 'liked-button' : 'unliked-button']" 
+                    @click="toggleLike($event, discussion.discussion_id)">❤︎</button>
+                    </div>
+                </div>
+            </div>
+            <div class="discussion-list-box" v-else>
+                <h3>Be the first to talk about {{ game.name }}!</h3>
                 <div class="likes-container">
-                  <button :class="[isLiked(discussion.discussion_id) ? 'liked-button' : 'unliked-button']" 
-                  @click="toggleLike($event, discussion.discussion_id)">❤︎</button>
+                    <button class="add-discussion-button" v-on:click="handleNewDiscussion(game.id)">+</button>
                 </div>
             </div>
             <div class="discussion-view-all-section">

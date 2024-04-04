@@ -20,6 +20,8 @@
     padding: 0px;
     margin-top: 70px;
     background-image: url(../components/icons/banner.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
     box-shadow: inset 0px 0px 17px -5px black;
 
     @media (max-width: 700px){

@@ -66,7 +66,7 @@
                 <img src = "../components/icons/user.svg" id = "friends-loggedin-user-icon">
             </div>
             <div>
-                <h1 v-text="username+'\'s Requests'"></h1>
+                <h1 v-text=username></h1>
             </div>
         </div>
         <div class = "section-break">

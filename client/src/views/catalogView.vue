@@ -55,11 +55,6 @@ import router from "@/router";
     <body>
     <div class="page-container">
         <div id="search-bar">
-            <!-- <ul>
-                <li>Recommended</li>
-                <li>Top Sellers</li>
-                <li>Latest</li>
-            </ul> -->
             <form>
                 <div id="search-img">
                     <img src="../components/icons/magnifying-glass.svg"/>
@@ -68,19 +63,6 @@ import router from "@/router";
             </form>
         </div>
         <div id="games-container">
-            <!-- <div v-for="item in filteredGames" :key="item.id" class="game-card">
-                <a href="/game">
-                <div id="game-img-container">
-                    <img src="../components/icons/mario.jpg"/>
-                </div>
-                <hl class="game-title">{{item.title}}</hl>
-                <h3 class="developer-name">{{item.developer}}</h3>
-                <h3 class="game-genre">{{item.genre}}</h3>
-                <p>App Store Price: {{ item.AppPrice }}</p>
-                <p>Play Store Price: {{ item.Playprice }}</p>
-            </a>
-            </div> -->
-
             <div v-for="item in filteredGames" :key="item.id" class="newsItem" v-on:click=handleClick(item.id)>
                 <!-- <a href={{ }}> -->
                     <img :src="'http://localhost:8080' + item.thumbnail" alt="Image Unavailable"/>
