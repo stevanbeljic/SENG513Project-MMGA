@@ -88,7 +88,7 @@ const connectToDatabase = new Promise((resolve, reject) => {
       console.log(err);
       reject(err);
     }
-  }, 15000); //delay can be decreased to 0 when running on XAMPP
+  }, 1); //delay can be decreased to 0 when running on XAMPP
 });
 
 module.exports = connectToDatabase;

@@ -58,11 +58,14 @@ router.post('/sendRequest', (req, res) => {
         console.error("Error executing search query", error);
         return res.status(500).send('Internal server error');
       }
-      if(result.length!=0){
-        return res.sendStatus(409);
+      for(let friend of result){
+        if(friend.username == friendUser){
+          //already friends with requested friend
+          return res.sendStatus(409);
+        }
       }
 
-      databaseConnection.query('INSERT INTO `friendrequests` (`requestTo`, `requestFrom`) SELECT (SELECT id FROM users WHERE username=?), (SELECT id FROM users WHERE username=?)', [friendUser, username], (err, results) => {
+      databaseConnection.query('INSERT IGNORE INTO `friendrequests` (`requestTo`, `requestFrom`) SELECT (SELECT id FROM users WHERE username=?), (SELECT id FROM users WHERE username=?)', [friendUser, username], (err, results) => {
         if(err){
           console.error("Error executing send friend request query", err);
           return res.status(500).send('Internal server error');
