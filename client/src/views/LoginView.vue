@@ -7,7 +7,7 @@ import router from "../router/index.js";
         methods: {
             async handleLogin() {
                 console.log('Button clicked!');
-                const route = "http://localhost:8080/user/getAccount?username=" +
+                const route = "https://seng513project-production.up.railway.app/user/getAccount?username=" +
                 this.username +
                 "&password=" +
                 this.password;
