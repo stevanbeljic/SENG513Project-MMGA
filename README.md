@@ -1,6 +1,7 @@
 # Make Mobile Great Again (MMGA)
 
-Live site available at: https://makemobilegreatagain.pages.dev/
+Live site available at: https://makemobilegreatagain.pages.dev/<br>
+<b>Note: Backend currently unavailable due to termination of Railway Trial</b>
 
 Made by Stevan Beljic, Nathan Rompfh, William Chan, and Justin Chua for SENG 513 Final Project
 
